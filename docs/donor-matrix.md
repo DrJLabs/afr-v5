@@ -127,7 +127,7 @@ All candidates are deferred. Their disposition describes how the property could 
 
 The first five helper modules are tightly coupled to their donor runtime. Porting whole modules would import identity, authority, locking, provider, and persistent-state concepts beyond these useful properties. The current evidence supports writing the property into the skill before extracting code.
 
-A later extraction decision must satisfy the current architecture's [helper threshold](architecture-v2.md#6-deterministic-helpers), including the limits on the assessment's single-trial proposal. Regression tests in the donor alone do not meet that threshold.
+A later extraction decision must satisfy the current architecture's [helper threshold](architecture-v3.md#6-deterministic-helpers), including the limits on the assessment's single-trial proposal. Regression tests in the donor alone do not meet that threshold.
 
 ### Rejected mechanisms
 
