@@ -1,14 +1,16 @@
 # AFR v5 skill-first architecture roadmap
 
-**Status:** initial roadmap
+**Status:** R1 analysis complete; R2 implementation next
 **Date:** 2026-09-03
-**Repository stage:** public architecture bootstrap
+**Repository stage:** design specified; skill implementation pending
+
+The [architecture specification](architecture.md) owns the current behavior and package design. The [donor matrix](donor-matrix.md) owns R1 evidence and extraction decisions. This roadmap owns milestones, sequencing, and complexity budgets; its date records the original roadmap baseline.
 
 ## 1. Decision
 
 AFR v5 will return to AFR's original strength: a skill-driven method that lets a capable host agent take a software initiative from planning to completed delivery without requiring the user to supervise every intermediate step.
 
-The canonical product will be a small family of `SKILL.md` workflows. Standard ChatGPT or Codex provides the agent runtime, tools, context, and native subagents. AFR provides the method, sequencing, proportional quality policy, continuation behavior, and stop conditions.
+The canonical product begins as one public `afr` skill with focused phase references. Standard ChatGPT or Codex provides the agent runtime, tools, context, and native subagents. AFR provides the method, sequencing, proportional quality policy, continuation behavior, and stop conditions.
 
 AFR v5 will not begin by rebuilding:
 
@@ -103,19 +105,19 @@ AFR v5 is lean when the normal path is easy to explain, inspect, and execute:
 
 AFR v5 will have three layers. Only the first is required.
 
-### Layer 1 — canonical skill family
+### Layer 1 — canonical skill package
 
-A small set of portable skills contains the workflow intelligence:
+The R1 design maps the five conceptual responsibilities into one skill package:
 
-| Skill | Role |
+| Owner within `afr/` | Role |
 |---|---|
-| `afr` | Public entrypoint; activation, route selection, sequencing, continuation, user stop, and final outcome |
-| `afr-plan` | Discovery, assumptions, approaches, direct/umbrella/spike/stop selection, outcome-oriented planning, and plan self-review |
-| `afr-work` | Workspace choice, implementation, focused verification, candidate inspection, and implementation handoff |
-| `afr-review` | Proportional quality policy, independent review, finding normalization, and bounded correction |
-| `afr-deliver` | Branch/PR creation, PR monitoring, review-fix convergence, exact-head merge, synchronization, and next-outcome handoff |
+| `SKILL.md` | Public entrypoint; activation, final route selection, sequencing, continuation, user stop, and final outcome |
+| `references/planning.md` | Discovery, route recommendation, outcome-oriented planning, and plan self-review |
+| `references/work.md` | Workspace choice, implementation, focused verification, and candidate inspection |
+| `references/review.md` | Proportional review, finding assessment, and bounded correction |
+| `references/delivery.md` | Authorized PR operations, monitoring, observed merge, and synchronization |
 
-The exact names may change during prototype evaluation. The responsibility count should not grow without evidence that another skill materially improves correctness or progressive disclosure.
+The [architecture specification](architecture.md#3-one-owner-per-behavior) defines the ownership and handoff boundaries. Split a reference into another skill only when use demonstrates a material correctness, context, or reuse benefit.
 
 ### Layer 2 — optional deterministic helpers
 
@@ -146,79 +148,15 @@ The runner will not enter the roadmap's implementation path until the skill-firs
 
 ## 6. Canonical workflow
 
-### Discovery and planning
-
-1. Read current project instructions and inspect relevant source, tests, history, and existing plans.
-2. Clarify only material uncertainty that cannot be inferred safely.
-3. Record objective, non-goals, acceptance, constraints, risk, and delivery boundary.
-4. Compare materially different approaches when a real design choice exists.
-5. Choose `direct`, `umbrella`, `spike`, or `stop`.
-6. Create the smallest useful durable plan when persistence is warranted.
-7. Self-review the plan for contradiction, missing acceptance, overbuild, unnecessary split, weak evidence, and an available simpler approach.
-
-A direct plan is one cohesive delivery outcome. An umbrella contains independently deliverable outcomes, not implementation microtasks.
-
-### Implementation
-
-1. Confirm current Git state and choose the least disruptive safe workspace.
-2. Use an isolated worktree for substantial or risky changes; do not require one for every trivial edit.
-3. Implement the planned outcome using native Codex capabilities.
-4. Use native subagents only for genuinely independent research, review, or decomposed work.
-5. Run focused verification during iteration.
-6. Inspect the actual diff and repository state before claiming completion.
-
-The default implementation shape is one capable implementer for the whole cohesive outcome. Parallel writers and best-of-N attempts are optional strategies, not the default workflow.
-
-### Quality and correction
-
-1. Derive review depth from changed behavior, risk, repository policy, and delivery boundary.
-2. Run deterministic checks first.
-3. Use one consolidated independent reviewer when review adds material value.
-4. Verify each finding against the source and acceptance criteria.
-5. Batch accepted findings into one correction pass.
-6. Re-run only evidence invalidated by the correction plus required integration checks.
-7. Allow a second correction only when the first made measurable progress or protected-risk work warrants it.
-8. Stop or replan after repeated no-progress results.
-
-### Delivery and continuation
-
-1. Create the PR from the intended branch with concise plan, verification, and follow-up context.
-2. Monitor CI, mergeability, and review feedback through the platform's native facilities or `babysit-pr` when available.
-3. Fix verified material findings in a batch, push, request or await the required fresh review, and resume monitoring.
-4. Merge only the exact reviewed head after required checks and feedback are satisfied.
-5. Reobserve the remote merge and verify any required local synchronization separately.
-6. Mark the current outcome complete and continue to the next eligible umbrella outcome.
+The current behavior is defined in the architecture specification's [coordinator behavior](architecture.md#4-coordinator-behavior) and [phase requirements](architecture.md#5-phase-requirements). R2–R5 assemble these capabilities in one package. The historical loop in §2 explains the donor rationale; it is not a separate operational instruction set.
 
 ## 7. Proportional assurance
 
-AFR v5 will begin with three descriptive levels. They guide judgment; they are not a mandatory gate engine.
-
-| Level | Typical work | Default assurance |
-|---|---|---|
-| `lean` | docs, configuration, narrow low-risk fixes | focused checks, diff self-review, ordinary CI |
-| `standard` | normal features and refactors | focused checks, one independent review, affected broader checks, ordinary PR convergence |
-| `protected` | auth, secrets, persistence, migration, deployment, public API, irreversible effects, or major concurrency | explicit risk review, specialist coverage, broader verification, stricter delivery observation |
-
-Rules:
-
-- The lowest level that safely covers the work should be used.
-- A protected signal may raise assurance; absence of such a signal must not automatically select protected behavior.
-- One reviewer may cover multiple related lenses in a consolidated pass.
-- Browser ChatGPT review, multiple reviewer agents, Brooks review, adversarial review, and graph review are selected tools—not a universal stack.
-- Existing repository-required checks and branch protections remain authoritative.
+The architecture's [review and correction requirements](architecture.md#review-and-correction) define `lean`, `standard`, and `protected` assurance. The budgets in §10 constrain process cost; evaluation scenarios in the donor matrix test both proportionality and safeguards.
 
 ## 8. State and resumption
 
-AFR v5 will first rely on existing durable truth:
-
-1. the current user instruction;
-2. project instructions;
-3. the current plan when one exists;
-4. Git branch, worktree, commits, and diff;
-5. PR, CI, review, and merge state; and
-6. the active agent session or resumable Codex thread.
-
-A concise run-state file may be added only if real trials show that those sources cannot resume safely and economically. It must summarize current outcome, plan, branch, PR, remaining acceptance, blockers, and next action—not reproduce provider or tool lifecycle history.
+The architecture's [resume requirements](architecture.md#resume-and-evidence-reuse) use the plan, Git, PR observations, and host session. R1 selects no dedicated state file or database. Any later addition must satisfy §10 and the repository's explicit complexity test.
 
 ## 9. Delivery roadmap
 
@@ -239,6 +177,8 @@ Exit when the repository is public, clean, and contains no sensitive or machine-
 ### R1 — donor inventory and behavior specification
 
 **Outcome:** identify what to recover without importing obsolete machinery.
+
+**Delivered:** [architecture and behavior specification](architecture.md) and [donor matrix](donor-matrix.md). The matrix records source coverage, decisions, scenarios, and the limits of R1 verification. Skill behavior has not been executed or qualified.
 
 Start with the exact donor source map in §2.1. Inspect those commit-qualified files before widening the search. Broaden Git history only when a mapped source references another artifact, a behavior's origin remains ambiguous, or a later defect requires tracing.
 
@@ -272,7 +212,7 @@ Deliver:
 - user-stop precedence; and
 - a compact terminal report contract.
 
-Test with fixture conversations and at least three disposable repositories. Keep the prototype independent of the Codex SDK and old AFR runtime.
+Use focused instruction walkthroughs and checks during construction. Assemble the core R2–R5 capabilities before a small set of integrated qualifications in disposable repositories; early fragments do not require a three-repository release gate. Keep the prototype independent of the Codex SDK and old AFR runtime.
 
 ### R3 — direct end-to-end vertical slice
 
@@ -378,6 +318,7 @@ The following are design budgets, not targets to fill:
 | Primary skills | at most 5 |
 | Coordinator `SKILL.md` | about 300 lines or fewer |
 | Internal `SKILL.md` | about 200 lines or fewer each |
+| Initial package | 1 public skill and 4 phase references; similar per-reference line budget |
 | Default implementers per cohesive outcome | 1 |
 | Default independent reviewers | 0 for lean; 1 for standard/protected |
 | Default correction passes | 1 |
@@ -444,19 +385,9 @@ Every adopted behavior or port must record its exact donor commit/path and wheth
 
 ## 14. Immediate next increment
 
-After repository bootstrap, perform R1 as one bounded analysis increment:
+R1 is specified in the linked architecture and donor analysis. R2 begins with the public `afr` coordinator and its planning reference, implementing the compact input, route selection, stop conditions, and terminal reporting contract. Subsequent increments add work, review, and delivery methods to the same package, then exercise continuation and resume across them.
 
-1. retrieve and read every primary source in the §2.1 donor map from its exact commit/path;
-2. inventory referenced supporting files only where they materially explain those primary sources;
-3. identify the minimum behavior required for a modern public `afr` skill;
-4. build the provenance-rich donor matrix required by R1 across planning, implementation, review, PR monitoring, merge, continuation, stop, and resume;
-5. define the first skill's compact input, workflow, stop conditions, and terminal output;
-6. specify representative evaluation scenarios derived from both original success paths and later defect cases; and
-7. recommend what should remain instruction versus become a deterministic helper, with evidence for every helper recommendation.
-
-Do not implement a runner, database, service, provider adapter, or complete five-skill family during R1.
-
-R2 should begin with one public `afr` skill prototype. Split internal skills only after evaluation shows that progressive disclosure or responsibility isolation materially improves the result.
+Use the donor matrix's scenarios for focused checks as each capability becomes available. After the core is assembled, review its coherence and run representative integrated qualifications. R1 does not establish a need for custom helpers or a runtime layer. Split internal skills only after evaluation shows that progressive disclosure or responsibility isolation materially improves the result.
 
 ## 15. Initial stable-release criteria
 
