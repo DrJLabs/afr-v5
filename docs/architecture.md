@@ -1,8 +1,8 @@
 # AFR v5 architecture and behavior specification
 
-**Status:** R1 design specification; the skill is not implemented or qualified.
+**Status:** superseded R1 v1 baseline; retained for historical comparison. Use [architecture v3](architecture-v3.md) for the current design.
 
-This document owns the current design. The [roadmap](roadmap.md) owns delivery sequencing and complexity budgets. The [donor matrix](donor-matrix.md) owns historical provenance, extraction decisions, and evaluation scenarios. Historical instructions are evidence, never authority for a v5 run.
+The design below records R1 at `186631c`; its original behavior text is preserved. The [roadmap](roadmap.md) owns delivery sequencing and complexity budgets. The [donor matrix](donor-matrix.md) owns historical provenance, extraction decisions, and evaluation scenarios. Historical instructions are evidence, never authority for a v5 run.
 
 ## 1. Decision and rationale
 

@@ -2,7 +2,7 @@
 
 AFR v5 is a skill-first redesign of Auto Full Run: a portable workflow for capable agents to take software work from discovery and planning through implementation, verification, review, pull-request convergence, merge, and continuation.
 
-**Status:** R1 donor analysis and behavior specification are complete. The AFR v5 skill is not implemented yet; no stable release exists.
+**Status:** R1 donor analysis and architecture v3 are complete. The AFR v5 skill is not implemented yet; no stable release exists.
 
 ## Direction
 
@@ -18,10 +18,10 @@ An optional Codex SDK runner may later launch or resume unattended sessions, but
 understand the request
   -> inspect the project
   -> choose direct work, an umbrella, a research spike, or stop
-  -> create an outcome-oriented plan when useful
+  -> establish intended behavior, constraints, and acceptance
   -> self-review the plan
   -> implement in an isolated workspace when appropriate
-  -> run focused verification
+  -> verify conformance with focused evidence
   -> apply proportional review and correction
   -> create and converge the PR
   -> merge remotely and verify synchronization
@@ -35,6 +35,7 @@ understand the request
 - Native host-agent tools and subagents instead of a custom agent runtime.
 - One implementer and one consolidated reviewer by default.
 - Risk-selected assurance rather than universal maximum review.
+- A sufficient implementation contract, requirement-based verification, and combined acceptance for umbrella work.
 - Git, tests, CI, and the remote forge as factual authority.
 - Deterministic helper scripts only for narrow mechanical work.
 - No database, daemon, event-sourced control plane, or provider manager in the core.
@@ -44,7 +45,7 @@ understand the request
 
 - [`CHAT.md`](CHAT.md) governs ChatGPT work in this repository.
 - [`AGENTS.md`](AGENTS.md) governs Codex work.
-- [`docs/architecture.md`](docs/architecture.md) specifies the proposed package, behavior, and ownership boundaries.
+- [`docs/architecture-v3.md`](docs/architecture-v3.md) specifies the current package, behavior, ownership boundaries, implementation readiness, and focused framework-derived refinements.
 - [`docs/donor-matrix.md`](docs/donor-matrix.md) records inspected historical sources, extraction decisions, and evaluation scenarios.
 - [`docs/roadmap.md`](docs/roadmap.md) records the delivery sequence and complexity budgets.
 
@@ -52,4 +53,4 @@ The previous AFR implementation is a donor and defect corpus. AFR v5 will recove
 
 ## Current repository contents
 
-The repository contains project instructions, the architecture specification, donor analysis, roadmap, README, and ignore rules. R2 begins the public skill prototype. Skills, helpers, tests, and runtime qualification remain future work.
+The repository contains project instructions, architecture v3 plus its superseded v2/v1 baselines, the spec-driven direction assessment, donor analysis, roadmap, README, and ignore rules. R2 begins the activation/routing/planning prototype and bounded behavioral trials; R3 introduces the first complete local implementation path. Skills, helpers, tests, and runtime qualification remain future work.
