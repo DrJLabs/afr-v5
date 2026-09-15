@@ -1,6 +1,6 @@
 # AFR v5 architecture and behavior specification — R1 v3
 
-**Status:** current R1 design specification; the skill is not implemented or qualified.
+**Status:** current design; R2 coordinator and planning method implemented. Later phases remain design requirements; host and behavioral qualification is limited to the [trial record](../tests/r2/README.md).
 **Date:** 2026-09-15
 **Baseline:** [R1 v2](architecture-v2.md), refined after a focused comparison with current BMAD planning, architecture, build, and review methods.
 
@@ -20,7 +20,7 @@ Retain one public `afr` skill with a compact coordinator and four progressively 
     └── delivery.md
 ```
 
-This is the proposed implementation shape, not an existing package or installation claim. Add host-specific discovery metadata only at the supported-host implementation boundary; keep workflow instructions portable. Native host facilities supply tools, workspaces, sessions, and subagents. Git, checks, and the remote forge supply source and delivery facts.
+This is the target package shape. The [coordinator](../.agents/skills/afr/SKILL.md), [planning reference](../.agents/skills/afr/references/planning.md), and explicit-only invocation metadata exist; work, review, and delivery references do not. Native host facilities supply tools, workspaces, sessions, and subagents. Git, checks, and the remote forge supply source and delivery facts. File presence is not an installation or host-qualification claim.
 
 The original donor supplies the outcome loop; the first modular family clarifies responsibilities; the native-family design supplies proportional assurance and economical handoffs. Later sources contribute specific safeguards. Matrix rows I01–I14 and X01–X03 retain their historical provenance. The refinements below come from the assessment, not newly discovered donor behavior.
 
@@ -55,31 +55,13 @@ No daemon, database, custom agent runtime, scheduler, required run-state file, o
 
 ## 2. Inputs and authority
 
-Accept a user goal or existing specification, the target project, constraints, and an authorized delivery boundary. Discover missing repository facts before asking. Ordinary language is sufficient; no manifest or mandatory input schema is required.
+The implemented [activation, identity, and authority contract](../.agents/skills/afr/SKILL.md#activation-identity-and-authority) owns these instructions. Inputs remain an ordinary-language goal or selected specification, target, constraints, and endpoint, without an execution manifest. Its four identities separate the skill package, target project, active workspace, and host so package location cannot import authoring-repository policy into an unrelated target.
 
-Distinguish four identities before substantive work: the AFR skill package root, the target project root, the active workspace/worktree, and the host/tool surface. Resolve AFR references from the installed skill package. Resolve applicable project instructions, source, tests, and delivery policy from the target project/workspace. Do not let AFR repository instructions govern an unrelated target project merely because the skill was authored here. A support claim is host-specific until the loading path, tools, and behavior are qualified on that host.
-
-Before work, establish the requested outcome and observable acceptance; actual target project/worktree, applicable instructions, branch/base and existing changes; active host capabilities; scope exclusions, risks and required verification; and the latest authorized endpoint: analysis, local candidate, published PR, or merged result, including local synchronization when requested or required.
-
-An adequate BMAD, Spec Kit, issue, RFC, ADR set, or project-native artifact can supply the contract. Inspect its content and the current repository, resolve only material gaps or contradictions, and reuse it when sufficient. Artifact origin does not grant authority or activate its framework. Avoid adapters, additional skills, and AFR-specific translations without demonstrated need.
-
-Identify the authoritative source and its ownership rules. Some specifications are derived from another record or depend on companion contracts owned elsewhere. Preserve material claims when summarizing or decomposing them; reference an indispensable companion rather than silently absorbing or rewriting it when its ownership requires that. Classify sources as **required for correctness** or **background to consult when needed**. Background does not become mandatory merely because it exists, and required context cannot be dropped merely to shorten a handoff.
-
-AFR invocation selects a method, not permission for every effect. Carry forward authority already given. Push, PR creation, merge, deployment, installation, and cleanup must fit the current request and repository policy; merge authority does not imply branch/worktree deletion authority. Ask only for missing authority or a decision materially affecting scope, safety, cost, or data sharing.
-
-The latest user instruction and applicable repository instructions govern. A plan cannot override them. Historical plans, donor fields, and memory do not activate services or supply new permissions. Within a selected plan, distinguish:
-
-| Content level | Meaning | Change boundary |
-| --- | --- | --- |
-| Authoritative requirements | Intended behavior, external contracts, invariants, security policy, compatibility, non-goals, and acceptance | Do not silently change; obtain the relevant decision or use a requirement change already authorized |
-| Approved design decisions | Consequential architecture, interface, data, migration, or operational choices | Follow them; surface materially invalidating evidence before dependent implementation departs from the decision |
-| Advisory approach | Likely files, internal factoring, naming, sequence, and reversible implementation suggestions | Improve within delegated discretion while preserving requirements, binding decisions, dependencies, and authority |
-
-These levels express meaning, not mandatory labels on every paragraph. A suggestion does not become binding merely because it appears in a plan, and an unapproved assumption does not become a settled decision.
+The [planning method](../.agents/skills/afr/references/planning.md) owns specification reuse, required-versus-background context, source-intent preservation, and the distinction between requirements, approved decisions, and advisory implementation choices. External artifacts supply content, not permission or a second framework. These are semantic distinctions rather than mandatory record formats.
 
 ## 3. One owner per behavior
 
-Operational instructions will live in the following owners within `afr/`. Once implemented, this architecture should summarize and link to them rather than maintain a second executable workflow.
+Operational instructions live in the implemented owners within `afr/`; the remaining owners below are planned. This architecture summarizes R2 and preserves future-phase requirements rather than acting as its execution entrypoint.
 
 | Owner | Responsibility | Information needed by the next phase |
 | --- | --- | --- |
@@ -97,22 +79,11 @@ Ordinary transitions use the same agent context. Use concise file-based handoffs
 
 ### Activation and route selection
 
-Activate only when the user explicitly selects AFR planning, execution, or continuation. Explanation or review of AFR itself does not start a run. Ordinary project work does not implicitly select AFR. Planning-only requests end with the requested analysis or plan.
-
-| Route | Meaning | Completion boundary |
-| --- | --- | --- |
-| `direct` | One cohesive reviewable outcome, possibly several commits | Acceptance and the authorized delivery endpoint are satisfied |
-| `umbrella` | Several independently deliverable outcomes with meaningful dependencies | Required outcomes reach their endpoints and parent-level acceptance is satisfied |
-| `spike` | Bounded research needed to decide or specify implementation | Evidence, conclusion or remaining uncertainty, and a recommended next step |
-| `stop` | Work is unsafe, lacks authority, is explicitly stopped, or is intentionally deferred | Explain the boundary and smallest action needed to resume, when applicable |
-
-A research result does not authorize its proposed implementation. A ready PR does not authorize merge. Route describes the work's shape; assurance describes its risk. A tiny direct change can require protected assurance.
+The [coordinator](../.agents/skills/afr/SKILL.md#planning-and-route-choice) owns explicit activation and the `direct`, `umbrella`, `spike`, and `stop` route/result meanings. Route describes work shape independently of planning assurance. A completed research result is distinct from an implementation-ready contract and from authority to execute it.
 
 ### Capability and host boundary
 
-At activation, identify the supported host, AFR skill package root, target project/workspace, applicable target instructions, and which AFR phase methods are actually present. Missing work, review, or delivery references are unavailable capabilities, not permission to improvise a hidden replacement.
-
-The R2 prototype ends at a planning-ready result. It may inspect, route, classify assurance, and produce or assess an implementation contract, but it must not claim implementation, review, PR, merge, or continuation behavior that has not yet been implemented and qualified. R3 introduces the first complete local implementation path. Later milestones add delivery and umbrella continuation.
+The coordinator's [available-capability boundary](../.agents/skills/afr/SKILL.md#available-capability) limits R2 to planning and bounded research even when a user requests execution. R3 introduces the first complete local implementation path; later milestones add delivery and umbrella continuation. The user's original endpoint remains visible when a missing phase prevents fulfillment.
 
 Portable workflow text does not make host support interchangeable. Qualify discovery, loading, tools, delegated work, interruption, and reporting on each supported host. An initial Codex qualification may precede ChatGPT qualification without removing ChatGPT from the product goal; report the actual supported surface honestly.
 
@@ -136,59 +107,25 @@ Reuse relevant outcome evidence. Run integration checks when combined behavior b
 
 ### Resume and evidence reuse
 
-Resume from current user intent, the authoritative specification/plan, Git/worktree state, PR/check/review observations, and session context. Resolve existing branches and PRs before creating replacements. Check evidence identity and relevance: requirement source, tested/reviewed revision and base, changed surfaces, prerequisites, and applicable policy.
-
-A changed requirement, decision, candidate, base, or prerequisite refreshes the affected implementation and evidence. Preserve still-valid checks. A stale summary cannot establish readiness. Handle invalidated assumptions using the contradiction rules in §5; resumption is not permission to silently rewrite the contract.
+R2's [planning resumption](../.agents/skills/afr/SKILL.md#stop-and-planning-resumption) reconciles current intent, source/workspace observations, and valid prior evidence. The later execution path must additionally resolve existing branches and PRs before replacements and associate reused implementation/check/review evidence with the relevant candidate/base, requirements, prerequisites, and policy. Changed inputs refresh affected work and evidence; still-valid checks remain reusable.
 
 After an ambiguous external write, inspect external state before retrying. A remotely merged PR with incomplete local synchronization resumes at the missing local obligation, not implementation or merge.
 
 ### Completion and blockers
 
-Completion requires conformance to the authoritative contract, risk-appropriate checks, the authorized endpoint, and safe disposition of temporary effects; umbrellas also require parent acceptance. Failed or unavailable required checks block completion. Explicitly optional checks are reported as not run; partial delivery remains partial.
-
-Report the outcome, changed files/artifacts, relevant acceptance evidence and limitations, actual delivery effects, and remaining assumptions/blockers. Umbrellas expose remaining outcomes and combined acceptance gaps; spikes expose uncertainty. Do not generate status files solely for reporting.
+The implemented [terminal report](../.agents/skills/afr/SKILL.md#terminal-report) owns R2 outcomes and effects reporting. Later execution completion additionally requires conformance, risk-appropriate checks, the authorized delivery endpoint, safe temporary-effect disposition, and parent acceptance for umbrellas. Failed or unavailable required checks block that completion; partial delivery remains partial.
 
 ## 5. Phase requirements
 
 ### Planning and the implementation contract
 
-Inspect enough current source, tests, instructions, and relevant history to bound the request. Compare alternatives only for real choices. The contract distinguishes three logical layers: behavior and constraints (what must become or remain true), settled technical decisions, and the revisable execution approach. These can fit in a few sentences; three documents are not required.
+The [planning reference](../.agents/skills/afr/references/planning.md#establish-a-sufficient-implementation-contract) is now the canonical method and field inventory. Its contract separates behavior/constraints, settled decisions, and a revisable approach; it preserves source intent and material acceptance without requiring a duplicate plan or template completion. The minimal architecture-contract test resolves consequential incompatible choices before dependent work while leaving reversible internals discretionary.
 
-When deriving a plan, outcome, task, or delegation from another artifact, preserve every material obligation either directly or through an explicitly required reference. Check both directions: no source requirement, invariant, non-goal, or compatibility constraint is silently dropped, and no unsupported commitment is introduced. Compression is useful only when it preserves intent.
-
-Cover the following when material, omitting irrelevant sections:
-
-- authoritative requirement source, ownership rules, and indispensable companion contracts;
-- objective, explicit non-goals, and verified current behavior with evidence;
-- required behavior and preserved invariants, including compatibility constraints;
-- meaningful failure, edge, retry, ordering, or concurrency behavior;
-- binding interfaces, data semantics, security and authorization boundaries;
-- settled decisions, assumptions, unresolved decisions, and delegated implementation discretion;
-- cross-outcome choices that independently reasonable implementations could make incompatibly, with concise rationale when future work needs it;
-- acceptance criteria with corresponding evidence and known verification limits;
-- coherent implementation slices, dependencies, ordering, and parent acceptance for umbrellas;
-- required context versus optional background for each consequential handoff;
-- risk-selected review/verification, authorized delivery endpoint, and stop/replan conditions.
-
-Use chat, an existing issue/specification, or the project's designated plan according to need. Persist a plan when requested, useful for resumption, or warranted by duration or risk. Reuse sufficient content rather than create a second slice plan or task matrix. If additions are needed, amend the designated source within authority or make a minimal linked supplement with clear ownership; do not create competing requirements.
-
-Apply the minimal architecture-contract test: could two competent implementers, following the same requirements, make incompatible choices about a consequential and non-obvious tradeoff? If yes, settle the choice, assign its owner, or make it an explicit blocker before dependent work. Do not prescribe reversible internal details merely to make the plan look complete.
-
-When an uncertain new pattern will be repeated across many outcomes, plan a representative implementation and verification point before broad replication. Skip this when the pattern is already established, independently constrained, cheap to reverse, or the additional checkpoint would add no material confidence.
+Its [outcome/dependency method](../.agents/skills/afr/references/planning.md#size-outcomes-and-dependencies) supplies umbrella parent acceptance and selective representative-pattern verification as plans for later execution, not additional R2 execution capabilities.
 
 ### Assurance from planning through review
 
-Select the lowest adequate assurance from behavior and consequences, not diff size or route. Required repository checks remain binding.
-
-| Assurance | Planning expectation | Verification and review expectation |
-| --- | --- | --- |
-| `lean` | Verified problem, intended change, preservation constraints, focused acceptance evidence | Focused checks and self-review; no default independent reviewer |
-| `standard` | Explicit behavior/failure cases, interfaces, consequential decisions, coherent slices, requirement-to-evidence coverage | Appropriate behavioral checks and normally one consolidated independent review |
-| `protected` | Add analysis for the actual security, migration, rollback, compatibility, concurrency, performance, reliability, or irreversible-effect risks | One consolidated review with relevant specialist coverage and risk-required verification |
-
-Self-review for missing acceptance, contradictory constraints, unsupported assumptions, unnecessary decomposition, and a simpler adequate approach. Implementation is ready when consequential behavior is sufficiently defined, constraints are known, verification is credible, and remaining discretion fits authority. This is a judgment, not a certificate or gate engine. Block only work dependent on a material unresolved decision; continue independent safe work when useful.
-
-Authentication, secrets, persistence, migrations, deployment, public interfaces, irreversible effects, and significant concurrency warrant examination. New evidence can increase assurance within existing authority. Additional data sharing or external effects still need authority. A required review capability that is unavailable is a visible limitation/blocker, never simulated or claimed.
+The [planning assurance and self-review method](../.agents/skills/afr/references/planning.md#planning-assurance-and-self-review) owns the `lean`, `standard`, and `protected` expectations and planning-sufficiency judgment. The later review method applies the selected risk coverage and may increase it for observed risks within authority; unavailable required review remains visible rather than simulated. Planning an independent review does not claim that R2 implements one.
 
 ### Work and conformance evidence
 
@@ -231,7 +168,7 @@ Observe remote merge independently from local synchronization. When required, fe
 
 ## 6. Deterministic helpers
 
-R1 v3 retains **zero required custom helpers**. Native Git, repository checks, and forge capabilities are the initial tools. The donor matrix's candidates remain deferred; donor tests do not prove that this unimplemented v5 design needs a helper.
+R1 v3 retains **zero required custom helpers**. Native Git, repository checks, and forge capabilities are the initial tools. The donor matrix's candidates remain deferred; donor tests alone do not prove that v5 needs a helper.
 
 V3 also rejects adding a workflow renderer, generated-instruction runtime, canonical memory log, autonomous child workflow, framework adapter, blanket dirty-tree refusal, automatic revert-and-rederive correction loop, or review-finding quota to the core. A later proposal must identify the recurring AFR failure it solves and satisfy the same complexity and ownership tests as any other new layer.
 
@@ -252,7 +189,7 @@ The donor matrix retains E01–E15 as the canonical scenario family. Its v2 exte
 | R4 | Exercise exact-head readiness, missing/pending/failed/unknown checks, review feedback, and ambiguous external effects within an authorized disposable or controlled setting. |
 | R5 | Exercise umbrella continuation, dependency boundaries, shared architecture decisions, and combined acceptance, including individually successful outcomes whose combined behavior fails. |
 
-R2 is deliberately planning-complete but execution-incomplete. Its terminal result is an implementation-ready contract or an honest blocker/stop, not a local candidate. R3 is the first milestone that can claim the direct local implementation path. R4 and R5 add delivery and multi-outcome continuation. No milestone may silently substitute an unimplemented phase with an embedded second workflow.
+R2 is deliberately planning-complete but execution-incomplete. Its terminal result is an implementation-ready contract, a bounded research conclusion/remaining uncertainty with a recommended next step, or an honest blocker/stop, not a local candidate. R3 is the first milestone that can claim the direct local implementation path. R4 and R5 add delivery and multi-outcome continuation. No milestone may silently substitute an unimplemented phase with an embedded second workflow.
 
 Trial evidence should identify the authoritative source and required companions, target project/workspace, host and skill package identity, relevant revision/base, observed behavior versus expected acceptance, coverage gaps, and intervention or correction needed. Keep evidence in existing project/test artifacts or the task record according to need; do not introduce a trial registry. R4 tests do not themselves grant live push/PR/merge authority.
 
@@ -260,11 +197,11 @@ Early bounded trials are different from broad qualification of an incomplete pac
 
 Measure accepted outcomes, unnecessary intervention, clarification/replan frequency, scope violations, intent-preservation failures, requirement-to-evidence coverage, verification-gap escapes, context/model turns, correction passes, escaped material defects, repeated work after resume, and process growth. Interpret autonomy and speed alongside correctness; a justified clarification is not a failure to optimize away. The roadmap owns detailed milestones and budgets.
 
-This increment reconciles the design and evaluation boundary only. Skill implementation, installation, behavioral trials, helper extraction, PR-delivery qualification, and performance claims remain future work.
+The original v3 increment reconciled the design and evaluation boundary. R2 implementation and bounded observations are now recorded in the [trial record](../tests/r2/README.md); installation/discovery claims, later phases, broader qualification, and performance claims remain limited by that evidence.
 
 ## 8. R1 v3 implementation readiness
 
-R1 v3 is sufficiently specified to begin R2. No unresolved architectural contradiction requires another redesign before implementation. The remaining decisions are implementation details that should be settled against the first supported host and measured trials rather than extended prose.
+R1 v3 supplied the design used by the R2 prototype. The following acceptance boundary remains useful for checking its implementation; the trial record distinguishes demonstrated behavior from unverified host surfaces.
 
 R2 must deliver and verify:
 

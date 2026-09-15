@@ -1,10 +1,10 @@
 # AFR v5 skill-first architecture roadmap
 
-**Status:** R1 architecture v3 reconciled; R2 implementation next
+**Status:** R2 planning prototype implemented; host qualification remains bounded
 **Date:** 2026-09-03
-**Repository stage:** design specified; skill implementation pending
+**Repository stage:** coordinator and planning reference implemented; R3 work/review path pending
 
-The [architecture v3 specification](architecture-v3.md) owns the current behavior, package design, and implementation boundary. The [donor matrix](donor-matrix.md) owns R1 evidence, extraction decisions, and evaluation scenarios. This roadmap owns milestones, sequencing, and complexity budgets; its date records the original roadmap baseline. The 2026-09-15 v3 reconciliation preserves the v2 planning/conformance improvements and adds intent preservation, required-context classification, minimal architecture contracts, verification-effectiveness review, representative-pattern establishment, host/target separation, and an explicit R2/R3 boundary without changing the package or complexity budgets.
+The [architecture v3 specification](architecture-v3.md) owns the current design and implementation boundary; implemented R2 instructions belong to the [skill package](../.agents/skills/afr/SKILL.md). The [donor matrix](donor-matrix.md) owns R1 evidence, extraction decisions, and evaluation scenarios. This roadmap owns milestones, sequencing, and complexity budgets; its date records the original roadmap baseline. The 2026-09-15 v3 reconciliation preserves the v2 planning/conformance improvements and adds intent preservation, required-context classification, minimal architecture contracts, verification-effectiveness review, representative-pattern establishment, host/target separation, and an explicit R2/R3 boundary without changing the package or complexity budgets.
 
 ## 1. Decision
 
@@ -148,7 +148,7 @@ The runner will not enter the roadmap's implementation path until the skill-firs
 
 ## 6. Canonical workflow
 
-The current behavior is defined in the architecture specification's [coordinator behavior](architecture-v3.md#4-coordinator-behavior) and [phase requirements](architecture-v3.md#5-phase-requirements). R2–R5 assemble these capabilities in one package. The historical loop in §2 explains the donor rationale; it is not a separate operational instruction set.
+The implemented R2 workflow is defined in the [coordinator](../.agents/skills/afr/SKILL.md) and [planning reference](../.agents/skills/afr/references/planning.md). The architecture specification's [coordinator behavior](architecture-v3.md#4-coordinator-behavior) and [phase requirements](architecture-v3.md#5-phase-requirements) retain the later design requirements. R2–R5 assemble capabilities in one package. The historical loop in §2 explains the donor rationale; it is not a separate operational instruction set.
 
 ## 7. Proportional assurance
 
@@ -178,7 +178,7 @@ Exit when the repository is public, clean, and contains no sensitive or machine-
 
 **Outcome:** identify what to recover without importing obsolete machinery.
 
-**Delivered:** [original architecture baseline](architecture.md), [donor matrix](donor-matrix.md), [architecture v2](architecture-v2.md), and the current [architecture v3](architecture-v3.md). V2 reconciled the [spec-driven assessment](spec-driven-direction-assessment.md); v3 adds focused comparative-framework refinements and implementation-readiness boundaries. The matrix preserves donor evidence and identifies later design extensions separately. Skill behavior has not been executed or qualified.
+**Delivered:** [original architecture baseline](architecture.md), [donor matrix](donor-matrix.md), [architecture v2](architecture-v2.md), and the current [architecture v3](architecture-v3.md). V2 reconciled the [spec-driven assessment](spec-driven-direction-assessment.md); v3 adds focused comparative-framework refinements and implementation-readiness boundaries. The matrix preserves donor evidence and identifies later design extensions separately. R1 did not execute or qualify skill behavior; subsequent observations belong to R2.
 
 Start with the exact donor source map in §2.1. Inspect those commit-qualified files before widening the search. Broaden Git history only when a mapped source references another artifact, a behavior's origin remains ambiguous, or a later defect requires tracing.
 
@@ -200,7 +200,9 @@ Do not copy production code during R1. Do not cherry-pick donor commits. Do not 
 
 ### R2 — canonical AFR planning prototype
 
-**Outcome:** one public `afr` skill can activate, inspect, route, and produce or assess an implementation-ready contract for a simple task without custom runtime state. R2 stops at the planning boundary.
+**Outcome:** one public `afr` skill can activate, inspect, route, and produce or assess an implementation-ready contract, a bounded research result, or a blocker without custom runtime state. R2 stops at the planning boundary.
+
+**Implementation:** [coordinator](../.agents/skills/afr/SKILL.md), [planning reference](../.agents/skills/afr/references/planning.md), and explicit-only invocation metadata. The [bounded trial record](../tests/r2/README.md) owns observed results and host-support limits. Presence of these files does not establish UI discovery, cross-host parity, or full runtime qualification.
 
 Deliver:
 
@@ -390,7 +392,7 @@ Every adopted behavior or port must record its exact donor commit/path and wheth
 
 ## 14. Immediate next increment
 
-R1 v3 is specified in the linked current architecture and donor analysis. R2 begins with the public `afr` coordinator and planning reference, implementing activation, host/target identity, input and route selection, intent-preserving specification reuse, required-context classification, the compact implementation and architecture contracts, planning assurance, stop conditions, and a planning-boundary report. R3 adds the first complete local work/review path; subsequent increments add delivery, continuation, and resume behavior to the same package.
+The R2 coordinator and planning reference now implement the planning boundary described above. Keep discovery/host support claims within the recorded trial evidence. The next capability increment is R3's first complete local work/review path; subsequent increments add delivery, continuation, and execution resumption to the same package.
 
 Use the donor matrix's scenarios for bounded behavioral trials as each capability becomes available; proceed unless observed defects require correction. After the core is assembled, review its coherence and broaden integrated qualification across repositories, interruptions, and risks. R1 does not establish a need for custom helpers or a runtime layer. Split internal skills only after evaluation shows that progressive disclosure or responsibility isolation materially improves the result.
 

@@ -1,6 +1,6 @@
 # R1 donor inventory and extraction decisions
 
-**Status:** analysis complete; no donor code ported and no v5 behavior qualification performed.
+**Status:** historical R1 analysis complete; no donor code was ported or v5 behavior qualified at that boundary. Subsequent prototype evidence is recorded in the [R2 trials](../tests/r2/README.md).
 
 R1 inspected the mapped sources in `DrJLabs/afr` as immutable Git objects. The [v1 architecture](architecture.md) records the original design; [architecture v2](architecture-v2.md) records the first spec-driven reconciliation; [architecture v3](architecture-v3.md) is current. The [roadmap](roadmap.md) controls subsequent delivery. This file is historical evidence and evaluation design; it is not loaded as a runtime workflow.
 
@@ -183,6 +183,6 @@ The 2026-09-15 v2 reconciliation extends E02, E05, E06, E09, E14, and E15 from t
 
 The design recovers the full requested behavior surface: planning (I02–I04), implementation (I06–I08), review (I09–I10), monitoring and merge (I11–I13), continuation (I14), and stop/resume (I05). I01 supplies the authority boundary throughout. The helper candidates and rejection rows explain where v5 deliberately departs from its donors.
 
-The original R1 increment produced the v1 architecture and this matrix, updated the README and roadmap, and proposed one public skill with four references. V2 added the first superseding spec-driven architecture; v3 refines implementation-facing planning, context, review, host, and milestone boundaries without changing donor provenance or package shape. Actual executable skill count remains zero, custom helper count zero, core services/databases zero, and custom runtimes zero. There is no runtime or verification-time measurement for v5 yet.
+The original R1 increment produced the v1 architecture and this matrix, updated the README and roadmap, and proposed one public skill with four references. V2 added the first superseding spec-driven architecture; v3 refines implementation-facing planning, context, review, host, and milestone boundaries without changing donor provenance or package shape. At the R1 boundary, actual executable skill count, custom helper count, core services/databases, and custom runtimes were all zero, with no v5 runtime or verification-time measurement. The subsequent [R2 prototype record](../tests/r2/README.md) describes the implemented planning package and its bounded evidence; it does not qualify the full scenario matrix above.
 
-Verification for the original R1 increment covered exact donor revisions and file existence, Markdown links/anchors, matrix/scenario coverage, documentation consistency, and whitespace. Donor test assertions were inspected, not run. Neither live PR operations nor skill installation, end-to-end repository trials, interruption trials, or effectiveness benchmarks occurred as qualification. The next implementation boundary is R2.
+Verification for the original R1 increment covered exact donor revisions and file existence, Markdown links/anchors, matrix/scenario coverage, documentation consistency, and whitespace. Donor test assertions were inspected, not run. Neither live PR operations nor skill installation, end-to-end repository trials, interruption trials, or effectiveness benchmarks occurred as R1 qualification. R2 was the next implementation boundary.
