@@ -1,6 +1,6 @@
 # AFR v5 architecture and behavior specification — R1 v3
 
-**Status:** current design; R3 coordinator, planning, work, and review methods implemented. R4 remote delivery and R5 umbrella continuation remain design requirements; host and behavioral qualification is limited to the [R2 historical record](../tests/r2/README.md) and the [R3 trial record](../tests/r3/README.md).
+**Status:** current design; R3 local work/review and R4 PR delivery methods implemented. R5 umbrella continuation remains a design requirement; host and behavioral qualification is limited to the [R2 historical record](../tests/r2/README.md), [R3 trial record](../tests/r3/README.md), and bounded [R4 trial record](../tests/r4/README.md).
 **Date:** 2026-09-15
 **Baseline:** [R1 v2](architecture-v2.md), refined after a focused comparison with current BMAD planning, architecture, build, and review methods.
 
@@ -20,7 +20,7 @@ Retain one public `afr` skill with a compact coordinator and four progressively 
     └── delivery.md
 ```
 
-This is the target package shape. The [coordinator](../.agents/skills/afr/SKILL.md), [planning reference](../.agents/skills/afr/references/planning.md), [work reference](../.agents/skills/afr/references/work.md), [review reference](../.agents/skills/afr/references/review.md), and explicit-only invocation metadata exist; the delivery reference remains unavailable. Native host facilities supply tools, workspaces, sessions, and subagents. Git and checks supply local source facts; the remote forge remains an R4 concern. File presence is not an installation or host-qualification claim.
+This is the target package shape. The [coordinator](../.agents/skills/afr/SKILL.md), [planning reference](../.agents/skills/afr/references/planning.md), [work reference](../.agents/skills/afr/references/work.md), [review reference](../.agents/skills/afr/references/review.md), [delivery reference](../.agents/skills/afr/references/delivery.md), and explicit-only invocation metadata exist. Native host facilities supply tools, workspaces, sessions, and subagents. Git and checks supply local source facts; the delivery reference consumes native forge or external monitoring capabilities without implementing a watcher. File presence is not an installation or host-qualification claim.
 
 The original donor supplies the outcome loop; the first modular family clarifies responsibilities; the native-family design supplies proportional assurance and economical handoffs. Later sources contribute specific safeguards. Matrix rows I01–I14 and X01–X03 retain their historical provenance. The refinements below come from the assessment, not newly discovered donor behavior.
 
@@ -61,7 +61,7 @@ The [planning method](../.agents/skills/afr/references/planning.md) owns specifi
 
 ## 3. One owner per behavior
 
-Operational instructions live in the implemented owners within `afr/`; delivery remains planned. This architecture summarizes the current R3 package and preserves future-phase requirements rather than acting as its execution entrypoint.
+Operational instructions live in the implemented owners within `afr/`. This architecture summarizes the current R3–R4 package and preserves future-phase requirements rather than acting as its execution entrypoint.
 
 | Owner | Responsibility | Information needed by the next phase |
 | --- | --- | --- |
@@ -69,7 +69,7 @@ Operational instructions live in the implemented owners within `afr/`; delivery 
 | `references/planning.md` | Discovery, source-intent preservation, context classification, route recommendation, implementation contract, minimal architecture contract, planning assurance, outcome/dependency analysis, plan self-review | Authoritative source and indispensable companions, requirements, decisions/discretion, acceptance/evidence approach, risks, dependencies, parent acceptance when applicable |
 | `references/work.md` | Workspace choice, implementation, representative-pattern validation when warranted, focused conformance evidence, actual-diff inspection | Candidate/base identity, changes, requirement coverage, checks and limitations, contradictions or residual concerns |
 | `references/review.md` | Risk-selected review, independent conformance and verification-effectiveness assessment when warranted, finding classification, bounded correction and rechecks | Findings/dispositions, reviewed revision, acceptance and verification gaps, remaining material concerns |
-| `references/delivery.md` | Authorized PR operations, native monitoring, feedback through the review method, observed merge and local synchronization | PR/head, delivery facts, evidence needed for dependent work, incomplete obligations |
+| `references/delivery.md` | Authorized PR creation/reuse, native monitoring, feedback through the review method, exact-head merge, and local synchronization | PR/head, delivery facts, evidence needed for dependent work, incomplete obligations |
 
 References return results to the coordinator. They do not independently activate AFR, choose the next umbrella outcome, or redefine lifecycle stop/completion rules. Planning defines acceptance; work and review assess it; delivery establishes delivery facts; the coordinator determines whether the requested scope is complete.
 
@@ -83,13 +83,13 @@ The [coordinator](../.agents/skills/afr/SKILL.md#planning-and-route-choice) owns
 
 ### Capability and host boundary
 
-The coordinator's [available-capability boundary](../.agents/skills/afr/SKILL.md#available-capability) keeps explicit planning and research outside implementation and correction authority, while permitting planning artifacts under its stated conditions. R3 provides the first complete local implementation path: an authorized direct run may implement, verify, review, and apply a bounded correction within that authority. R4 adds remote delivery and R5 adds umbrella continuation; both remain unavailable. The user's original endpoint remains visible when a missing phase prevents fulfillment.
+The coordinator's [available-capability boundary](../.agents/skills/afr/SKILL.md#available-capability) keeps explicit planning and research outside implementation and correction authority, while permitting planning artifacts under its stated conditions. R3 provides the local implementation path, and R4 adds authorized PR creation/reuse, review convergence, exact-head merge, and separately observed local synchronization. R5 umbrella continuation remains unavailable. The user's original endpoint remains visible when a missing phase or unsupported host capability prevents fulfillment.
 
 Portable workflow text does not make host support interchangeable. Qualify discovery, loading, tools, delegated work, interruption, and reporting on each supported host. An initial Codex qualification may precede ChatGPT qualification without removing ChatGPT from the product goal; report the actual supported surface honestly.
 
 ### Sequence and continuation
 
-Coordinate planning → work → review when warranted → bounded correction/recheck within the authorized local endpoint. New accepted findings use the same correction method. Remote delivery and umbrella continuation are not current capabilities; a published fix and cross-outcome continuation remain future R4/R5 behavior. Continue within the local direct outcome while scope, authority, and prerequisites permit useful work.
+Coordinate planning → work → review when warranted → bounded correction/recheck → authorized delivery when requested and supported. New accepted findings use the same correction method, and every pushed fix re-enters the affected review/readiness path at its new head. Umbrella continuation remains future R5 behavior. Continue within the direct outcome while scope, authority, and prerequisites permit useful work.
 
 When many outcomes depend on a new or materially uncertain pattern, establish and verify a representative use before reproducing it broadly when a wrong choice would create expensive downstream correction. Existing project conventions, prior qualified implementations, or low-cost reversibility can make that unnecessary. This is a planning judgment, not a mandatory prototype gate.
 
@@ -107,13 +107,13 @@ Reuse relevant outcome evidence. Run integration checks when combined behavior b
 
 ### Resume and evidence reuse
 
-The coordinator's [stop and resumption method](../.agents/skills/afr/SKILL.md#stop-and-planning-resumption) reconciles current intent, source/workspace observations, and valid prior evidence for planning and the local direct path. Resolve existing branches/worktrees before replacements and associate reused implementation, check, and review evidence with the relevant candidate/base, requirements, prerequisites, and policy. PR observations and remote synchronization remain future R4 concerns. Changed inputs refresh affected work and evidence; still-valid checks remain reusable.
+The coordinator's [stop and resumption method](../.agents/skills/afr/SKILL.md#stop-and-resumption) reconciles current intent, source/workspace observations, PR observations, and valid prior evidence. Resolve existing branches/worktrees before replacements and associate reused implementation, check, review, and delivery evidence with the relevant candidate/base, requirements, prerequisites, and policy. Changed inputs refresh affected work and evidence; still-valid checks remain reusable.
 
 After an ambiguous external write, inspect external state before retrying. A remotely merged PR with incomplete local synchronization resumes at the missing local obligation, not implementation or merge.
 
 ### Completion and blockers
 
-The implemented [terminal report](../.agents/skills/afr/SKILL.md#terminal-report) owns R3 local outcomes and effects reporting. Local completion additionally requires conformance, risk-appropriate checks, actual-diff inspection, safe temporary-effect disposition, and any selected review/correction. R4 will add an authorized delivery endpoint and R5 parent acceptance for umbrellas. Failed or unavailable required checks block completion; an unreviewed or unverified candidate remains partial.
+The implemented [terminal report](../.agents/skills/afr/SKILL.md#terminal-report) owns R3–R4 outcomes and effects reporting. Local completion additionally requires conformance, risk-appropriate checks, actual-diff inspection, safe temporary-effect disposition, and any selected review/correction. Delivery completion is endpoint-specific: PR creation requires observed publication and PR/head identity; monitoring requires current readiness facts; merge requires readiness plus an exact-head remote merge; synchronization or bookkeeping is required only when requested or otherwise in scope. R5 adds parent acceptance for umbrellas. Failed or unavailable required checks block completion when required by the selected endpoint; an unreviewed, unverified, or not-ready candidate remains partial when that assurance is required.
 
 ## 5. Phase requirements
 
@@ -125,7 +125,7 @@ Its [outcome/dependency method](../.agents/skills/afr/references/planning.md#siz
 
 ### Assurance from planning through review
 
-The [planning assurance and self-review method](../.agents/skills/afr/references/planning.md#planning-assurance-and-self-review) owns the `lean`, `standard`, and `protected` expectations and planning-sufficiency judgment. The [work reference](../.agents/skills/afr/references/work.md) owns local implementation and conformance evidence; the [review reference](../.agents/skills/afr/references/review.md) applies the selected independent review coverage and may increase it for observed risks within authority. Unavailable R4 delivery or R5 continuation remains visible rather than simulated.
+The [planning assurance and self-review method](../.agents/skills/afr/references/planning.md#planning-assurance-and-self-review) owns the `lean`, `standard`, and `protected` expectations and planning-sufficiency judgment. The [work reference](../.agents/skills/afr/references/work.md) owns local implementation and conformance evidence; the [review reference](../.agents/skills/afr/references/review.md) applies the selected independent review coverage and may increase it for observed risks within authority. The [delivery reference](../.agents/skills/afr/references/delivery.md) owns delivery-specific observation and continuation decisions.
 
 ### Work and conformance evidence
 
@@ -162,13 +162,7 @@ Batch accepted findings into one correction by default. Correct the causal defec
 
 ### Delivery
 
-Identify exact repository, remote, target branch, source branch, and PR; reuse a matching PR. Authorized creation/updates carry concise scope, verification, acceptance gaps, and residual context.
-
-Use native/platform monitoring or an appropriate external PR-monitoring capability. AFR decides how to respond and continue; it does not implement a watcher. Required checks must be observed successful or explicitly satisfied by repository policy. Missing, pending, failed, and unknown observations are distinct from success.
-
-Readiness belongs to the actual PR head. A pushed fix invalidates old-head readiness and returns to monitoring and affected review. Before merge, reobserve head, target, checks, feedback, and mergeability. Condition merge on the expected reviewed head when supported; if the available mechanism cannot safely protect that revision, stop at the boundary.
-
-Observe remote merge independently from local synchronization. When required, fetch the remote target and fast-forward only a safe local target after inspecting ownership and changes. Do not substitute local merge for remote PR merge, reset a diverged branch, or switch another active worktree's branch. Reconcile required plan bookkeeping through its authorized path and expose incomplete obligations before dependent continuation.
+The [delivery reference](../.agents/skills/afr/references/delivery.md) is the canonical method for R4 PR convergence. It covers exact repository/remote/target/source/PR identity, authorized creation or reuse, native or external monitoring, finding classification through the review method, fresh-head readiness, protected exact-head remote merge, and independently observed safe local synchronization. This architecture preserves the ownership boundary: AFR decides how to respond and continue, while watcher mechanics remain external; R5 continuation is not implied.
 
 ## 6. Deterministic helpers
 
@@ -190,10 +184,10 @@ The donor matrix retains E01–E15 as the canonical scenario family. Its v2 exte
 | --- | --- |
 | R2 | Exercise activation, target-root and host detection, reuse of sufficient specifications, preservation of intent through compression/decomposition, missing required companion context, material ambiguity, lean work, and protected-risk work. Observe route, planning assurance, architecture-contract decisions, and honest reporting of unavailable execution phases. |
 | R3 | Run at least one real local change through planning/work/review. Include a realistic verification gap, a case where selected tests pass but acceptance remains unmet, and—when suitable—an uncertain shared pattern established before wider replication. Compare acceptance, intervention, and process cost with an ordinary high-quality host-agent prompt on a comparable baseline; record evidence in `tests/r3/README.md`. |
-| R4 | Future trial: exercise exact-head readiness, missing/pending/failed/unknown checks, review feedback, and ambiguous external effects within an authorized disposable or controlled setting. The current package does not provide remote delivery. |
+| R4 | Bounded trial: exercise exact-head readiness, missing/pending/failed/unknown checks, review feedback, and ambiguous external effects within an authorized disposable or controlled setting. Evidence belongs in the [R4 trial record](../tests/r4/README.md); it does not establish broad host or forge qualification. |
 | R5 | Future trial: exercise umbrella continuation, dependency boundaries, shared architecture decisions, and combined acceptance, including individually successful outcomes whose combined behavior fails. The current package does not provide umbrella execution. |
 
-R2 was planning-complete but execution-incomplete for the package revision recorded in its trial evidence. R3 is the first milestone that can claim the direct local implementation path: explicit planning, research, and review-only requests do not authorize implementation or correction, while an authorized direct run may reach a verified local candidate through work, evidence, proportional independent review, and bounded correction. Planning artifacts remain permitted under the coordinator's authority conditions. R4 and R5 add delivery and multi-outcome continuation. No milestone may silently substitute an unimplemented phase with an embedded second workflow.
+R2 was planning-complete but execution-incomplete for the package revision recorded in its trial evidence. R3 established the direct local implementation path, and R4 adds delivery to the same workflow: explicit planning, research, and review-only requests do not authorize implementation or correction, while an authorized direct run may reach a delivered PR through work, evidence, proportional review, bounded correction, and exact-head delivery. R5 remains multi-outcome continuation. No milestone may silently substitute an unimplemented phase with an embedded second workflow.
 
 Trial evidence should identify the authoritative source and required companions, target project/workspace, host and skill package identity, relevant revision/base, observed behavior versus expected acceptance, coverage gaps, and intervention or correction needed. Keep evidence in existing project/test artifacts or the task record according to need; do not introduce a trial registry. R4 tests do not themselves grant live push/PR/merge authority.
 
@@ -201,7 +195,7 @@ Early bounded trials are different from broad qualification of an incomplete pac
 
 Measure accepted outcomes, unnecessary intervention, clarification/replan frequency, scope violations, intent-preservation failures, requirement-to-evidence coverage, verification-gap escapes, context/model turns, correction passes, escaped material defects, repeated work after resume, and process growth. Interpret autonomy and speed alongside correctness; a justified clarification is not a failure to optimize away. The roadmap owns detailed milestones and budgets.
 
-The original v3 increment reconciled the design and evaluation boundary. R2 implementation and bounded observations remain historical evidence in the [R2 trial record](../tests/r2/README.md) for its recorded hashes. The R3 package capability is described here and its new observations belong in the [R3 trial record](../tests/r3/README.md); do not infer R3 host qualification or behavioral results from R2 evidence or package presence. Installation/discovery claims, R4/R5 behavior, broader qualification, and performance claims remain limited by recorded evidence.
+The original v3 increment reconciled the design and evaluation boundary. R2 implementation and bounded observations remain historical evidence in the [R2 trial record](../tests/r2/README.md) for its recorded hashes. R3 and R4 package capabilities are described here and their observations belong in the [R3 trial record](../tests/r3/README.md) and [R4 trial record](../tests/r4/README.md); do not infer host qualification or behavioral results from package presence. Installation/discovery claims, R5 behavior, broader qualification, and performance claims remain limited by recorded evidence.
 
 ## 8. R1 v3 implementation readiness
 
@@ -217,8 +211,8 @@ The R2 prototype delivered and verified:
 - concrete behavioral trials for the R2 cases above, recording observations rather than merely checking for instruction text; and
 - concise documentation of the actually qualified host/loading path and unsupported surfaces.
 
-R2 did not establish local implementation, PR delivery, umbrella continuation, cross-host parity, stable-release readiness, or comparative productivity. R3 now defines the local implementation capability; its behavioral and host claims require the separate R3 trial record. R4/R5 delivery and umbrella claims remain future work. Exact metadata/frontmatter, prompt wording, fixture locations, and host installation details remain implementation decisions unless evidence exposes a product or authority conflict.
+R2 did not establish local implementation, PR delivery, umbrella continuation, cross-host parity, stable-release readiness, or comparative productivity. R3 defines the local implementation capability and R4 defines PR delivery; their behavioral and host claims require the separate trial records. R5 umbrella execution remains future work. Exact metadata/frontmatter, prompt wording, fixture locations, and host installation details remain implementation decisions unless evidence exposes a product or authority conflict.
 
 ## 9. R3 local implementation readiness
 
-R3 is implemented by the public [coordinator](../.agents/skills/afr/SKILL.md), [planning](../.agents/skills/afr/references/planning.md), [work](../.agents/skills/afr/references/work.md), and [review](../.agents/skills/afr/references/review.md) methods. The coordinator owns authority, sequencing, stop/resume, and reporting; the references own phase methods. Planning, research, and review-only requests do not authorize implementation or correction, while explicitly requested, required, or risk-justified planning artifacts remain allowed. An authorized direct path can reach a verified local candidate through requirement-based work, evidence, actual-diff inspection, proportional review, and bounded correction within that implementation authority. A review-only request needs explicit fix authority before correction. The [R3 trial record](../tests/r3/README.md) owns observations; its presence does not establish host qualification or trial results, and R2 results remain historical evidence for their recorded hashes. R4 remote delivery and R5 umbrella continuation remain unavailable.
+R3 is implemented by the public [coordinator](../.agents/skills/afr/SKILL.md), [planning](../.agents/skills/afr/references/planning.md), [work](../.agents/skills/afr/references/work.md), and [review](../.agents/skills/afr/references/review.md) methods. R4 adds the [delivery reference](../.agents/skills/afr/references/delivery.md). The coordinator owns authority, sequencing, stop/resume, and reporting; references own phase methods. Planning, research, and review-only requests do not authorize implementation or correction, while explicitly requested, required, or risk-justified planning artifacts remain allowed. An authorized direct path can reach a verified local candidate and, when delivery authority and host capability are present, carry it through PR convergence and safe synchronization. A review-only request needs explicit fix authority before correction. The [R3 trial record](../tests/r3/README.md) and [R4 trial record](../tests/r4/README.md) own observations; their presence does not establish broad host qualification, and R2 results remain historical evidence for their recorded hashes. R5 umbrella continuation remains unavailable.
