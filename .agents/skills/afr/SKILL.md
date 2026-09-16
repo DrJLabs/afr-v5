@@ -1,15 +1,15 @@
 ---
 name: afr
-description: Plan, implement, review, or deliver a direct software change when the user explicitly selects AFR. Reuse a sufficient contract and carry the verified candidate to the authorized endpoint. Ordinary coding requests or discussion of AFR do not activate it; automatic umbrella execution is not yet supported.
+description: Plan, implement, review, or deliver software changes when the user explicitly selects AFR. Reuse a sufficient contract for direct work or continue a multi-outcome umbrella through its authorized endpoints and combined acceptance. Ordinary coding requests or discussion of AFR do not activate it.
 ---
 
-# AFR — direct work and delivery
+# AFR — direct work and umbrella continuation
 
 ## Available capability
 
-R4 provides discovery, bounded research, planning, direct implementation, verification, proportional review/correction, and authorized PR delivery through merge and local synchronization. Load [planning](references/planning.md), [work](references/work.md), [review](references/review.md), and [delivery](references/delivery.md) only for the requested phases. The host supplies tools, monitoring, and independent agents when available; a reference is not itself a running reviewer or watcher.
+R5 provides discovery, bounded research, planning, implementation, verification, proportional review/correction, and authorized PR delivery through merge and local synchronization, for direct work and multi-outcome umbrellas. Load [planning](references/planning.md), [work](references/work.md), [review](references/review.md), and [delivery](references/delivery.md) only for the requested phases. The host supplies tools, monitoring, and independent agents when available; a reference is not itself a running reviewer or watcher.
 
-Deployment and automatic umbrella execution remain unavailable. Do not substitute legacy AFR, another workflow, or a placeholder for a missing capability. If a request includes an unsupported endpoint, perform only a useful authorized supported portion and keep the unfulfilled endpoint explicit. For an umbrella, return planning unless the user selects one bounded outcome for direct work; do not automatically execute its siblings. Building this skill in its authoring repository is separate from running it on a target.
+Deployment remains unavailable. Do not substitute legacy AFR, another workflow, or a placeholder for a missing capability. If a request includes an unsupported endpoint, perform only a useful authorized supported portion and keep the unfulfilled endpoint explicit. Building this skill in its authoring repository is separate from running it on a target.
 
 ## Activation, identity, and authority
 
@@ -35,7 +35,7 @@ Choose the smallest route that fits the outcome, independently of assurance:
 | Route | Use when | Supported result |
 | --- | --- | --- |
 | `direct` | One cohesive, reviewable outcome, possibly several commits | A contract, review result, verified local candidate, or observed PR delivery endpoint, according to the request and authority |
-| `umbrella` | Several independently deliverable outcomes with meaningful dependencies | A parent contract with outcome acceptance, shared choices/invariants, dependency boundaries, and combined acceptance |
+| `umbrella` | Several independently deliverable outcomes with meaningful dependencies | A parent contract, or authorized execution through outcome endpoints and combined parent acceptance |
 | `spike` | A bounded investigation is needed before implementation can be specified honestly | The question, observed evidence, conclusion or remaining uncertainty, and recommended next step |
 | `stop` | A user stop, unsafe/prohibited work, missing authority, unresolved required decision, or inaccessible indispensable context prevents further work | The specific boundary and smallest action that would permit resumption, if applicable |
 
@@ -53,7 +53,23 @@ When correction is authorized, accepted findings go through the same work and re
 
 For an authorized publication, PR, monitoring, merge, or synchronization endpoint, load the complete [delivery method](references/delivery.md). An existing candidate or PR can enter there without repeating valid implementation or planning. PR feedback uses the same review and authorized correction methods; after a pushed fix, return to delivery monitoring for the new head. Continue until the requested boundary is observed or a specific blocker, current stop, or monitoring limit requires a handoff. An intermediate push or completed review is not completion of an authorized merge request.
 
-Finish at the requested boundary after conformance and required assurance are established. A local-only request stops at the candidate/branch; PR creation does not imply merge or cleanup authority. Leave further effects unperformed unless authorized and supported. A requested unsupported endpoint remains partial, not complete.
+Finish the direct outcome at its requested boundary after conformance and required assurance are established. A local-only outcome stops at the candidate/branch; PR creation does not imply merge or cleanup authority. Within an authorized umbrella, return the observed result to the continuation below instead of treating that outcome as the whole task. Leave further effects unperformed unless authorized and supported. A requested unsupported endpoint remains partial, not complete.
+
+## Umbrella continuation
+
+For authorized umbrella execution, reuse the sufficient parent contract and its required sources from the [planning method](references/planning.md#size-outcomes-and-dependencies). A planning-only request still stops at planning; permission to implement one selected outcome does not authorize its siblings. Keep one authoritative plan/progress surface when one exists, not a second AFR journal or per-outcome workflow.
+
+Reconcile completed and unfinished obligations with actual source/workspace, check/review, and delivery evidence. A checked plan item or implementer summary alone does not prove its endpoint. For each unfinished outcome, establish whether its required dependency revision or delivery boundary is observed and available in the workspace where the dependent work will occur. An unmerged candidate does not satisfy a merged-base dependency; a remote merge does not prove the local workspace contains it.
+
+Choose the next eligible outcome in explicit plan order, or listed order when no separate order is given, to break otherwise immaterial ties. Eligibility requires a sufficient contract, authority for its next action, and satisfied prerequisites. A consequential unresolved ordering or shared decision is a blocker for affected work, not an arbitrary tie. Continue independent eligible work when safe; if required work remains but none is eligible, report the specific dependency, cycle, scope, authority, or safety blocker rather than completion.
+
+Do not batch dependent implementation ahead of its prerequisite's required verification, review, or delivery boundary. Check that boundary before starting the dependent work; passing combined checks afterward does not establish that the prerequisite was honored.
+
+Run the selected outcome through the same [direct sequence](#direct-sequence), entering at its missing obligation and retaining the parent constraints and required companions. Do not create another planner, child runtime, or scheduler. Plan review, implementation, review-fix pushes, and intermediate merges are nonterminal while the authorized scope has unfinished eligible work. After observing an outcome's endpoint, reconcile affected dependencies and select the next outcome without asking for routine permission already given. Before starting it, briefly report the completed endpoint's evidence and next eligible work or changed blocker; also report meaningful integration results.
+
+At the contract's meaningful integration boundaries, assess the actual combined candidate/base and configuration against shared invariants and parent acceptance. Reuse valid outcome evidence; refresh only work, dependencies, checks, and review affected by changed inputs. Individually passing checks or merged PRs cannot replace combined evidence. If combined acceptance fails, use the same work/review methods for a causal in-scope correction and refresh affected evidence; an invalid assumption or missing decision uses the planning method's replan rules. Do not weaken the parent contract, redo unaffected outcomes, or repeat an unchanged failure indefinitely.
+
+Finish the umbrella only when every required outcome has reached its authorized endpoint, dependency revisions/boundaries and shared invariants hold for the combined result, and parent acceptance plus required assurance and temporary-effect disposition are established. If a required combined check is outside authority or unavailable, retain that acceptance gap. Parent acceptance never authorizes production or other new effects.
 
 ## Stop and resumption
 
@@ -61,7 +77,7 @@ Honor current user steering before consequential actions and after delegated res
 
 On an explicit resume, reconcile current intent, the existing authoritative plan, source and workspace changes, relevant PR/check observations if any, and available session context. Resolve existing artifacts, branches, and worktrees before creating replacements. Associate evidence with the actual candidate/base, requirements, and prerequisites; for uncommitted work include the relevant diff and untracked inputs, not HEAD alone. Refresh only decisions, work, checks, or review invalidated by changed inputs. A summary alone is not current evidence.
 
-Resume at the missing obligation, not by repeating completed implementation or external writes. A remotely merged PR with incomplete required local synchronization resumes at synchronization through the delivery method. Automatic umbrella continuation remains unavailable. Do not create a separate state record merely to resume.
+Resume at the missing obligation, not by repeating completed implementation or external writes. A remotely merged PR with incomplete required local synchronization resumes at synchronization through the delivery method. For an umbrella, reconcile outcome endpoints and combined acceptance before selecting unfinished work; completed outcomes may still leave a parent acceptance gap. Do not create a separate state record merely to resume.
 
 ## Terminal report
 
@@ -75,6 +91,7 @@ Give a concise result appropriate to the route, not a mandatory template:
 - material decisions, acceptance and planned evidence, remaining discretion or blockers;
 - candidate/base and actual changes; requirement evidence, check outcomes and gaps; review actually performed and finding dispositions, separate from proposed checks or unavailable review;
 - when delivery was requested, exact PR/head and separately observed publication, review/check readiness, remote merge, local synchronization, and authorized cleanup facts or gaps;
+- for an umbrella, observed outcome endpoints, dependency and shared-invariant evidence, combined acceptance, and remaining obligations or blockers;
 - the user's requested endpoint, what was reached, and remaining unsupported or unauthorized effects.
 
 Call planning ready only when the planning method's sufficiency judgment is satisfied. Call a candidate complete only when material acceptance, required checks/review, and temporary-effect disposition are satisfied for that candidate; a delivery request also requires observation of its authorized endpoint and any required synchronization/bookkeeping. For a spike, report research completion and uncertainty honestly; for a stop, identify the boundary. Never infer implementation, test success, independent review, delivery, host parity, or the user's full outcome from a plan or intermediate progress. Do not produce status files solely for reporting.

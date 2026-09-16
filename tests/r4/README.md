@@ -71,6 +71,10 @@ R4 adds one 48-line delivery reference and three coordinator lines: one public s
 
 The operator's controlled forge responses do not qualify real API parameter compatibility, authentication, branch protection enforcement, CI execution, reviewer correctness, merge queues, pagination behavior, or a real monitor's lifecycle. A simulated current-head review is not an independent review of the fixture. The native Git tests do not qualify shared-worktree races, divergence, ignored/index-hidden collisions, squash/rebase synchronization, or remote deletion. Conflicting PR matches, response-lost push, unavailable merge-guard tools, and active mutation interruption were not forward-tested. Fresh PR body creation was exercised only in the affected-case refresh above. Explicit-path loading is not host-catalog discovery; ChatGPT and broad host/UI parity remain unqualified.
 
-The local Python checks used Python 3.12.3, not a Python 3.10 runtime. No full R2/R3 rerun, broad benchmark, or integrated release qualification occurred. R5 umbrella execution is still unavailable. The actual merge of this authoring repository's R3 PR preceded R4 implementation and is not R4 behavioral evidence.
+The local Python checks used Python 3.12.3, not a Python 3.10 runtime. No full R2/R3 rerun, broad benchmark, or integrated release qualification occurred. At the time of this R4 trial, R5 umbrella execution was still unavailable. The actual merge of this authoring repository's R3 PR preceded R4 implementation and is not R4 behavioral evidence.
 
 After final ref, ownership, worktree, symlink, and byte-preservation checks, the parent removed the five owned disposable checkouts and two local bare remotes. No trial agent performed cleanup. Reusable inputs and bounded evidence remain here; transient trial repositories and transcripts are not project artifacts.
+
+### Historical scope
+
+This is the historical R4 delivery record. R5 umbrella continuation has a separate bounded [R5 trial record](../r5/README.md), which owns its observations and limits.
