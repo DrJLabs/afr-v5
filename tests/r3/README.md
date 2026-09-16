@@ -1,5 +1,7 @@
 # R3 bounded local-work trials
 
+R4 changes the current skill package after these trials. The results below remain immutable and apply to the recorded R3 package hashes; they do not qualify or disqualify the later delivery path. See the separate [R4 trial record](../r4/README.md) for delivery observations.
+
 These are native-agent behavioral trials of the [R3 local path](../../docs/roadmap.md#r3--direct-end-to-end-vertical-slice), not a runtime, automated evaluator, or cross-host release qualification. The small runnable CLI is a target fixture, not AFR implementation or a required dependency. [Architecture v3](../../docs/architecture-v3.md#7-evaluation-and-implementation-boundary) and the [donor scenarios](../../docs/donor-matrix.md#5-evaluation-scenarios) own the broader evaluation contract.
 
 ## Setup
@@ -70,4 +72,4 @@ After candidate and final-effects inspection, the six owned disposable target co
 
 R3 adds two phase references, not a runtime or required helper: one public skill, three phase references, zero custom helpers/services/databases. The coordinator is 77 lines; planning/work/review are 72/37/34 lines. Structural skill validation is separate from the behavioral observations above.
 
-Unrun surfaces include full host/UI parity, protected/specialist review, unavailable required reviewers, controlled timeout/lost-output failures, staged/ignored overlap variants, active interruption/recovery, alternate worktree creation/cleanup, and representative-pattern replication. R4 delivery and R5 umbrella execution remain unavailable, not qualified by these local trials. The existing helper was already established, so a new-pattern checkpoint was not warranted. Prior [R2 results](../r2/README.md) remain historical for their hashes; this is not a rerun of all R2 cases or broad release qualification.
+Unrun surfaces include full host/UI parity, protected/specialist review, unavailable required reviewers, controlled timeout/lost-output failures, staged/ignored overlap variants, active interruption/recovery, alternate worktree creation/cleanup, and representative-pattern replication. R4 delivery and R5 umbrella execution are not qualified by these local trials; see the separate R4 record for bounded delivery evidence. The existing helper was already established, so a new-pattern checkpoint was not warranted. Prior [R2 results](../r2/README.md) remain historical for their hashes; this is not a rerun of all R2 cases or broad release qualification.

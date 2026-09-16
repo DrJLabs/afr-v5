@@ -1,6 +1,6 @@
 # Review and bounded correction
 
-Use when dispatched by the AFR coordinator for a local candidate or a review-only request. Return evidence-backed findings, dispositions, coverage, and candidate identity. The coordinator owns authority, sequencing, stop/resume, and final completion; this method does not authorize edits or remote delivery.
+Use when dispatched by the AFR coordinator for a local candidate, PR feedback, or a review-only request. Return evidence-backed findings, dispositions, coverage, and candidate identity. The coordinator owns authority, sequencing, stop/resume, and final completion; this method does not authorize edits or remote delivery.
 
 ## Select and ground the review
 
