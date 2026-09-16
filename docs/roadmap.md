@@ -1,10 +1,10 @@
 # AFR v5 skill-first architecture roadmap
 
-**Status:** R2 planning prototype implemented; host qualification remains bounded
+**Status:** R3 local work/review capability implemented; host and behavioral qualification remains bounded
 **Date:** 2026-09-03
-**Repository stage:** coordinator and planning reference implemented; R3 work/review path pending
+**Repository stage:** coordinator, planning, work, and review references implemented; R4 delivery and R5 umbrella continuation pending
 
-The [architecture v3 specification](architecture-v3.md) owns the current design and implementation boundary; implemented R2 instructions belong to the [skill package](../.agents/skills/afr/SKILL.md). The [donor matrix](donor-matrix.md) owns R1 evidence, extraction decisions, and evaluation scenarios. This roadmap owns milestones, sequencing, and complexity budgets; its date records the original roadmap baseline. The 2026-09-15 v3 reconciliation preserves the v2 planning/conformance improvements and adds intent preservation, required-context classification, minimal architecture contracts, verification-effectiveness review, representative-pattern establishment, host/target separation, and an explicit R2/R3 boundary without changing the package or complexity budgets.
+The [architecture v3 specification](architecture-v3.md) owns the current design and implementation boundary; the [skill package](../.agents/skills/afr/SKILL.md) owns the implemented coordinator and phase methods. The [donor matrix](donor-matrix.md) owns R1 evidence, extraction decisions, and evaluation scenarios. This roadmap owns milestones, sequencing, and complexity budgets. The 2026-09-15 reconciliation preserves the v1/v2 design and original R1 facts, carries the v3 planning/conformance improvements into R3, and records the explicit R2/R3, local/remote, and direct/umbrella boundaries without changing the package or complexity budgets.
 
 ## 1. Decision
 
@@ -148,7 +148,7 @@ The runner will not enter the roadmap's implementation path until the skill-firs
 
 ## 6. Canonical workflow
 
-The implemented R2 workflow is defined in the [coordinator](../.agents/skills/afr/SKILL.md) and [planning reference](../.agents/skills/afr/references/planning.md). The architecture specification's [coordinator behavior](architecture-v3.md#4-coordinator-behavior) and [phase requirements](architecture-v3.md#5-phase-requirements) retain the later design requirements. R2–R5 assemble capabilities in one package. The historical loop in §2 explains the donor rationale; it is not a separate operational instruction set.
+The current local workflow is defined by the [coordinator](../.agents/skills/afr/SKILL.md), [planning](../.agents/skills/afr/references/planning.md), [work](../.agents/skills/afr/references/work.md), and [review](../.agents/skills/afr/references/review.md) references. The coordinator owns authority, sequencing, stop/resume, and reporting; references own phase methods. Explicit planning, research, and review-only requests do not authorize implementation or correction, while an authorized direct route may reach a verified local candidate through implementation, requirement-based verification, actual-diff inspection, proportional review, and bounded correction. Planning artifacts remain permitted under the coordinator's stated authority conditions. The architecture specification's [coordinator behavior](architecture-v3.md#4-coordinator-behavior) and [phase requirements](architecture-v3.md#5-phase-requirements) retain the later delivery and umbrella design requirements. R2–R5 assemble capabilities in one package. The historical loop in §2 explains the donor rationale; it is not a separate operational instruction set.
 
 ## 7. Proportional assurance
 
@@ -200,9 +200,9 @@ Do not copy production code during R1. Do not cherry-pick donor commits. Do not 
 
 ### R2 — canonical AFR planning prototype
 
-**Outcome:** one public `afr` skill can activate, inspect, route, and produce or assess an implementation-ready contract, a bounded research result, or a blocker without custom runtime state. R2 stops at the planning boundary.
+**Outcome (historical boundary):** one public `afr` skill can activate, inspect, route, and produce or assess an implementation-ready contract, a bounded research result, or a blocker without custom runtime state. R2 stops at the planning boundary.
 
-**Implementation:** [coordinator](../.agents/skills/afr/SKILL.md), [planning reference](../.agents/skills/afr/references/planning.md), and explicit-only invocation metadata. The [bounded trial record](../tests/r2/README.md) owns observed results and host-support limits. Presence of these files does not establish UI discovery, cross-host parity, or full runtime qualification.
+**Implementation:** the original [coordinator](../.agents/skills/afr/SKILL.md), [planning reference](../.agents/skills/afr/references/planning.md), and explicit-only invocation metadata. The [R2 trial record](../tests/r2/README.md) owns observations for the package hashes recorded there. Those observations remain historical evidence and do not qualify the changed R3 package; current R3 evidence belongs in the [R3 trial record](../tests/r3/README.md). Presence of package files does not establish UI discovery, cross-host parity, or full runtime qualification.
 
 Deliver:
 
@@ -218,7 +218,9 @@ Run bounded coordinator/planning trials on sufficient existing specifications, m
 
 ### R3 — direct end-to-end vertical slice
 
-**Outcome:** AFR completes one ordinary repository change from request through a verified local candidate or branch.
+**Outcome:** AFR completes one ordinary repository change from request through a verified local candidate or branch, without remote delivery or umbrella continuation.
+
+This increment is the direct local work and review path; its implementation endpoint is a verified local candidate, not a remote delivery.
 
 Prove:
 
@@ -228,14 +230,14 @@ Prove:
 - isolated-worktree selection when warranted;
 - implementation through native Codex tools;
 - requirement-to-evidence coverage, focused tests, and actual-diff inspection;
-- one consolidated review and one correction when selected; and
+- one proportional independent review and one bounded correction when selected; and
 - an honest completion or blocker result.
 
-Run at least one real local change through the assembled planning/work/review path and compare acceptance, intervention, and process cost with an ordinary high-quality host-agent prompt on a comparable task/baseline. Include the case where selected tests pass but acceptance remains unmet. Do not add PR automation, a database, or an SDK runner merely to complete this phase.
+Explicit planning, research, and review-only requests do not authorize implementation or correction, or ordinary target-source edits. Planning artifacts remain allowed when explicitly requested, required by the target, or justified for resumability or risk within authority. An authorized direct implementation may apply bounded correction within that same implementation authority; a review-only request needs explicit fix authority before correction. The direct path may mutate only within the selected repository/workspace authority, preserve unrelated dirty work, and stop when authority, requirements, verification, or review cannot be satisfied. Run at least one real local change through the assembled planning/work/review path and compare acceptance, intervention, and process cost with an ordinary high-quality host-agent prompt on a comparable task/baseline. Include the case where selected tests pass but acceptance remains unmet. Record observations in the [R3 trial record](../tests/r3/README.md); do not treat the capability's presence as trial evidence or host qualification. Do not add PR automation, a database, helper, runtime, dependency, or SDK runner merely to complete this phase.
 
 ### R4 — PR convergence and delivery
 
-**Outcome:** AFR can create and carry one authorized PR to a terminal delivery boundary.
+**Outcome:** future capability: AFR can create and carry one authorized PR to a terminal delivery boundary. R4 is not implemented by the current package.
 
 Deliver:
 
@@ -252,7 +254,7 @@ Exercise exact-head changes, missing/pending/failed/unknown checks, review feedb
 
 ### R5 — umbrella continuation
 
-**Outcome:** AFR completes a small multi-outcome plan without user babysitting between ordinary stages.
+**Outcome:** future capability: AFR completes a small multi-outcome plan without user babysitting between ordinary stages. R5 is not implemented by the current package.
 
 Deliver:
 
@@ -323,7 +325,7 @@ The following are design budgets, not targets to fill:
 | Primary skills | at most 5 |
 | Coordinator `SKILL.md` | about 300 lines or fewer |
 | Internal `SKILL.md` | about 200 lines or fewer each |
-| Initial package | 1 public skill and 4 phase references; similar per-reference line budget |
+| Target package | 1 public skill and 4 phase references; similar per-reference line budget |
 | Default implementers per cohesive outcome | 1 |
 | Default independent reviewers | 0 for lean; 1 for standard/protected |
 | Default correction passes | 1 |
@@ -392,7 +394,7 @@ Every adopted behavior or port must record its exact donor commit/path and wheth
 
 ## 14. Immediate next increment
 
-The R2 coordinator and planning reference now implement the planning boundary described above. Keep discovery/host support claims within the recorded trial evidence. The next capability increment is R3's first complete local work/review path; subsequent increments add delivery, continuation, and execution resumption to the same package.
+The R3 coordinator, planning reference, work reference, and review reference now implement the direct local work/review boundary described above. Keep discovery, host-support, and behavioral claims within the recorded trial evidence; [R2 results](../tests/r2/README.md) are historical for their recorded hashes, and [R3 evidence](../tests/r3/README.md) is the current trial surface. Subsequent increments add remote delivery, umbrella continuation, and any broader execution resumption to the same package.
 
 Use the donor matrix's scenarios for bounded behavioral trials as each capability becomes available; proceed unless observed defects require correction. After the core is assembled, review its coherence and broaden integrated qualification across repositories, interruptions, and risks. R1 does not establish a need for custom helpers or a runtime layer. Split internal skills only after evaluation shows that progressive disclosure or responsibility isolation materially improves the result.
 

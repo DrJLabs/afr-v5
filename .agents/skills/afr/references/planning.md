@@ -44,7 +44,7 @@ For umbrellas, identify dependencies and what satisfies them: a particular contr
 
 Define the parent objective, shared invariants/architecture choices, and evidence for combined acceptance at a meaningful integration boundary. Individually successful outcomes or merged PRs do not alone prove the parent objective. Reuse valid outcome evidence; do not prescribe full-suite reruns after every outcome.
 
-If a new, materially uncertain shared pattern will be replicated widely and a wrong choice would be expensive, propose one representative implementation/verification point before broad repetition. Established conventions, qualified prior use, independent constraints, or cheap reversibility can make this unnecessary. This is a plan for later work, not permission for R2 to implement a prototype.
+If a new, materially uncertain shared pattern will be replicated widely and a wrong choice would be expensive, propose one representative implementation/verification point before broad repetition. Established conventions, qualified prior use, independent constraints, or cheap reversibility can make this unnecessary. Planning the checkpoint does not itself authorize implementation.
 
 ## Planning assurance and self-review
 
@@ -56,7 +56,7 @@ Recommend the lowest adequate assurance from actual consequences, independently 
 | `standard` | Explicit behavior/failures, interfaces, consequential decisions, coherent slices, requirement coverage | Behavioral checks and normally one consolidated independent review |
 | `protected` | Add analysis for the actual security, migration, rollback, compatibility, concurrency, performance, reliability, or irreversible-effect risks | Risk-specific checks and relevant specialist coverage in consolidated review |
 
-These expectations select later assurance; they do not claim R2 provides an implementation reviewer. Do not create simulated specialist personas or stack reviewers to produce a plan.
+These expectations select assurance for the work and review methods; they do not establish that review has occurred or that the host supplies independent reviewers. Do not create simulated specialist personas or stack reviewers to produce a plan.
 
 Self-review the proposed contract against the sources: missing obligations, unsupported commitments, contradictory constraints, unjustified assumptions, incompatible cross-outcome choices, verification gaps, unnecessary decomposition, and a simpler adequate approach. A small security-sensitive edit can still need protected assurance.
 
