@@ -1,6 +1,6 @@
 # AFR v5 skill-first architecture roadmap
 
-**Status:** R3 local work/review, R4 PR delivery, and R5 authorized umbrella continuation implemented; host and behavioral qualification remains bounded
+**Status:** R3 local work/review, R4 PR delivery, and R5 authorized umbrella continuation implemented; R6 assessment complete with no helper extraction; host and behavioral qualification remains bounded
 **Date:** 2026-09-15
 **Repository stage:** coordinator, planning, work, review, and delivery references implemented; R5 umbrella continuation is implemented in the coordinator and its bounded trial record is separate
 
@@ -272,7 +272,7 @@ The coordinator owns this behavior and reuses the four unchanged phase reference
 
 ### R6 — evidence-driven helper extraction
 
-**Outcome:** next increment: automate only mechanical pain observed during R2–R5 trials; no helper is automatic or assumed in advance.
+**Outcome:** [R6 assessment](r6-helper-assessment.md) complete with **zero helper extractions**. Recorded R2–R5 failures received focused instruction corrections or verification follow-up; the evidence does not establish a remaining mechanical gap or measured waste that native tools and concise instructions cannot adequately address. The skill package is unchanged; representative-use qualification is next, not an automatic helper or SDK implementation.
 
 Apply the architecture's [helper threshold](architecture-v3.md#6-deterministic-helpers), including its qualified treatment of the assessment's single controlled-safety-trial proposal. The repeated-failure/measured-waste threshold remains in force; an exception requiring a repository-policy change needs a scoped decision before implementation.
 
@@ -285,7 +285,7 @@ For each proposed helper:
 5. add focused tests; and
 6. measure whether the helper reduces errors, prompts, turns, or wall time.
 
-Likely candidates are Git/worktree inspection, plan validation, test selection, finding normalization, and exact PR-state observation. None is mandatory in advance.
+Candidates include Git/worktree inspection, plan validation, test selection, finding normalization, exact PR-state observation, and authoring-time package checks. The assessment records their dispositions, observed limits, unchanged complexity counts, and reopening evidence. None is mandatory in advance.
 
 ### R7 — optional Codex SDK runner experiment
 
@@ -396,7 +396,7 @@ Every adopted behavior or port must record its exact donor commit/path and wheth
 
 ## 14. Immediate next increment
 
-The R3 coordinator, planning reference, work reference, and review reference implement the direct local work/review boundary, R4 adds the delivery reference for one authorized PR, and R5 adds coordinator-owned umbrella continuation while reusing those four references. Keep discovery, host-support, and behavioral claims within the recorded trial evidence; [R2 results](../tests/r2/README.md) are historical for their recorded hashes, [R3 evidence](../tests/r3/README.md) covers local work/review, [R4 evidence](../tests/r4/README.md) covers bounded delivery trials, and [R5 evidence](../tests/r5/README.md) owns bounded continuation observations and limits. The next increment is R6 evidence-driven helper extraction; broader qualification remains subject to later evidence.
+The R3 coordinator, planning reference, work reference, and review reference implement the direct local work/review boundary, R4 adds the delivery reference for one authorized PR, and R5 adds coordinator-owned umbrella continuation while reusing those four references. Keep discovery, host-support, and behavioral claims within the recorded trial evidence; [R2 results](../tests/r2/README.md) are historical for their recorded hashes, [R3 evidence](../tests/r3/README.md) covers local work/review, [R4 evidence](../tests/r4/README.md) covers bounded delivery trials, and [R5 evidence](../tests/r5/README.md) owns bounded continuation observations and limits. The [R6 assessment](r6-helper-assessment.md) selects no helper; the next increment is bounded representative-use qualification of the assembled package, including real dependency/delivery boundaries, combined acceptance, and pause/resume. Installation/discovery remains separately authorized and qualified. R7 remains conditional on its representative-run threshold; this assessment does not authorize an SDK experiment.
 
 Use the donor matrix's scenarios for bounded behavioral trials as each capability becomes available; proceed unless observed defects require correction. After the core is assembled, review its coherence and broaden integrated qualification across repositories, interruptions, and risks. R1 does not establish a need for custom helpers or a runtime layer. Split internal skills only after evaluation shows that progressive disclosure or responsibility isolation materially improves the result.
 
