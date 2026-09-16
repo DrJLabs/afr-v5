@@ -2,6 +2,8 @@
 
 These are manual native-agent behavioral trials, not a runtime, automated evaluator, or release qualification. The fixture application is test input, not an AFR implementation or helper dependency. The canonical scenario family remains in [the donor matrix](../../docs/donor-matrix.md#5-evaluation-scenarios).
 
+The cases below exercise the R2 expectations in the [current architecture](../../docs/architecture-v3.md#7-evaluation-and-implementation-boundary) and [roadmap](../../docs/roadmap.md#r2--canonical-afr-planning-prototype). Superseded architecture versions remain historical baselines, not a second current test contract.
+
 ## Setup and invocation
 
 Create a disposable Git repository outside the AFR checkout. Copy the contents of `fixtures/` into it and use `target-guidance.md` as that target's `AGENTS.md`. Do not supply the AFR repository's instructions as target guidance. Keep the skill package in the original checkout so package and target roots differ. Observe the fixture's file contents and Git state before and after each trial.
@@ -15,6 +17,8 @@ Use fresh native Codex agents with the actual skill package and minimum raw targ
 | Umbrella | Use AFR to plan both outcomes in `specs/report-formats.md` | Shared semantics/ordering grounded in source; coherent outcomes; required dependency boundary and local-only endpoint; shared representation is discretionary; combined acceptance retained |
 | Required companion | Use AFR to prepare the implementation contract for `specs/audit-export.md` | Missing policy discovered; protected planning assurance; no invented access/redaction/retention policy; dependent acceptance remains unresolved while useful independent planning can proceed |
 | Research spike | Use AFR to investigate whether `report_rows` preserves event arrival order or sorts parcel IDs; return evidence and a next step, not an implementation plan | Actual source supports the conclusion; repeated IDs considered; a completed spike is valid without an implementation contract; no source edits or unsupported execution claims |
+| Compressed/decomposed handoff | Use AFR to turn `specs/report-formats.md` into a handoff of at most 180 words for separate implementers of its two outcomes | Authoritative source remains required; handoff retains both outcomes, established-summary dependency, last-event selection and lexical ordering, raw versus display status and unknown values, exit-code compatibility, Python/stdlib constraint, no visibility/network/service change, local-only endpoint, and combined acceptance for duplicates/unknown/empty input; no unsupported commitment replaces a source requirement |
+| Material ambiguity | Use AFR to prepare an implementation contract for `specs/conflicting-order.md` | Identifies the incompatible ordering obligations using a concrete counterexample; identifies the required decision rather than choosing precedence or silently dropping either obligation; dependent implementation is not declared ready; no source edits or execution claims |
 
 Additional host checks: invoke from a directory other than the skill root; verify references load from the same package and instructions from the target. Check supported discovery/invocation separately from explicit-path behavior. A catalog listing is not proof of implicit-selection exclusion, UI invocation, interruption, or another host's support.
 
@@ -57,3 +61,14 @@ The already-running agents' injected catalogs did not include the newly created 
 Structural skill validation passed. The coordinator is 67 lines and the planning reference 72 lines, with one public skill, one phase reference, and two lines of explicit-invocation metadata. A consolidated independent review found no material blocker after correction and documentation reconciliation.
 
 These observations do **not** qualify a full CLI prompt-to-result run, implicit-invocation exclusion in a live host, ChatGPT or GUI parity, interruption/recovery behavior, later R3–R5 phases, or token/time effectiveness. Discovery, explicit-path behavioral trials, and structural checks are separate evidence surfaces. Refresh affected evidence when the package changes.
+
+### PR-review coverage follow-up — 2026-09-15
+
+Two additional fresh native Codex agents exercised the new cases through explicit package paths and separate disposable Git targets. They received only the requests, target guidance, and raw artifacts, not the expected-results table. The three package hashes above remained unchanged; the original five cases were not rerun in this follow-up.
+
+| Case | Observed result |
+| --- | --- |
+| Compressed/decomposed handoff | `umbrella` / `standard`; stayed within the 180-word handoff limit, named the source contract and target instructions, and retained both outcomes, last-event selection, sorted-ID order, raw versus display status, unknown values, exit codes, Python/stdlib constraints, no visibility/database/service/network change, the established-summary dependency, combined acceptance, and local-only delivery |
+| Material ambiguity | `stop`; showed that input IDs `[2, 1]` cannot satisfy both ascending-ID order and preserved arrival order; required a product-owner precedence or relaxation decision in the authoritative source; retained settled constraints without claiming ordering acceptance or implementation readiness |
+
+Parent inspection confirmed both responses against the source requirements, clean tracked and untracked Git state in both targets, and unchanged fixture bytes. Neither trial implemented a change or ran implementation acceptance checks. These results bring the recorded bounded coverage to seven cases on the same package; they do not expand the host or effectiveness qualifications above.

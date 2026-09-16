@@ -14,7 +14,12 @@ An optional Codex SDK runner may later launch or resume unattended sessions, but
 
 ## Use the planning prototype
 
-Explicitly select AFR and identify the target project and goal or existing specification. For a host that discovers the repository skill, use `$afr Plan the change in <specification> for <target project>`. For explicit-path use, ask the host to use [.agents/skills/afr/SKILL.md](.agents/skills/afr/SKILL.md) for that request. The package and target may be in different repositories.
+Explicitly select AFR and identify the target project and goal or existing specification. Where the host has the skill available, use its [explicit invocation syntax](https://learn.chatgpt.com/docs/build-skills#how-chatgpt-and-codex-use-skills):
+
+- Codex CLI or IDE: `$afr Plan the change in <specification> for <target project>`.
+- ChatGPT: `@afr Plan the change in <specification> for <target project>`.
+
+The ChatGPT example describes the host syntax, not an AFR installation or qualification claim; ChatGPT loading and behavior remain unqualified. For explicit-path use on a host that can read the package, ask it to use [.agents/skills/afr/SKILL.md](.agents/skills/afr/SKILL.md) for the request. The package and target may be in different repositories.
 
 The checked-in location and explicit-only `agents/openai.yaml` policy follow the [official Codex skill conventions](https://learn.chatgpt.com/docs/build-skills#where-to-save-skills). Metadata conformance is distinct from observed catalog/UI discovery. No global installation or host configuration change is made by this repository. See the trial record for the tested loading surface and unverified surfaces.
 
