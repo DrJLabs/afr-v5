@@ -64,9 +64,10 @@ understand the request
 - [`docs/architecture-v3.md`](docs/architecture-v3.md) specifies the current package, behavior, ownership boundaries, implementation readiness, and focused framework-derived refinements.
 - [`docs/donor-matrix.md`](docs/donor-matrix.md) records inspected historical sources, extraction decisions, and evaluation scenarios.
 - [`docs/roadmap.md`](docs/roadmap.md) records the delivery sequence and complexity budgets.
+- [`docs/r6-helper-assessment.md`](docs/r6-helper-assessment.md) records the zero-helper R6 decision, candidate dispositions, evidence limits, and next qualification boundary.
 
 The previous AFR implementation is a donor and defect corpus. AFR v5 will recover its strongest skill-based workflow ideas and hardened safety lessons without importing its custom runtime, gate machinery, or accumulated ceremony wholesale.
 
 ## Current repository contents
 
-The repository contains the R3–R5 skill package, R2/R3 historical trial fixtures and records, the R4 bounded-trial record, the current R5 trial record, project instructions, current architecture v3 and superseded baselines, the spec-driven assessment, donor analysis, and roadmap. There are no required custom helpers, services, or runtime dependencies. Cross-host support and broader qualification remain future work; R6 is evidence-driven helper extraction, not an automatic new helper layer.
+The repository contains the R3–R5 skill package, R2/R3 historical trial fixtures and records, the R4 bounded-trial record, the current R5 trial record, project instructions, current architecture v3 and superseded baselines, the spec-driven assessment, donor analysis, roadmap, and R6 helper assessment. R6 concluded with no helper extraction; there are no required custom helpers, services, or runtime dependencies. Representative-use qualification, installation/discovery, and cross-host support remain further work, not an automatic SDK or helper layer.
