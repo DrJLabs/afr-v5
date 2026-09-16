@@ -2,17 +2,17 @@
 
 AFR v5 is a skill-first redesign of Auto Full Run: a portable workflow for capable agents to take software work from discovery and planning through implementation, verification, review, pull-request convergence, merge, and continuation.
 
-**Status:** the R2 planning prototype is implemented. It does not implement local code changes, independent implementation review, PR delivery, or execution continuation. No stable release exists; observed host/trial coverage is recorded in [R2 trials](tests/r2/README.md).
+**Status:** the R3 local work/review capability is implemented. Planning and research do not authorize implementation; an authorized direct run can implement, verify, review, and apply a bounded correction within that authority. Remote PR delivery and umbrella continuation remain unavailable. No stable release exists; R2 observations are historical evidence in [R2 trials](tests/r2/README.md), and R3 evidence belongs in the [R3 trial record](tests/r3/README.md).
 
 ## Direction
 
 The host agent is the default runtime. AFR teaches the agent how to work; it does not replace the agent platform.
 
-The initial design is one public `afr` skill with a compact coordinator and four phase references. The [coordinator](.agents/skills/afr/SKILL.md) and [planning reference](.agents/skills/afr/references/planning.md) exist now; work, review, and delivery remain later increments. The product is intended for standard ChatGPT and Codex environments, with support qualified separately per host. Narrow deterministic helpers remain candidates for later evidence-driven extraction.
+The initial design is one public `afr` skill with a compact coordinator and four phase references. The [coordinator](.agents/skills/afr/SKILL.md), [planning reference](.agents/skills/afr/references/planning.md), [work reference](.agents/skills/afr/references/work.md), and [review reference](.agents/skills/afr/references/review.md) now provide the R3 local path; delivery remains a later increment. The coordinator owns authority, sequencing, stop/resume, and reporting, while references own phase methods. The product is intended for standard ChatGPT and Codex environments, with support qualified separately per host. Narrow deterministic helpers remain candidates for later evidence-driven extraction.
 
 An optional Codex SDK runner may later launch or resume unattended sessions, but the runner must execute the same canonical AFR skill rather than implement another workflow.
 
-## Use the planning prototype
+## Use AFR
 
 Explicitly select AFR and identify the target project and goal or existing specification. Where the host has the skill available, use its [explicit invocation syntax](https://learn.chatgpt.com/docs/build-skills#how-chatgpt-and-codex-use-skills):
 
@@ -23,11 +23,11 @@ The ChatGPT example describes the host syntax, not an AFR installation or qualif
 
 The checked-in location and explicit-only `agents/openai.yaml` policy follow the [official Codex skill conventions](https://learn.chatgpt.com/docs/build-skills#where-to-save-skills). Metadata conformance is distinct from observed catalog/UI discovery. No global installation or host configuration change is made by this repository. See the trial record for the tested loading surface and unverified surfaces.
 
-R2 returns a sufficient contract, a bounded research result, or an honest blocker. Asking it to implement does not silently activate a different workflow or mark the requested implementation complete.
+Explicit planning, research, and review-only requests do not authorize implementation or correction, or ordinary target-source edits. Planning may create or amend a planning artifact when explicitly requested, required by the target, or justified for resumability or risk within authority. For an authorized `direct` request, AFR can continue through native implementation, requirement-based verification, actual-diff inspection, proportional independent review, and one bounded correction within that implementation authority when selected. A review-only request needs explicit fix authority before correction. AFR stops at a verified local candidate or an honest blocker; it does not create or converge a remote PR, or run an umbrella continuation loop.
 
 ## Intended end-to-end workflow
 
-The implementation, review, and delivery portions below are future R3–R5 capabilities.
+The local implementation and review portions below are available in R3; remote delivery and umbrella continuation remain future R4–R5 capabilities.
 
 ```text
 understand the request
@@ -60,7 +60,7 @@ understand the request
 
 - [`CHAT.md`](CHAT.md) governs ChatGPT work in this repository.
 - [`AGENTS.md`](AGENTS.md) governs Codex work.
-- [`.agents/skills/afr/SKILL.md`](.agents/skills/afr/SKILL.md) owns the implemented R2 workflow; its planning reference owns the planning method.
+- [`.agents/skills/afr/SKILL.md`](.agents/skills/afr/SKILL.md) owns activation, authority, sequencing, stop/resume, and reporting; its [planning](.agents/skills/afr/references/planning.md), [work](.agents/skills/afr/references/work.md), and [review](.agents/skills/afr/references/review.md) references own the current phase methods.
 - [`docs/architecture-v3.md`](docs/architecture-v3.md) specifies the current package, behavior, ownership boundaries, implementation readiness, and focused framework-derived refinements.
 - [`docs/donor-matrix.md`](docs/donor-matrix.md) records inspected historical sources, extraction decisions, and evaluation scenarios.
 - [`docs/roadmap.md`](docs/roadmap.md) records the delivery sequence and complexity budgets.
@@ -69,4 +69,4 @@ The previous AFR implementation is a donor and defect corpus. AFR v5 will recove
 
 ## Current repository contents
 
-The repository contains the R2 skill, bounded trial fixtures/procedure, project instructions, current architecture v3 and superseded baselines, the spec-driven assessment, donor analysis, and roadmap. There are no required custom helpers, services, or runtime dependencies. R3 introduces the first complete local implementation path; delivery, cross-host support, and broader qualification remain future work.
+The repository contains the R3 skill package, R2 historical trial fixtures/procedure, the R3 trial record, project instructions, current architecture v3 and superseded baselines, the spec-driven assessment, donor analysis, and roadmap. There are no required custom helpers, services, or runtime dependencies. R4 delivery, R5 umbrella continuation, cross-host support, and broader qualification remain future work.

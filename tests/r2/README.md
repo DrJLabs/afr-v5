@@ -1,5 +1,7 @@
 # R2 bounded planning trials
 
+> **Historical evidence notice:** This record applies only to the R2 package identities recorded below. Its results remain historical evidence for those hashes and do not qualify the changed R3 package or its local work/review behavior. See the [R3 trial record](../r3/README.md) for current R3 observations; do not infer results or host qualification until they are recorded there.
+
 These are manual native-agent behavioral trials, not a runtime, automated evaluator, or release qualification. The fixture application is test input, not an AFR implementation or helper dependency. The canonical scenario family remains in [the donor matrix](../../docs/donor-matrix.md#5-evaluation-scenarios).
 
 The cases below exercise the R2 expectations in the [current architecture](../../docs/architecture-v3.md#7-evaluation-and-implementation-boundary) and [roadmap](../../docs/roadmap.md#r2--canonical-afr-planning-prototype). Superseded architecture versions remain historical baselines, not a second current test contract.
