@@ -4,11 +4,11 @@ Use when dispatched by the AFR coordinator for an authorized publication, PR, mo
 
 ## Resolve the candidate and destination
 
-Establish the exact target repository, remote, destination branch, source repository/branch, candidate revision, and existing PR identity. Inspect native Git/worktree state and forge observations rather than inferring identity from a branch name, working directory, or remembered PR number. Reuse a uniquely matching PR; resolve conflicting matches, a retargeted PR, or a closed-unmerged PR before creating or mutating a replacement.
+Establish the exact target repository, remote, destination branch, source repository/branch, candidate revision, and any existing PR identity. Inspect native Git/worktree state and forge observations rather than inferring identity from a branch name, working directory, or remembered PR number. Reuse a uniquely matching PR; resolve conflicting matches, a retargeted PR, or a closed-unmerged PR before creating or mutating a replacement.
 
 Associate acceptance, local checks, and selected review with the actual candidate/base. For uncommitted work, include the intended diff and required new files; HEAD alone does not identify the candidate. If publication is authorized, commit only the intended accepted changes, inspect the resulting commit/diff, and push to the verified source destination. Preserve unrelated staged or unstaged work. Do not include unreviewed changes, rewrite shared history, or push directly to the protected target to avoid a PR.
 
-Observe the published source revision and the PR's actual head/base. A push command's success does not establish PR readiness. Create or update the authorized PR with concise scope, authoritative requirements where useful, checks actually run, acceptance gaps, and residual risks. Do not paste secrets, environment dumps, or private transcripts. If the endpoint is PR creation only, return its observed identity without assuming authority to fix, merge, or clean up.
+Observe the published source revision. For an existing matching PR, observe its actual head/base before an authorized update. When lookup confirms no matching PR exists, create the authorized PR first, then observe its resulting identity and head/base. A push command's success does not establish PR readiness. Include concise scope, authoritative requirements where useful, checks actually run, acceptance gaps, and residual risks in the PR. Do not paste secrets, environment dumps, or private transcripts. If the endpoint is PR creation only, return its observed identity without assuming authority to fix, merge, or clean up.
 
 ## Observe readiness and converge feedback
 
