@@ -65,11 +65,12 @@ Operational instructions live in the implemented owners within `afr/`. This arch
 
 | Owner | Responsibility | Information needed by the next phase |
 | --- | --- | --- |
-| `SKILL.md` | Explicit activation, authority, host/capability boundary, final route choice, sequencing, stop, resume, continuation, and terminal reporting | Current outcome, available phase capability, authorized endpoint, next action or blocker |
-| `references/planning.md` | Discovery, source-intent preservation, context classification, route recommendation, implementation contract, minimal architecture contract, planning assurance, outcome/dependency analysis, plan self-review | Authoritative source and indispensable companions, requirements, decisions/discretion, acceptance/evidence approach, risks, dependencies, parent acceptance when applicable |
+| `SKILL.md` | Explicit activation, authority, host/capability boundary, final route choice, sequencing, stop, resume, continuation, optional native-goal lifecycle policy, and terminal reporting | Current outcome, available phase capability, authorized endpoint, next action or blocker |
+| `references/planning.md` | Discovery, source-intent preservation, context classification, route recommendation, implementation contract and optional goal projection, minimal architecture contract, planning assurance, outcome/dependency analysis, plan self-review | Authoritative source and indispensable companions, requirements, decisions/discretion, acceptance/evidence approach, risks, dependencies, parent acceptance when applicable |
 | `references/work.md` | Workspace choice, implementation, representative-pattern validation when warranted, focused conformance evidence, actual-diff inspection | Candidate/base identity, changes, requirement coverage, checks and limitations, contradictions or residual concerns |
 | `references/review.md` | Risk-selected review, independent conformance and verification-effectiveness assessment when warranted, finding classification, bounded correction and rechecks | Findings/dispositions, reviewed revision, acceptance and verification gaps, remaining material concerns |
 | `references/delivery.md` | Authorized PR creation/reuse, native monitoring, feedback through the review method, exact-head merge, and local synchronization | PR/head, delivery facts, evidence needed for dependent work, incomplete obligations |
+| Native host (outside AFR) | Tools, sessions, subagents, and optional goal persistence, controls, limits, and usage accounting | Observed capabilities; goal state alone is not source or acceptance evidence |
 
 References return results to the coordinator. They do not independently activate AFR, choose the next umbrella outcome, or redefine lifecycle stop/completion rules. Planning defines acceptance; work and review assess it; delivery establishes delivery facts; the coordinator determines whether the requested scope is complete.
 
@@ -86,6 +87,12 @@ The [coordinator](../.agents/skills/afr/SKILL.md#planning-and-route-choice) owns
 The coordinator's [available-capability boundary](../.agents/skills/afr/SKILL.md#available-capability) keeps explicit planning and research outside implementation and correction authority, while permitting planning artifacts under its stated conditions. R3 provides the local implementation path, R4 adds authorized PR creation/reuse, review convergence, exact-head merge, and separately observed local synchronization, and R5 adds authorized umbrella continuation through the same four phase references. The user's original endpoint remains visible when a missing phase or unsupported host capability prevents fulfillment.
 
 Portable workflow text does not make host support interchangeable. Qualify discovery, loading, tools, delegated work, interruption, and reporting on each supported host. An initial Codex qualification may precede ChatGPT qualification without removing ChatGPT from the product goal; report the actual supported surface honestly.
+
+### Optional native goal persistence (M9)
+
+The coordinator's [native goal integration](../.agents/skills/afr/SKILL.md#native-goal-integration) owns opt-in, reconciliation, and when AFR acceptance permits completion. Planning owns the [compact contract projection](../.agents/skills/afr/references/planning.md#project-a-native-goal). Codex owns goal state and execution persistence; this adds no AFR durable state or architectural layer. The existing coordinator still owns dependency selection, continuation, stop/resume, and combined acceptance. Ordinary AFR retains its full workflow when goal support is absent or unused.
+
+The simpler alternative is operator-managed native goals around unchanged AFR. M9 adds concise instructions to reduce objective drift and clarify lifecycle/acceptance boundaries without a parser, helper, service, SDK launcher, or duplicate continuation loop. These instructions replace ad hoc per-run composition, not native controls. Their maintenance cost is the added guidance and bounded qualification; no recurring failure justifies custom machinery. Retention depends on observed continuity or intervention benefit without authority or acceptance regressions. Source implementation does not establish native control support, safe interruption, or productivity: the [M9 trial record](../tests/m9/README.md) owns those observations and gaps.
 
 ### Sequence and continuation
 
