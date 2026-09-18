@@ -72,3 +72,82 @@ After checking ownership, exact paths, absence of symlinks/remotes/extra worktre
 The four phase references remain the only phase methods. R5 introduces no helper, service, scheduler, runtime, database, run-state file, or new dependency. Its instruction provenance is the existing [donor matrix](../../docs/donor-matrix.md): I03 outcome/dependency sizing and I14 continuation adapt `DrJLabs/afr` at `3a0f5bc7:codex/skills/auto-full-run/SKILL.md` and `8c0d80d3:codex/skills/afr-v2-umbrella-plan/SKILL.md` / `codex/skills/auto-full-run-v2/references/gate-state-machine.md`, without porting the gate machinery. Parent acceptance follows [architecture v3](../../docs/architecture-v3.md#parent-level-umbrella-acceptance), not an asserted new donor discovery. Cases cover bounded portions of E03, E09, E14, and E15.
 
 No real multi-PR umbrella, intermediate remote merge, cycle, changed-revision resume, active interruption, protected-risk umbrella, or unavailable production acceptance check was forward-tested here. Existing R4 delivery trials remain historical evidence for their recorded package, not proof of a real R5 multi-PR run. The actual R4 authoring PR merge preceded R5 implementation and is not an R5 workflow trial. No full R2–R4 rerun, broad benchmark, wall-time/token comparison, host-catalog discovery, ChatGPT parity, or release qualification occurred. Additional integrated qualification remains necessary; these bounded results do not justify a helper or SDK runner.
+
+## M8 prospective representative run — 2026-09-17
+
+The operator commissioned one real umbrella spanning controlled architecture changes in `codex-session-md` and dependent AFR/Architecture Guard adoption. The diagrams `docs/m8-controlled-architecture-change-plan.md` contract and `docs/implementation-plan.md` Progress section own requirements and delivery status; this section records observations only. The umbrella counts once, only after combined acceptance, separately from candidate-skill authoring trials.
+
+The governing package remains fixed at repository revision `aa87adb11dcdfb1f2491e438bf4984e24e8e7f6c`, skill tree `c4412558fe8240c0a1ac325ca3a4356cb4848683`. Its coordinator and four references have the corrected R5 hashes listed above. It was explicitly loaded by path. The candidate package is edited in a different worktree and is not the governing revision. Host: native Codex on Linux, CLI `0.154.0`; parent model `gpt-6-astra`, reasoning effort `xhigh`, confirmed from the current session's turn metadata. Goal mode: off; no native goal or substitute coordinator was created. Bounded native Luna implementer/reviewer roles are used under repository/skill delegation guidance and recorded separately from parent execution.
+
+Observed initial dependency chronology: inspect contract/current repositories and provider policy; preserve exact uncommitted M8 contract in isolation (SHA-256 `0d6871d8ac571959293c917aa84b0a705c686578c9ea63f968da27793d209ff3`); run the six pre-change M6 static qualification cases; draft E independently while implementing A–D. No dependent E end-to-end acceptance has started. Source roots retain unrelated dirty planning/goal-mode changes; the consumer's unrelated PR 77 remains untouched.
+
+At initial recording all six M6 cases passed in approximately 1.7 seconds wall time (individual cases 0.237–0.280 seconds), including forbidden-import, weakened-policy, unmapped-source, inert-sentinel, and edited-runner rejection/acceptance. This measures local fixture execution, not total engineering cost or performance improvement. Tool versions observed: Import Linter 2.15 and Node 22.23.2; the existing pinned LikeC4 profile is 1.59.3. No broad application or production validation has run.
+
+Interventions so far: the operator added this prospective qualification requirement, including one controlled pause/resume. No continuation nudge or unnecessary architecture-approval stop has occurred. Pause/resume remains unexercised at this recording; a safe pre-migration boundary is arranged, and no coverage is claimed until the operator actually pauses and resumes. Aggregate tokens, monetary cost, and human attention time are not measured. Completion count remains zero pending both outcomes and combined acceptance. Candidate qualification, remote identities, measured checks/waits, pause/resume observations, final gaps and count will be recorded here as observed.
+
+Before provider work, independent bootstrap review accepted the whole-tree promotion approach subject to base-SHA verification, fixed legacy-control/source identities, strict bounded manifest data, and exact preservation of bridge machinery. Those safeguards were added to the local migration draft; this is design/draft review, not review or execution of the final staged candidate. The old required check remains in force. Independent M8 instruction drafting used one Luna implementer; parent review found and corrected two omissions (host-appropriate instruction chain and explicit greenfield/staged planning) before candidate trials. These were review corrections, not operator continuation nudges.
+
+The existing LikeC4 profile validated the unchanged current model and built a self-contained HTML site. PNG export failed because the required headless browser binary was absent. Browser inspection of the local HTML was blocked by browser URL policy; no workaround or installation was attempted, and visual inspection is not claimed. The build remains a viewable artifact, separate from selection or conformance. One scope question was sent concerning publication of the diagrams checkout's pre-existing unpushed M7 commit; M8-independent local work continued while its answer was pending.
+
+### Safe pre-provider checkpoint
+
+At 2026-09-17 06:31 UTC all native workers were idle, with no operation in flight and no GitHub mutation performed. The operator was asked to issue the pause instruction and subsequently resume; operator pause/resume coverage is still unclaimed. The target candidate is uncommitted on `feat/m8-controlled-architecture` at `c469e8b7a8a8d845438e976e735aa775a8fc31d6`. Worker-reported local static transition/failure cases passed, but its plan-validator probe used `/bin/true`: that establishes harness behavior only, not real LikeC4 model validation. The host's approved Node/LikeC4 toolchain exists; the next turn must run the actual parser, finish malformed-record/provider-input tests, and obtain final protected review before any staging PR. Earlier current-model validation/build does not fill that candidate-validator gap.
+
+The candidate AFR source received one independent bounded instruction review. Its minor completeness finding was corrected by explicitly updating affected obligations, assignments, checks, review scope, and evidence after owner selection of a changed revision. This is source review only; candidate behavioral qualification awaits the delivered gate. The eight migration-draft boundary tests passed locally in 0.012 seconds; no full bootstrap or GitHub path was exercised.
+
+Checkpoint identities below bind the uncommitted candidate files for observed-state resumption; they are evidence, not an additional task ledger.
+
+```json
+{
+  "candidate_afr_package_sha256": {
+    "SKILL.md": "2720daf9e6ac8df3863eb5743d5877bd89c03a4a48cb8566a6215f9a10210883",
+    "agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+    "references/delivery.md": "1421bd2246c206f45f27a233eaf7b39f07c72e3d13b5c3b58e8234942c5ac556",
+    "references/planning.md": "7d061eee558336740b6d11296e54fa0a746537bd4f8738db2d547a03c81d19c6",
+    "references/review.md": "d8597f1dcd2eed986c93aa82c89cde9294f6411988b9e5bb95e5f472a91d26a8",
+    "references/work.md": "5d5199d11c7b5c0c478a506467a8f370599761972b161cb390de50fd281f5528"
+  },
+  "target_candidate_sha256": {
+    ".github/workflows/trusted-architecture-plan-validation.yml": "7d131391e559b62820ac178d275617e65a5a4431e54d110837ad66b2c552ad65",
+    "architecture/README.md": "68ca04f6a2c744c3fc40a1501d4967f695f7401f1a741c0ad39fa40bf1c4f2b5",
+    "architecture/acceptance-policy.json": "9afcc71e913dbe186b91baf4de9c7e2929f4f81e010b6f36dc44de8fad32e9c3",
+    "architecture/likec4-package-lock.json": "23e9eda81a90a8581d61e3d1ab4af09ac2daa54ae9e748784da7d2c1af9d5223",
+    "architecture/likec4-package.json": "888d6ea6608922d171d05975951b18bd3ba53f00d4fc8806054d7d46f4536e34",
+    "architecture/likec4-toolchain.json": "a97b8daa7a0c2b6a9fc3fab38bbeec5c0b1e1bc5e2e8b58b99ce69cd8ac35c87",
+    "architecture/plan-schema.json": "4368525bf85f2e2674222d702578c9d9a0a95bfed817a543adb4a1e24240d281",
+    "scripts/accept_architecture.py": "96408d932c8bca71972e42e7e4e79dee22eb5eb2c0f04ddef4208edcdcda23f7",
+    "scripts/qualify_architecture_acceptance.py": "679bdb111ce36aca8ade2db57395e3f01c904e09cc655c206b69fc9d46326661",
+    "scripts/validate_architecture_plan.py": "1370b349a95aec42d4e9e95fd9488f70e45a07ab66898292830f44819f666598"
+  }
+}
+```
+
+### Observed checkpoint resumption — 2026-09-17 23:26 UTC
+
+The run stopped with idle workers at the planned pre-provider checkpoint. The operator asked why the additional pause/resume exchange was needed; the parent acknowledged that asking for a separate “pause” reply added unnecessary friction. The operator then explicitly sent “resume”. This demonstrates a planned checkpoint stop and operator-directed continuation, not native app interruption, abrupt cancellation, crash recovery, or changed-revision handling by itself. Record the clarification as one avoidable operator interaction. The long interval is an external pause, not active execution cost.
+
+On resume, machine, roots, branches, dirty state, immutable M8 input, every recorded target/candidate-AFR file hash, and the fixed governing package were reobserved. All matched the checkpoint. Fresh fetches and provider reads showed unchanged main revisions and required protection; only unrelated consumer PR 77 remained open. Existing worktrees and drafts were reused and no external write was duplicated. No dependent candidate-AFR acceptance began ahead of gate delivery. A real LikeC4 run then passed the 15-case existing harness, replacing the placeholder-parser gap for its valid-record case; malformed-record and provider-input coverage still require additional focused checks.
+
+
+### Gate qualification before provider migration
+
+After resumption, protected review exposed a regressed inherited base-model membership check; it was restored with whitespace-tolerant matching. The strict record parser is shared by finalization and acceptance. A separate finding established that finalized-record immutability depends on requiring both permanent checks; the documentation and migration endpoint state that dependency explicitly. The first test collection failed because a pytest parameter used the reserved name `request`; renaming the test parameter fixed collection. These are engineering corrections, not operator interventions.
+
+At the final local candidate `227ff4a` (full Git identity available in the consumer repository), 47 focused tests passed in 5.56 seconds with real LikeC4 parsing/export. The native qualification passed 15 cases, including an actual synthetic added module/component/additive rule and an inert execution sentinel. This tests selected static boundaries; it does not exercise the production publisher or dynamic behavior. No broad application suite was needed for the gate-only change.
+
+The exact bootstrap bridge passed nine focused tests plus full offline integration using Git objects and the real Import Linter. Old and proposed gates consumed the same 105 files / 3,069,989 bytes; the old gate failed only for the two reviewed enforcement-control edits, and the proposed gate passed. Extra/missing files, source changes, and changed file modes failed whole-tree equality. These results establish offline bridge behavior only. Final protected review found no outstanding local material issue. The stage payload has 12 exact files and manifest SHA-256 `394e6704e3341f7c350747e29c84037067fc3e5f9d974c9adf40b82a9f6316e3`.
+
+The first authorized M8 remote write published staging PR [82](https://github.com/DrJLabs/codex-session-md/pull/82), head `b6552a28a662a99fe5950d12a53495bb190bab9e`. It leaves the active gate unchanged. Its provider check and remote review are pending at this entry; protection has not yet changed. Candidate AFR end-to-end trials remain dependent on completed gate delivery and provider qualification. The unanswered M7-publication question is resolved conservatively: M8 will be published alone, preserving the unrelated local M7 commit rather than inferring authorization to publish it.
+
+
+### Provider migration, discovered failure, and recovery boundary
+
+Staging PR82 merged at `f25046eea68bc3ad4968c16b5d4a8048110827ad`. The provider bridge for promotion PR83 passed, observing the same 105 files / 3,069,989 bytes as offline qualification; the old gate failed only for the two reviewed control edits, and the proposed gate passed. The normal exact-head protected merge produced `a1301724e7eedea33eea1378408c9e0bb1d412f3` at 23:49:07 UTC. Full before/bridge/after protection receipts show atomic app-bound context replacement/restoration with strict/admin enforcement and all other fields unchanged. Both permanent checks are required.
+
+PR84 then exposed a verification gap: the plan-validation workflow cannot start because its `setup-node` action pin is nonexistent. The workflow used `49933ea5288caeca8642d1b834dc74c9b0d0a3e`; official GitHub v4.4.0 resolves to `49933ea5288caeca8642d1e84afbd3f7d6820020` (verified commit). The parent introduced this unverified pin and local/native parser tests did not establish provider workflow availability. The other required architecture check passes. CodeRabbit supplied summaries/rate-limit notices, not a substantive remote code review; the protected review evidence is the independent native review.
+
+The exact correction is local commit `20e4879`; a local-only one-file repair bridge binds the full current control set and source. Its offline old/new integration passes on the same 105 files / 3,069,990 bytes and rejects extra/missing/source/mode changes. Its manifest identity is `7ebb8aa4fa8b904bbc4acb542151536aa5b4d6e6e8aaa74e26fdc8734b663ec8`. Independent safety review determined that the broken base-side required workflow plus consumed original bridge prevents normal protected repair. A new owner decision is needed before temporarily reducing the permanent check set to stage an exact repair bridge. Both permanent checks and blocked PR84 are preserved unchanged pending that decision. This is a concrete recovery boundary, not a completed outcome or another planned operator pause.
+
+The unchanged baseline record remains proposed in PR84; no finalized consumer record exists on main, no disposable provider exercise has run, and no candidate AFR end-to-end trial has started ahead of its dependency. Governing real-use evidence therefore remains one prospective, unfinished umbrella with completion count zero. Candidate source review is not candidate behavioral qualification. No global installation, host discovery, ChatGPT parity, runtime activation, deployment, broad application test, or crash-recovery coverage is claimed.
+
+Observed cost through the recovery boundary includes 47 focused tests in 5.56 seconds, 15 native cases (individual gate calls around 0.07–0.28 seconds plus real LikeC4), and original/repair bridge integration. GitHub staging acceptance took 47 seconds; promotion bridge 51 seconds; PR84's plan workflow failed in 3 seconds at action resolution while its acceptance took 28 seconds. Resumed execution began 23:26 UTC; the required run failed at 23:52:19 UTC and was inspected before the 23:55:50 UTC live state read, with local recovery preparation afterward. The long 06:31–23:26 pause is excluded from active effort. Token/monetary cost and operator attention time were not available as reliable aggregate measurements; no estimates are presented as measurements. The extra pause clarification remains one avoidable user interaction; the recovery decision is pending and must be recorded as an intervention if supplied.

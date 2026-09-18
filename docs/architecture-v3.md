@@ -141,6 +141,12 @@ Establish evidence for each material requirement, including preservation and fai
 
 Passing implementation-selected tests is insufficient when acceptance remains unmet. Inspect the actual diff and associate evidence with the candidate/base and relevant requirement source. Distinguish passed, failed, timed-out, unavailable, and inconclusive checks. Include useful regression evidence for bug fixes when practical, follow repository requirements, and expand coverage for observed failures or affected risks. Avoid dependency reinstalls or full-baseline reruns without a relevant reason.
 
+### Architecture-aware adoption (M8 draft)
+
+The phase owners now carry a generic architecture-change contract through the existing workflow. Planning discovers the target-owned model, decisions, mappings, native rules, and checks; classifies ordinary versus material boundary changes; and requires a viewable proposal, complexity rationale, and explicit owner selection of the exact revision before dependent implementation. Work carries that selected identity, uses the target's own protocol and checks, and surfaces stale or changed boundaries. Review checks intended design against observed structure and behavior, cumulative complexity, source coverage, exceptions, and control edits. Delivery ties applicable architecture evidence and finalized target-owned identity to the actual candidate and trusted base. The coordinator reobserves that identity on umbrella continuation and resume.
+
+This guidance is deliberately protocol-independent. The consuming project owns proposal format, finalization, native commands, and any trusted gate. It does not add a second workflow, approval system, automatic rebaseline, or architecture runtime. A green model/parser/import check remains insufficient for behavior, and planning or rendering alone does not authorize implementation or establish approval.
+
 ### Review and correction
 
 The [review reference](../.agents/skills/afr/references/review.md) is the canonical method for proportional independent review, finding assessment, bounded correction, and affected rechecks. Its review receives the exact local candidate/base and evidence from the work method; the coordinator retains authority over whether review/correction is authorized and whether the local endpoint is complete.

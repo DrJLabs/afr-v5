@@ -4,7 +4,7 @@ Use when dispatched by the AFR coordinator for authorized direct work or correct
 
 ## Establish the working boundary
 
-Use the sufficient implementation contract and required companions, target instructions, selected assurance, and authorized endpoint. If they are missing or contradict the source, return the specific gap to the coordinator rather than filling it with implementation guesses. Preserve binding behavior and decisions; internal factoring and reversible tactics remain within delegated discretion.
+Use the sufficient implementation contract and required companions, target instructions, selected assurance, selected architecture revision when applicable, and authorized endpoint. If they are missing or contradict the source, return the specific gap to the coordinator rather than filling it with implementation guesses. Preserve binding behavior and decisions; internal factoring and reversible tactics remain within delegated discretion.
 
 Inspect the actual workspace, branch/base, worktree ownership, and tracked, staged, untracked, and relevant ignored changes before writing. Establish which edits belong to this task. Unrelated dirt alone is not a blocker: leave it untouched and separate the requested change where safe. Unexplained overlapping edits, an unsuitable base, or uncertain ownership require a precise decision or safer isolation; do not reset, stash, overwrite, or commit someone else's work to clear the path.
 
@@ -18,6 +18,8 @@ Normally use one implementer for a cohesive outcome. Delegate only independent b
 
 Follow target conventions and make the smallest coherent implementation. Add or adjust focused regression checks when useful. Do not rewrite acceptance, relax compatibility, or introduce a dependency or protected effect merely to simplify implementation.
 
+Before dependent implementation of a material architecture change, confirm that the viewable proposal and explicit owner selection identify the revision being implemented. Use the target's exact architecture protocol and native checks; do not infer approval from a graph, a passing parser, or the absence of existing code. Surface a departure, stale identity, missing owner selection, or changed boundary before proceeding, and route it back through planning. For greenfield work, treat the selected design as a prerequisite rather than treating the empty source tree as conformance evidence. If delivery is staged, identify the accepted intermediate boundary and do not label it conformant to a later full design.
+
 If planning identified an uncertain shared pattern whose replication would be expensive to undo, establish and verify one representative use before spreading it. Preserve unaffected work if that pattern fails; return invalidated decisions or dependent planning to the coordinator. Established patterns do not need a ceremonial prototype.
 
 ## Establish conformance, not just green tests
@@ -29,6 +31,8 @@ Distinguish **passed**, **failed**, **timed out**, **unavailable**, and **inconc
 Inspect the actual candidate diff, including task-owned new files and staged changes, against the authoritative contract and starting state. A helper can pass unit tests while production callers still use an old path; passing selected tests does not establish unmet acceptance. Check consumer adoption and assertion strength where material. Do not change unrelated tests or weaken assertions to manufacture green results.
 
 Associate evidence with the relevant base and candidate. For uncommitted candidates, identify the changed paths/diff and required untracked inputs; a commit SHA alone is insufficient. Refresh evidence after edits that invalidate it, while retaining still-valid results. Include a failing-before/passing-after regression demonstration when practical, not a mandatory broad benchmark.
+
+After owner selection of a changed architecture revision, update affected obligations, assignments, checks, review scope, and evidence before continuing. Preserve unaffected work and evidence, and do not automatically rebaseline or widen a rule to absorb the departure.
 
 ## Return the candidate safely
 
