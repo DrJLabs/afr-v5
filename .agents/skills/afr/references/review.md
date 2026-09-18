@@ -12,7 +12,9 @@ Give the reviewer the authoritative requirements and indispensable companions, t
 
 ## Assess the actual outcome
 
-Review conformance, source defects, compatibility, scope, risk-specific safeguards, and verification effectiveness together. Inspect changed paths and relevant consumers, not just a summary or passing test list. For material behavior ask: **what realistic failure at the consumer/integration boundary should make this evidence fail?** Check that callers adopt the changed behavior, intended checks actually ran, and assertions could detect the regression.
+Review conformance, source defects, compatibility, scope, architecture revision, risk-specific safeguards, and verification effectiveness together. Inspect changed paths and relevant consumers, not just a summary or passing test list. For material behavior ask: **what realistic failure at the consumer/integration boundary should make this evidence fail?** Check that callers adopt the changed behavior, intended checks actually ran, and assertions could detect the regression.
+
+For architectural changes, verify the proposal is viewable, the selected owner and exact revision are recorded by the target's process, and the implementation matches the declared boundaries. Compare intended design with observed source structure and behavioral evidence without treating any one as a substitute. Assess cumulative complexity, source-coverage changes, new or removed exceptions, and edits to controls or check configuration. A material departure or changed revision invalidates affected evidence and returns to planning; it is not an automatic rebaseline or approval.
 
 A green suite can leave acceptance unmet. Demonstrate a claimed gap with the requirement, relevant code/path, and a concrete failure or missing observation. Do not claim a verification defect without inspecting the available evidence. Zero material findings is a valid result; neither a finding quota nor speculative polish improves acceptance.
 

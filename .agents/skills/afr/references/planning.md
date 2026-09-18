@@ -15,6 +15,16 @@ When compressing or decomposing a source, check both directions:
 
 Use references instead of copying large sources when the recipient can access them. A delegated assignment must make required context discoverable; do not bury it among optional reading. Preserve source ownership when an artifact is derived or mirrored. Within permitted planning changes, amend the designated source or add a minimal linked supplement; do not create competing requirements or a duplicate AFR-specific plan by default.
 
+## Ground architecture changes
+
+Discover the target's architecture entrypoint, relevant component and ownership records, native rules, decisions, and configured checks alongside its root instructions. Classify the proposed work before choosing ceremony: ordinary changes within existing boundaries use the existing contract and proportional checks; changes to components, dependency direction, trust or state ownership, runtime services, or material shared abstractions are architectural changes.
+
+For an architectural change, require a viewable proposed design, a viewable current design where one exists, the affected boundaries and rationale, and a complexity explanation covering the requirement, simpler alternative considered, ongoing cost, owner, and what the addition replaces. An explicit owner must select the exact proposal revision before dependent implementation. Reuse that selection only while the proposal is unchanged; changed content requires renewed selection. An unavailable, unviewable, stale, or ambiguous proposal leaves dependent work unresolved while independent safe analysis may continue.
+
+Keep intended architecture, observed source structure, and behavioral evidence separate. The target owns the format, revision protocol, native checks, and decision record; generic AFR guidance must not invent a schema or promote an observed graph into approved intent. A green model or import check does not establish runtime behavior or approval.
+
+For a greenfield target, require a viewable initial intent and explicit owner selection before implementation; an empty source tree is not conformance evidence. For staged delivery, define and accept the intermediate architecture boundary, checks, and evidence separately; do not treat a partial stage as conformant to a later full design.
+
 ## Establish a sufficient implementation contract
 
 Keep three logical layers distinct: **behavior and constraints**, **settled technical decisions**, and the **revisable execution approach**. They may fit in a few sentences rather than separate documents.

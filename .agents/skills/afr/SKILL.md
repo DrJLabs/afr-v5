@@ -61,6 +61,8 @@ For authorized umbrella execution, reuse the sufficient parent contract and its 
 
 Reconcile completed and unfinished obligations with actual source/workspace, check/review, and delivery evidence. A checked plan item or implementer summary alone does not prove its endpoint. For each unfinished outcome, establish whether its required dependency revision or delivery boundary is observed and available in the workspace where the dependent work will occur. An unmerged candidate does not satisfy a merged-base dependency; a remote merge does not prove the local workspace contains it.
 
+When an outcome depends on an architecture revision, reconcile the actual viewable proposal, owner selection, target decision identity, and native-check evidence before selecting dependent work. A changed, stale, or unresolved revision invalidates only affected work and evidence; preserve unaffected outcomes and return the decision through the existing planning route.
+
 Choose the next eligible outcome in explicit plan order, or listed order when no separate order is given, to break otherwise immaterial ties. Eligibility requires a sufficient contract, authority for its next action, and satisfied prerequisites. A consequential unresolved ordering or shared decision is a blocker for affected work, not an arbitrary tie. Continue independent eligible work when safe; if required work remains but none is eligible, report the specific dependency, cycle, scope, authority, or safety blocker rather than completion.
 
 Do not batch dependent implementation ahead of its prerequisite's required verification, review, or delivery boundary. Check that boundary before starting the dependent work; passing combined checks afterward does not establish that the prerequisite was honored.
@@ -76,6 +78,8 @@ Finish the umbrella only when every required outcome has reached its authorized 
 Honor current user steering before consequential actions and after delegated results, using native host controls. A late result cannot restore authority after a stop. If an already-started external action has an uncertain result, observe its state before considering a retry; do not infer success from a timeout.
 
 On an explicit resume, reconcile current intent, the existing authoritative plan, source and workspace changes, relevant PR/check observations if any, and available session context. Resolve existing artifacts, branches, and worktrees before creating replacements. Associate evidence with the actual candidate/base, requirements, and prerequisites; for uncommitted work include the relevant diff and untracked inputs, not HEAD alone. Refresh only decisions, work, checks, or review invalidated by changed inputs. A summary alone is not current evidence.
+
+For architecture-aware work, also reobserve the selected proposal revision, owner selection, target decision record, and applicable native gate before resuming dependent work. Do not resume against a stale identity or infer that a paused run selected a changed design; route the affected decision through planning while retaining unaffected work.
 
 Resume at the missing obligation, not by repeating completed implementation or external writes. A remotely merged PR with incomplete required local synchronization resumes at synchronization through the delivery method. For an umbrella, reconcile outcome endpoints and combined acceptance before selecting unfinished work; completed outcomes may still leave a parent acceptance gap. Do not create a separate state record merely to resume.
 
