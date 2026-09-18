@@ -317,6 +317,23 @@ Before beta disposition:
 
 The predecessor remains available as historical evidence and a donor until v5 proves that its leaner method retains the safety and completion behaviors that matter.
 
+### M9 — native `/goal` integration and qualification
+
+**Source:** optional coordinator lifecycle guidance and planning-contract projection are implemented; native qualification and adoption remain bounded by the [M9 trial record](../tests/m9/README.md). M9 is orthogonal to R7, not an SDK-runner experiment or a prerequisite for ordinary AFR.
+
+Required outcomes:
+
+- goal-aware coordinator behavior and compact projection from the sufficient contract, with ordinary goal-off behavior preserved;
+- bounded native Codex qualification, including activation/control availability, continuation, prerequisite chronology, combined acceptance, resume, authority, blocked completion, objective stability, and host limits;
+- at least one representative real goal-on run, compared with available goal-off evidence with confounders stated; and
+- an evidence-based retain, revise, or remove disposition.
+
+Use the existing package and focused trial/progress surfaces. No goal parser, helper, state file, scheduler, telemetry database, cross-provider abstraction, or App Server controller is added. Review candidate source independently before native goal-on qualification; correct demonstrated causes and repeat only affected cases. Publish invocation examples only for the actually qualified host and loading path. Source review and synthetic fixtures are not representative runs or proof of persistence across turns.
+
+Retain the option only when representative evidence shows fewer unnecessary continuation prompts, better objective retention/resumption, less operator attention, or lower accepted-result time without material regressions in scope, authority, prerequisite ordering, coverage, review, acceptance, or external-effect safety. Revise causal instruction defects; remove guidance that adds confusion or no useful benefit. Ordinary AFR remains available in every disposition.
+
+A qualifying completed real task counts once under the existing representative-run criteria; child outcomes, resumes, authoring changes, and synthetic trials do not multiply it. R7 still requires at least ten representative real runs **and** understood interactive execution; R8 still requires at least twenty runs and its stated coverage. Neither threshold nor M9 completion authorizes an SDK runner, installation, or remote delivery.
+
 ## 10. Complexity budget
 
 The following are design budgets, not targets to fill:
@@ -395,6 +412,8 @@ The canonical historical donor is `DrJLabs/afr`; use the exact commit/path map i
 Every adopted behavior or port must record its exact donor commit/path and whether it was retained, simplified, or rewritten. Prefer behavioral reimplementation and focused test-case transfer. Commit-level cherry-picking is prohibited by default when it imports obsolete runtime, state, packaging, compatibility, or ceremony; an exception must explain why the commit is narrowly coherent and architecture-compatible.
 
 ## 14. Immediate next increment
+
+The current source increment is [M9](#m9--native-goal-integration-and-qualification). Its remaining native qualification, real goal-on evidence, and adoption decision are recorded separately from the completed M8 scope below.
 
 The R3 coordinator, planning reference, work reference, and review reference implement the direct local work/review boundary, R4 adds the delivery reference for one authorized PR, and R5 adds coordinator-owned umbrella continuation while reusing those four references. Keep discovery, host-support, and behavioral claims within the recorded trial evidence; [R2 results](../tests/r2/README.md) are historical for their recorded hashes, [R3 evidence](../tests/r3/README.md) covers local work/review, [R4 evidence](../tests/r4/README.md) covers bounded delivery trials, and [R5 evidence](../tests/r5/README.md) owns bounded continuation observations and limits. The [R6 assessment](r6-helper-assessment.md) selects no helper. The current increment is complete for the bounded M8 scope: exercised candidate architecture behaviors and one bounded combined acceptance are recorded in the R5 trial record. The completed umbrella is counted once for governing AFR revision `aa87adb`, separately from candidate skill qualification. Native interruption/crash recovery, broader release, installation/global activation, and ChatGPT parity remain unqualified. R7 remains conditional on its representative-run threshold; this assessment does not authorize an SDK experiment.
 

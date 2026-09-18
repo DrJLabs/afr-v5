@@ -14,6 +14,8 @@ An optional Codex SDK runner may later launch or resume unattended sessions, but
 
 ## Use AFR
 
+### Ordinary AFR
+
 Explicitly select AFR and identify the target project and goal or existing specification. Where the host has the skill available, use its [explicit invocation syntax](https://learn.chatgpt.com/docs/build-skills#how-chatgpt-and-codex-use-skills):
 
 - Codex CLI or IDE: `$afr Plan the change in <specification> for <target project>`.
@@ -24,6 +26,14 @@ The ChatGPT example describes the host syntax, not an AFR installation or qualif
 The checked-in location and explicit-only `agents/openai.yaml` policy follow the [official Codex skill conventions](https://learn.chatgpt.com/docs/build-skills#where-to-save-skills). Metadata conformance is distinct from observed catalog/UI discovery. No global installation or host configuration change is made by this repository. See the trial record for the tested loading surface and unverified surfaces.
 
 Explicit planning, research, and review-only requests do not authorize implementation or correction, or ordinary target-source edits. Planning may create or amend a planning artifact when explicitly requested, required by the target, or justified for resumability or risk within authority. For an authorized `direct` request, AFR can continue through native implementation, requirement-based verification, actual-diff inspection, proportional independent review, one bounded correction within that implementation authority when selected, and the authorized PR delivery path when the endpoint and host support it. An authorized `umbrella` request can continue dependency-eligible outcomes, respecting exact revision/workspace boundaries, through that same direct sequence and then assess combined parent acceptance; see the [coordinator's umbrella continuation method](.agents/skills/afr/SKILL.md#umbrella-continuation). A review-only request needs explicit fix authority before correction. AFR stops at a verified local candidate, a delivered PR, an accepted umbrella, or an honest blocker.
+
+### AFR with native goal mode
+
+`/goal` adds persistence; AFR remains the workflow and acceptance authority.
+
+The [coordinator](.agents/skills/afr/SKILL.md#native-goal-integration) includes optional native-goal guidance, and [planning](.agents/skills/afr/references/planning.md#project-a-native-goal) can derive a compact objective from the authorized contract. Goal mode is explicitly opt-in; ordinary AFR needs no goal support. Native state and controls belong to the host.
+
+AFR-specific activation sequences, including composing `$afr` and `/goal`, are not yet qualified. The [M9 trial record](tests/m9/README.md) distinguishes observed control availability from executed goal-on behavior. Until an invocation is qualified on the actual host, no combined command sequence is advertised here. Missing controls do not trigger a replacement runtime or global configuration change.
 
 ## Intended end-to-end workflow
 

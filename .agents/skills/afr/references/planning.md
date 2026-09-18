@@ -56,6 +56,21 @@ Define the parent objective, shared invariants/architecture choices, and evidenc
 
 If a new, materially uncertain shared pattern will be replicated widely and a wrong choice would be expensive, propose one representative implementation/verification point before broad repetition. Established conventions, qualified prior use, independent constraints, or cheap reversibility can make this unnecessary. Planning the checkpoint does not itself authorize implementation.
 
+## Project a native goal
+
+Use this section when goal mode is requested, an existing goal needs reconciliation, or a compact suggested objective would materially help an authorized long run. The coordinator owns [activation and lifecycle](../SKILL.md#native-goal-integration); a suggested projection does not start a goal. Use a sufficient contract for the requested endpoint, including a bounded planning/research result when implementation is not yet specified or authorized. Do not create a competing specification or require another plan file.
+
+Project only the essentials:
+
+- **Target and result:** the target and observable outcome.
+- **Authoritative contract:** discoverable specification, issue, plan, selected architecture revision, and indispensable companions as applicable; reference their requirements rather than copying them.
+- **Authorized endpoint:** sufficient plan, review result, verified local candidate, PR creation/convergence, remote merge, or merge plus required synchronization, as actually requested.
+- **Decisive acceptance:** the few observations distinguishing completion from activity, including combined parent acceptance for an umbrella.
+- **Continuation:** unfinished dependency-eligible work within existing authority, preserving each prerequisite's required revision and boundary.
+- **Stops:** current user stop, missing authority, consequential unresolved decisions, stale selected requirements, inaccessible indispensable evidence, unsafe effects, or repeated failure without progress; host limits remain binding.
+
+Aim for roughly 1,000–2,000 characters when useful and stay within the actual host's objective limit; shorter sufficient objectives are valid. Keep detailed requirements and progress in their existing authoritative sources, accessible from the target/session on resume. Check that the projection preserves the contract's outcome and boundary without adding commitments. Return it to the coordinator, retaining a compatible existing objective instead of rewriting it merely to match this format.
+
 ## Planning assurance and self-review
 
 Recommend the lowest adequate assurance from actual consequences, independently of route, diff size, or document length. Applicable target requirements remain binding.
