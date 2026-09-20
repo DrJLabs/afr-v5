@@ -46,6 +46,49 @@ Apply a minimal architecture-contract test: could two competent implementers fol
 
 Map each material requirement to credible evidence. Depending on behavior, that may be a unit, integration, contract, compatibility, property, migration, security, performance, operational, or manual check. Name what it must demonstrate; an existing green test is not automatically evidence for a new acceptance criterion. Record proposed checks as proposed, not executed. No traceability IDs, machine schema, or separate evidence database is required.
 
+## Classify route, assurance, and architecture
+
+Classify **route**, **assurance**, and **architecture status** independently. Do not infer one from another. Return a compact rationale for each classification and identify any unresolved classification uncertainty; this is reasoning evidence, not a required file or schema.
+
+### Route discriminator
+
+Recommend `umbrella` only when all are true:
+
+1. Two or more independently meaningful outcomes exist; they are not merely implementation steps of one feature.
+2. Each outcome has its own observable acceptance boundary.
+3. A meaningful dependency, delivery boundary, shared invariant, architecture revision, or integration relationship exists between the outcomes.
+4. Combined parent acceptance demonstrates something not established by the individual outcome acceptances.
+
+Otherwise recommend `direct` for a known cohesive outcome, regardless of file count, commit count, duration, agent count, frontend/backend span, code-plus-tests structure, or number of chronological implementation steps. Those characteristics alone never justify an umbrella.
+
+Recommend `spike` when a bounded factual or technical uncertainty prevents a sufficient contract and inspection or experimentation can reasonably resolve it. Recommend `stop` when progress requires authority, an owner/product/security decision, inaccessible indispensable context, unsafe or prohibited work, or another condition that evidence gathering cannot legitimately resolve.
+
+When `direct` and `umbrella` are both plausible, prefer `direct` unless all umbrella conditions are affirmatively established. As a counterfactual check, ask: **if this work were completed on one branch and reviewed together, would a meaningful independent delivery or acceptance boundary be lost?** If not, prefer `direct`.
+
+### Assurance discriminator
+
+Use `protected` when the requested change materially affects security or trust boundaries, irreversible or difficult-to-rollback state, migration or backward compatibility, concurrency or ordering correctness, reliability or availability, externally consumed contracts, consequential performance/resource limits, regulated or safety-sensitive behavior, or comparable high-consequence effects.
+
+Use `lean` only when all are true:
+
+- intended behavior is clear;
+- the change remains within established boundaries;
+- failure impact is limited;
+- the work is readily reversible;
+- focused verification is credible;
+- no consequential unresolved tradeoff remains; and
+- no protected trigger applies.
+
+Otherwise use `standard`. Do not select `protected` merely because work is large, long-running, or uncertain. When `lean` and `standard` are both plausible, prefer `standard` while material uncertainty remains. As a counterfactual check for `protected`, name the concrete failure mode that requires assurance beyond `standard`; if none can be identified, do not escalate solely for ceremony.
+
+### Architecture discriminator
+
+Treat work as architectural when it materially changes a durable component responsibility, dependency direction, state or trust ownership, runtime or service boundary, public/internal interface ownership, deployment topology, persistence authority, or shared abstraction that constrains multiple components.
+
+Internal factoring, file or module changes, helper abstractions, algorithm changes behind established interfaces, test reorganization, code movement without responsibility changes, or an implementation-library replacement are not architectural by themselves.
+
+When uncertain, identify the specific durable boundary whose status is unclear and investigate it rather than assuming architectural scope. As a counterfactual check, ask: **which durable boundary or ownership rule changes?** If the answer is only code structure, treat the change as ordinary unless other evidence establishes an architectural effect.
+
 ## Size outcomes and dependencies
 
 Recommend `direct` for one cohesive outcome even if it spans files or commits. Recommend `umbrella` only for independently deliverable outcomes, not implementation microsteps. Each required outcome needs observable acceptance and a delivery boundary consistent with the user's endpoint.
@@ -73,7 +116,7 @@ Aim for roughly 1,000–2,000 characters when useful and stay within the actual 
 
 ## Planning assurance and self-review
 
-Recommend the lowest adequate assurance from actual consequences, independently of route, diff size, or document length. Applicable target requirements remain binding.
+Apply the assurance discriminator above and select the lowest level that satisfies it; do not downgrade an unresolved material risk to reduce ceremony. Route, diff size, document length, duration, or agent count do not determine assurance. Applicable target requirements remain binding.
 
 | Assurance | Planning expectation | Expected later verification/review |
 | --- | --- | --- |

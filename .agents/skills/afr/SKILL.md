@@ -39,6 +39,16 @@ Choose the smallest route that fits the outcome, independently of assurance:
 | `spike` | A bounded investigation is needed before implementation can be specified honestly | The question, observed evidence, conclusion or remaining uncertainty, and recommended next step |
 | `stop` | A user stop, unsafe/prohibited work, missing authority, unresolved required decision, or inaccessible indispensable context prevents further work | The specific boundary and smallest action that would permit resumption, if applicable |
 
+### Route discriminator
+
+The coordinator retains final route selection. When planning is involved, apply the detailed route discriminator in [planning](references/planning.md) and keep route independent from assurance and architecture status.
+
+Use `umbrella` only when all are affirmatively established: there are at least two independently meaningful outcomes, each has an observable acceptance boundary, a meaningful dependency/integration relationship exists between them, and combined parent acceptance proves something not established by individual outcome acceptance. Otherwise use `direct` for a known cohesive outcome.
+
+Use `spike` when a bounded factual or technical uncertainty prevents a sufficient contract and evidence gathering can reasonably resolve it. Use `stop` when affected progress requires authority, an owner/product/security decision, inaccessible indispensable context, unsafe or prohibited work, or another condition that evidence gathering cannot legitimately resolve.
+
+File count, commit count, duration, agent count, frontend/backend span, code-plus-tests structure, or number of chronological steps do not by themselves justify an umbrella. When `direct` and `umbrella` are both plausible, prefer `direct` unless the umbrella conditions are established.
+
 A multi-commit feature does not automatically need an umbrella. Research cannot decide an unassigned product/security policy or authorize its proposed implementation. A useful completed spike is a valid result even when no implementation-ready contract follows.
 
 If a decision blocks only one part of planning, continue independent safe analysis where useful and keep the dependent portion visibly unresolved. Do not turn lack of a future execution phase into a reason to invent work, or repeatedly replan a contract that is already sufficient.
