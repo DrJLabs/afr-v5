@@ -62,7 +62,7 @@ Refreshing the working folder uses its own configuration and a fresh expected sn
 
 ## Failure and recovery
 
-- **Capture fails:** the previous latest snapshot remains accepted. Read the specific error; fix network, invalid package, duplicate name, configuration, or tampering before retrying. Do not force acceptance or use bisync/resync. A source change during capture can retry on the next schedule.
+- **Capture fails:** the previous latest snapshot remains accepted. Read the specific error; fix network, invalid package, duplicate name, configuration, or tampering before retrying. Filesystem errors report an errno and description; check storage space and permissions before retrying. Do not force acceptance or use bisync/resync. A source change during capture can retry on the next schedule.
 - **Process interruption:** no incomplete directory is latest. A later capture uses a new temporary destination; the operating system releases the process lock. Inspect leftover temporary directories before deleting only known abandoned attempts.
 - **Lock busy:** wait for the active operation. Do not delete locks or run a second publisher for the same target under another state configuration.
 - **Publication detects stale input:** no initial upload occurs. Capture the current target and inspect its edits before deciding what to publish; do not replace the expected argument blindly.

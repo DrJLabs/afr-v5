@@ -1,6 +1,8 @@
 import fcntl
+import errno
 import hashlib
 import importlib.util
+import io
 import json
 import os
 import shutil
@@ -164,6 +166,96 @@ class SkillSyncTests(unittest.TestCase):
         self.assertEqual(previous.read_bytes(), PACKAGE_A["SKILL.md"])
         self.assertEqual(author_file.read_text(encoding="utf-8"), "local draft survives\n")
         self.assertEqual(os.readlink(self.config["state_dir"] / "latest"), f"snapshots/{first['snapshot_id']}")
+
+    def test_cli_capture_filesystem_error_is_sanitized_and_preserves_latest(self):
+        transport = FakeTransport(PACKAGE_A, self.config)
+        first = sync.capture(self.config, transport)
+        previous_file = Path(first["snapshot_path"]) / "content" / "SKILL.md"
+        transport.blobs = dict(PACKAGE_B)
+
+        config_path = self.root / "cli-config.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "remote": self.config["remote"],
+                    "folder_id": self.config["folder_id"],
+                    "state_dir": str(self.config["state_dir"]),
+                    "default_ref": self.config["default_ref"],
+                    "max_files": self.config["max_files"],
+                    "max_bytes": self.config["max_bytes"],
+                }
+            ),
+            encoding="utf-8",
+        )
+        original_mkdir = Path.mkdir
+
+        def mkdir_with_enospc(path, *args, **kwargs):
+            if path.name == "references" and path.parent.name == "content" and path.parent.parent.name.startswith(".capture-"):
+                raise OSError(errno.ENOSPC, os.strerror(errno.ENOSPC), str(path))
+            return original_mkdir(path, *args, **kwargs)
+
+        stdout = io.StringIO()
+        stderr = io.StringIO()
+        with (
+            mock.patch.object(sync, "RcloneTransport", return_value=transport),
+            mock.patch.object(Path, "mkdir", new=mkdir_with_enospc),
+            mock.patch.object(sync.sys, "stdout", stdout),
+            mock.patch.object(sync.sys, "stderr", stderr),
+        ):
+            code = sync.main(["--config", str(config_path), "capture"])
+
+        message = stderr.getvalue()
+        self.assertEqual(code, 1)
+        self.assertEqual(stdout.getvalue(), "")
+        self.assertIn(f"errno {errno.ENOSPC}: {os.strerror(errno.ENOSPC)}", message)
+        self.assertIn("no partial snapshot was promoted", message)
+        self.assertNotIn(str(self.root), message)
+        self.assertNotIn("Traceback", message)
+        self.assertEqual(os.readlink(self.config["state_dir"] / "latest"), f"snapshots/{first['snapshot_id']}")
+        self.assertEqual(previous_file.read_bytes(), PACKAGE_A["SKILL.md"])
+        self.assertFalse(list((self.config["state_dir"] / "snapshots").glob(".capture-*")))
+
+    def test_cli_publish_filesystem_error_requests_target_reobservation(self):
+        config_path = self.root / "cli-config.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "remote": self.config["remote"],
+                    "folder_id": self.config["folder_id"],
+                    "state_dir": str(self.config["state_dir"]),
+                }
+            ),
+            encoding="utf-8",
+        )
+        stdout = io.StringIO()
+        stderr = io.StringIO()
+        with (
+            mock.patch.object(sync, "publish", side_effect=OSError(errno.EIO, os.strerror(errno.EIO), "/private/path")),
+            mock.patch.object(sync.sys, "stdout", stdout),
+            mock.patch.object(sync.sys, "stderr", stderr),
+        ):
+            code = sync.main(
+                [
+                    "--config",
+                    str(config_path),
+                    "publish",
+                    "--repo",
+                    str(self.root / "repo"),
+                    "--revision",
+                    "1" * 40,
+                    "--expected",
+                    "20260926T000000Z-0123456789ab",
+                    "--writers-paused",
+                ]
+            )
+
+        message = stderr.getvalue()
+        self.assertEqual(code, 1)
+        self.assertEqual(stdout.getvalue(), "")
+        self.assertIn("publication may be partial", message)
+        self.assertIn("Reobserve the target before any recovery", message)
+        self.assertNotIn("/private/path", message)
+        self.assertNotIn("Traceback", message)
 
     def test_new_snapshot_retains_prior_snapshot_and_does_not_touch_author_file(self):
         transport = FakeTransport(PACKAGE_A, self.config)

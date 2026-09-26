@@ -595,10 +595,10 @@ def capture(config: dict, transport=None) -> dict:
             return _capture_result(config, latest[0], manifest, "unchanged")
 
         staging = Path(tempfile.mkdtemp(prefix=".capture-", dir=snapshots))
-        os.chmod(staging, 0o700)
-        content = staging / "content"
-        content.mkdir(mode=0o700)
         try:
+            os.chmod(staging, 0o700)
+            content = staging / "content"
+            content.mkdir(mode=0o700)
             for entry in first:
                 if entry["is_dir"]:
                     continue
@@ -992,6 +992,17 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     except SyncError as exc:
         sys.stderr.write(f"error: {exc}\n")
+        return 1
+    except OSError as exc:
+        code = exc.errno
+        detail = f"errno {code}: {os.strerror(code)}" if isinstance(code, int) else "unknown filesystem error"
+        if args.operation == "publish":
+            message = f"publication filesystem failure ({detail}); the remote publication may be partial. Reobserve the target before any recovery."
+        elif args.operation == "capture":
+            message = f"capture filesystem failure ({detail}); no partial snapshot was promoted."
+        else:
+            message = f"status filesystem failure ({detail})."
+        sys.stderr.write(f"error: {message}\n")
         return 1
     except KeyboardInterrupt:
         if args.operation == "publish":
