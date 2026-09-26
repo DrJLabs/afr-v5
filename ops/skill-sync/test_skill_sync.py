@@ -28,7 +28,7 @@ PACKAGE_A = {
 PACKAGE_B = {path: data.replace(b"A", b"B") for path, data in PACKAGE_A.items()}
 
 
-def raw_items(blobs, ids=None):
+def raw_items(blobs, ids=None, md5_only=False):
     ids = ids or {}
     dirs = {"agents", "references"}
     result = []
@@ -44,6 +44,9 @@ def raw_items(blobs, ids=None):
             }
         )
     for path, data in sorted(blobs.items()):
+        hashes = {"MD5": hashlib.md5(data).hexdigest()}
+        if not md5_only:
+            hashes["SHA-256"] = hashlib.sha256(data).hexdigest()
         result.append(
             {
                 "Path": path,
@@ -51,17 +54,19 @@ def raw_items(blobs, ids=None):
                 "ID": ids.get(path, "id-" + path),
                 "MimeType": "text/plain",
                 "Size": len(data),
-                "Hashes": {"MD5": hashlib.md5(data).hexdigest(), "SHA-256": hashlib.sha256(data).hexdigest()},
+                "Hashes": hashes,
             }
         )
     return result
 
 
 class FakeTransport:
-    def __init__(self, blobs, config, fail_download=None):
+    def __init__(self, blobs, config, fail_download=None, md5_only=False):
         self.blobs = dict(blobs)
         self.config = config
         self.fail_download = fail_download
+        self.md5_only = md5_only
+        self.download_override = None
         self.download_count = 0
         self.upload_count = 0
         self.list_count = 0
@@ -72,11 +77,14 @@ class FakeTransport:
 
     def list_inventory(self):
         self.list_count += 1
-        return sync.normalize_inventory(raw_items(self.blobs, self.id_map), self.config)
+        return sync.normalize_inventory(raw_items(self.blobs, self.id_map, self.md5_only), self.config)
 
     def download(self, relpath, destination):
         self.download_count += 1
-        destination.write_bytes(self.blobs[relpath])
+        payload = self.blobs[relpath]
+        if self.download_override is not None:
+            payload = self.download_override.get(relpath, payload)
+        destination.write_bytes(payload)
         if self.fail_download == "network":
             raise sync.SyncError("fake transport network failure")
         if self.fail_download == "interrupt":
@@ -95,7 +103,7 @@ class FakeTransport:
 class SkillSyncTests(unittest.TestCase):
     def setUp(self):
         # Use an isolated temporary filesystem location for private state and Git fixtures.
-        self.temp = tempfile.TemporaryDirectory(prefix="afr-skill-sync-test-", dir="/dev/shm")
+        self.temp = tempfile.TemporaryDirectory(prefix="afr-skill-sync-test-")
         self.root = Path(self.temp.name)
         self.config = {
             "remote": "drive:",
@@ -257,12 +265,48 @@ class SkillSyncTests(unittest.TestCase):
         repo, revision = self._git_repo(PACKAGE_A)
         default_transport = FakeTransport(PACKAGE_A, self.config)
         with mock.patch.object(sync, "RcloneTransport", return_value=default_transport) as factory:
-            sync.publish(self.config, str(repo), revision, expected["snapshot_path"], True)
+            result = sync.publish(self.config, str(repo), revision, expected["snapshot_path"], True)
         self.assertEqual(factory.call_count, 1)
         deadline = factory.call_args.args[1]
         self.assertIsInstance(deadline, float)
         self.assertGreater(deadline, time.monotonic())
         self.assertLessEqual(deadline - time.monotonic(), sync.OPERATION_TIMEOUT_SECONDS)
+        self.assertEqual(result["changed_files"], 0)
+        self.assertEqual(result["snapshot_id"], expected["snapshot_id"])
+
+    def test_md5_only_publication_is_rejected_without_writes(self):
+        transport = FakeTransport(PACKAGE_A, self.config, md5_only=True)
+        expected = sync.capture(self.config, transport)
+        repo, revision = self._git_repo(PACKAGE_B, name="md5-only-repo")
+        list_count = transport.list_count
+
+        with self.assertRaisesRegex(sync.SyncError, "SHA-256.*refused"):
+            sync.publish(self.config, str(repo), revision, expected["snapshot_path"], True, transport)
+        self.assertEqual(transport.upload_count, 0)
+        self.assertEqual(transport.list_count, list_count)
+        self.assertEqual(transport.blobs, PACKAGE_A)
+        self.assertEqual((Path(expected["snapshot_path"]) / "content" / "SKILL.md").read_bytes(), PACKAGE_A["SKILL.md"])
+
+    def test_md5_only_fresh_target_is_rejected_before_first_upload(self):
+        config = dict(self.config, state_dir=self.root / "sha-snapshot-md5-target-state")
+        transport = FakeTransport(PACKAGE_A, config)
+        expected = sync.capture(config, transport)
+        transport.md5_only = True
+        repo, revision = self._git_repo(PACKAGE_B, name="md5-target-repo")
+
+        with self.assertRaisesRegex(sync.SyncError, "SHA-256.*refused"):
+            sync.publish(config, str(repo), revision, expected["snapshot_path"], True, transport)
+        self.assertEqual(transport.upload_count, 0)
+        self.assertEqual(transport.blobs, PACKAGE_A)
+
+    def test_rclone_upload_forces_copy_for_selected_files(self):
+        transport = sync.RcloneTransport(self.config)
+        result = mock.Mock(returncode=0, stdout=b"", stderr=b"")
+        with mock.patch.object(sync.subprocess, "run", return_value=result) as run:
+            transport.upload(self.root / "source.txt", "SKILL.md")
+        command = run.call_args.args[0]
+        self.assertIn("--ignore-times", command)
+        self.assertNotIn("--checksum", command)
 
     def test_stale_publish_and_unmerged_revision_make_no_writes(self):
         transport = FakeTransport(PACKAGE_A, self.config)

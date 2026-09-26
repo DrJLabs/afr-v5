@@ -43,7 +43,7 @@ Create or reuse an ordinary feature branch/worktree for accepted edits. Copy onl
 
 Create a second private configuration for the **published** Drive folder with a different state directory, for example `~/.config/afr-skill-sync/published.json`. The timer uses only `working.json`. A capture of the published folder is the expected-before backup for publication.
 
-Publication requires a full Git commit already contained in the fetched default-branch reference (`origin/main` by default), a verified expected snapshot of the target, and an actual quiet editing window. Fetch the correct remote, verify review/merge evidence, pause writers to that target, and keep consumers from loading it until the operation finishes. The `--writers-paused` flag records the caller's assertion; it cannot pause remote users or provide a server-side lock.
+Publication requires a full Git commit already contained in the fetched default-branch reference (`origin/main` by default), a verified expected snapshot with SHA-256 hashes for every target file, and an actual quiet editing window. MD5-only snapshots can be captured for inspection but publication refuses them before writing. Fetch the correct remote, verify review/merge evidence, pause writers to that target, and keep consumers from loading it until the operation finishes. The `--writers-paused` flag records the caller's assertion; it cannot pause remote users or provide a server-side lock.
 
 ```sh
 python3 ~/.local/lib/afr-skill-sync/skill_sync.py --config ~/.config/afr-skill-sync/published.json capture
@@ -52,7 +52,7 @@ python3 ~/.local/lib/afr-skill-sync/skill_sync.py --config ~/.config/afr-skill-s
   --expected /path/to/verified/published/snapshot --writers-paused
 ```
 
-Use the exact snapshot path reported by capture/status. The utility extracts Git content; dirty checkout bytes are not publication inputs. This first publisher supports the current six-file AFR package, requires the same target paths, checks the expected target, updates only changed files in place, and verifies all bytes and original Drive file IDs afterward. File additions/removals/renames require a separate attended migration. A successful capture does not grant publication authority or establish review.
+Use the exact snapshot path reported by capture/status. The utility extracts Git content; dirty checkout bytes are not publication inputs. This first publisher supports the current six-file AFR package, requires the same target paths, checks the expected target, updates only changed files in place, and compares every downloaded final file directly with the Git bytes while verifying original Drive file IDs. The final comparison also runs when no upload is needed. File additions/removals/renames require a separate attended migration. A successful capture does not grant publication authority or establish review.
 
 Refreshing the working folder uses its own configuration and a fresh expected snapshot, after its pending drafts have been reviewed or explicitly preserved. Never refresh it merely because `main` changed. Install the reviewed skill separately: back up the installed package, check for drift, copy the exact accepted source, then compare all relative paths and hashes. An installation does not reload running sessions.
 
@@ -67,6 +67,8 @@ Refreshing the working folder uses its own configuration and a fresh expected sn
 - **Disable:** stop/disable `afr-skill-capture.timer`, observe whether the service is still active, and stop it if needed. Retain configuration and snapshots; ordinary explicit AFR delivery remains available.
 
 Drive publication is per-file and has no established compare-and-swap protection. These pre/post checks detect observed drift; they do not make concurrent publication safe. Snapshot capture avoids the previously reproduced local edit-loss race by never writing an authoring location.
+
+Subprocess failures report the operation and status without copying raw rclone or Git diagnostics into the service journal. For an inventory failure, run an attended `rclone lsjson YOUR_REMOTE: --drive-root-folder-id YOUR_FOLDER_ID --recursive --hash --drive-show-all-gdocs=true` using the configured values; inspect diagnostics locally and avoid posting credentials or private file metadata. For Git failures, check the repository and exact revision with `git -C /path/to/repo rev-parse --verify FULL_SHA` and inspect the configured default ref. Never rerun an upload simply to collect diagnostics. If the home directory is itself a real Git repository, use private state outside it and adjust the service's `ReadWritePaths` accordingly; the guard intentionally includes that repository.
 
 ## Checks
 

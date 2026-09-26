@@ -405,7 +405,7 @@ class RcloneTransport:
             [
                 "rclone",
                 "copyto",
-                "--checksum",
+                "--ignore-times",
                 "--drive-root-folder-id",
                 self.config["folder_id"],
                 str(source),
@@ -819,6 +819,11 @@ def _entry_file_map(entries: list[dict]) -> dict[str, dict]:
     return {entry["path"]: entry for entry in entries if not entry["is_dir"]}
 
 
+def _require_sha256(entries: list[dict], label: str) -> None:
+    if any("sha256" not in entry["hashes"] for entry in entries if not entry["is_dir"]):
+        raise SyncError(f"{label} lacks SHA-256 for one or more files; publication is refused")
+
+
 def _expected_after_write(current: list[dict], path: str, data: bytes) -> list[dict]:
     result = []
     for entry in current:
@@ -842,19 +847,20 @@ def publish(config: dict, repo_arg: str, revision: str, expected: str, writers_p
         transport = transport or RcloneTransport(config, deadline)
         snapshot_dir = _expected_snapshot_path(expected, state_dir)
         manifest = verify_snapshot(snapshot_dir, config)
+        _require_sha256(manifest["inventory"], "expected snapshot")
         _, source_files = git_package(repo_arg, revision, config["default_ref"], config, deadline)
         baseline_files = _entry_file_map(manifest["inventory"])
         if set(source_files) != set(baseline_files) or set(source_files) != REQUIRED_FILES:
             raise SyncError("Git package and expected snapshot must have the same six-file set")
-
-        changed = [path for path in sorted(source_files) if baseline_files[path]["size"] != len(source_files[path]) or any(
-            baseline_files[path]["hashes"].get(name) != digest
-            for name, digest in {"md5": hashlib.md5(source_files[path]).hexdigest(), "sha256": sha256_bytes(source_files[path])}.items()
-            if name in baseline_files[path]["hashes"]
-        )]
+        snapshot_content = snapshot_dir / "content"
+        snapshot_bytes = {
+            path: snapshot_content.joinpath(*path.split("/")).read_bytes() for path in sorted(baseline_files)
+        }
+        changed = [path for path in sorted(source_files) if source_files[path] != snapshot_bytes[path]]
 
         # The first fresh observation is the stale-snapshot guard and the pre-write check.
         current = transport.list_inventory()
+        _require_sha256(current, "current target")
         if current != manifest["inventory"]:
             raise SyncError("expected snapshot is stale; no publication writes were made")
 
@@ -875,6 +881,7 @@ def publish(config: dict, repo_arg: str, revision: str, expected: str, writers_p
             for index, relpath in enumerate(changed):
                 if index > 0:
                     observed = transport.list_inventory()
+                    _require_sha256(observed, "current target")
                     if observed != current:
                         raise SyncError("remote changed during publication; stopped before the next copy")
                 local_file = source_root.joinpath(*relpath.split("/"))
@@ -884,6 +891,7 @@ def publish(config: dict, repo_arg: str, revision: str, expected: str, writers_p
 
             # Verify the full remote bytes and IDs, then verify inventory stability across downloads.
             observed = transport.list_inventory()
+            _require_sha256(observed, "final target")
             if observed != current:
                 raise SyncError("final remote inventory differs from the expected in-place publication")
             for relpath in sorted(source_files):
@@ -891,7 +899,11 @@ def publish(config: dict, repo_arg: str, revision: str, expected: str, writers_p
                 destination.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
                 transport.download(relpath, destination)
             verify_content(verification_root, current)
+            for relpath, source_bytes in source_files.items():
+                if verification_root.joinpath(*relpath.split("/")).read_bytes() != source_bytes:
+                    raise SyncError("final downloaded bytes differ from the immutable Git source")
             final_inventory = transport.list_inventory()
+            _require_sha256(final_inventory, "final target")
             if final_inventory != current:
                 raise SyncError("remote inventory changed during final verification")
             final_ids = {entry["path"]: entry["id"] for entry in final_inventory if not entry["is_dir"]}
