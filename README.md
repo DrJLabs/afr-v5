@@ -77,6 +77,7 @@ understand the request
 - [`docs/donor-matrix.md`](docs/donor-matrix.md) records inspected historical sources, extraction decisions, and evaluation scenarios.
 - [`docs/roadmap.md`](docs/roadmap.md) records the delivery sequence and complexity budgets.
 - [`docs/r6-helper-assessment.md`](docs/r6-helper-assessment.md) records the zero-helper R6 decision, candidate dispositions, evidence limits, and next qualification boundary.
+- [`ops/skill-sync/README.md`](ops/skill-sync/README.md) documents optional host installation for read-only Drive snapshots and controlled publication. Its [synchronization plan](docs/skill-synchronization-plan.md) records the tested failure that ruled out a live two-way mirror. AFR itself does not require this utility or its timer.
 
 The previous AFR implementation is a donor and defect corpus. AFR v5 will recover its strongest skill-based workflow ideas and hardened safety lessons without importing its custom runtime, gate machinery, or accumulated ceremony wholesale.
 
