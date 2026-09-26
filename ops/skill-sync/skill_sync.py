@@ -387,11 +387,22 @@ class RcloneTransport:
             raise SyncError("rclone returned an invalid inventory") from None
         return normalize_inventory(raw, self.config)
 
-    def download(self, relpath: str, destination: Path) -> None:
+    def download(self, relpath: str, destination: Path, max_bytes: int) -> None:
+        if isinstance(max_bytes, bool) or not isinstance(max_bytes, int) or max_bytes < 0:
+            raise SyncError("download requires a valid expected size")
         self._run(
             [
                 "rclone",
                 "copyto",
+                "--max-transfer",
+                f"{max_bytes + 1}B",
+                "--cutoff-mode",
+                "HARD",
+                "--transfers",
+                "1",
+                "--multi-thread-streams",
+                "0",
+                "--local-no-preallocate",
                 "--drive-root-folder-id",
                 self.config["folder_id"],
                 self.config["remote"] + relpath,
@@ -399,6 +410,14 @@ class RcloneTransport:
             ],
             "download",
         )
+        try:
+            info = destination.lstat()
+        except OSError:
+            raise SyncError("download did not create a regular local file") from None
+        if not stat.S_ISREG(info.st_mode) or stat.S_ISLNK(info.st_mode):
+            raise SyncError("download did not create a regular local file")
+        if info.st_size != max_bytes:
+            raise SyncError("download size differs from the inventoried size")
 
     def upload(self, source: Path, relpath: str) -> None:
         self._run(
@@ -584,7 +603,7 @@ def capture(config: dict, transport=None) -> dict:
                     continue
                 destination = content.joinpath(*entry["path"].split("/"))
                 destination.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
-                transport.download(entry["path"], destination)
+                transport.download(entry["path"], destination, entry["size"])
                 try:
                     file_info = destination.lstat()
                     if not stat.S_ISREG(file_info.st_mode) or stat.S_ISLNK(file_info.st_mode):
@@ -900,7 +919,7 @@ def publish(config: dict, repo_arg: str, revision: str, expected: str, writers_p
             for relpath in sorted(source_files):
                 destination = verification_root.joinpath(*relpath.split("/"))
                 destination.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
-                transport.download(relpath, destination)
+                transport.download(relpath, destination, len(source_files[relpath]))
             verify_content(verification_root, current)
             for relpath, source_bytes in source_files.items():
                 if verification_root.joinpath(*relpath.split("/")).read_bytes() != source_bytes:

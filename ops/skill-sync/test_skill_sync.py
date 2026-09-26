@@ -3,6 +3,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import shutil
 import subprocess
 import tempfile
 import time
@@ -68,6 +69,7 @@ class FakeTransport:
         self.md5_only = md5_only
         self.download_override = None
         self.download_count = 0
+        self.download_sizes = []
         self.upload_count = 0
         self.list_count = 0
         self.id_map = {item["Path"]: item["ID"] for item in raw_items(self.blobs)}
@@ -79,8 +81,9 @@ class FakeTransport:
         self.list_count += 1
         return sync.normalize_inventory(raw_items(self.blobs, self.id_map, self.md5_only), self.config)
 
-    def download(self, relpath, destination):
+    def download(self, relpath, destination, max_bytes):
         self.download_count += 1
+        self.download_sizes.append((relpath, max_bytes))
         payload = self.blobs[relpath]
         if self.download_override is not None:
             payload = self.download_override.get(relpath, payload)
@@ -122,6 +125,10 @@ class SkillSyncTests(unittest.TestCase):
         first = sync.capture(self.config, transport)
         self.assertEqual(first["result"], "captured")
         self.assertEqual(transport.download_count, 6)
+        self.assertEqual(
+            transport.download_sizes,
+            [(path, len(PACKAGE_A[path])) for path in sorted(PACKAGE_A)],
+        )
 
         transport.download_count = 0
         transport.list_count = 0
@@ -245,18 +252,25 @@ class SkillSyncTests(unittest.TestCase):
     def test_publish_uses_immutable_commit_and_preserves_drive_ids(self):
         transport = FakeTransport(PACKAGE_A, self.config)
         expected = sync.capture(self.config, transport)
-        repo, revision = self._git_repo()
+        source_package = dict(PACKAGE_B)
+        source_package["SKILL.md"] = b"skill B has a longer reviewed source\n"
+        repo, revision = self._git_repo(source_package)
         dirty_file = repo / ".agents/skills/afr/SKILL.md"
         dirty_file.write_bytes(b"dirty worktree bytes\n")
         original_ids = {entry["path"]: entry["id"] for entry in transport.list_inventory() if not entry["is_dir"]}
+        transport.download_sizes.clear()
 
         result = sync.publish(self.config, str(repo), revision, expected["snapshot_path"], True, transport)
         final_ids = {entry["path"]: entry["id"] for entry in transport.list_inventory() if not entry["is_dir"]}
-        self.assertEqual(transport.blobs, PACKAGE_B)
+        self.assertEqual(transport.blobs, source_package)
         self.assertEqual(dirty_file.read_bytes(), b"dirty worktree bytes\n")
         self.assertEqual(final_ids, original_ids)
         self.assertEqual(result["revision"], revision)
         self.assertEqual(result["changed_files"], 6)
+        self.assertEqual(
+            transport.download_sizes,
+            [(path, len(source_package[path])) for path in sorted(source_package)],
+        )
         self.assertFalse(list(self.config["state_dir"].glob(".publish-*")))
 
     def test_publish_ignores_git_replace_refs_for_reviewed_source(self):
@@ -361,6 +375,32 @@ class SkillSyncTests(unittest.TestCase):
         command = run.call_args.args[0]
         self.assertIn("--ignore-times", command)
         self.assertNotIn("--checksum", command)
+
+    @unittest.skipUnless(shutil.which("rclone"), "rclone is needed for the local transfer-cap regression")
+    def test_rclone_download_caps_growth_and_accepts_exact_and_zero_sizes(self):
+        remote_root = self.root / "local-rclone-remote"
+        remote_root.mkdir()
+        (remote_root / "grown.bin").write_bytes(b"x" * 4096)
+        exact_bytes = b"exact boundary bytes\n"
+        (remote_root / "exact.bin").write_bytes(exact_bytes)
+        (remote_root / "empty.bin").write_bytes(b"")
+        transport = sync.RcloneTransport(
+            {"remote": str(remote_root) + os.sep, "folder_id": "unused-local-fixture"},
+            time.monotonic() + 30,
+        )
+
+        oversized_destination = self.root / "oversized-download.bin"
+        with self.assertRaisesRegex(sync.SyncError, "rclone download failed"):
+            transport.download("grown.bin", oversized_destination, 1)
+        self.assertFalse(oversized_destination.exists())
+
+        exact_destination = self.root / "exact-download.bin"
+        transport.download("exact.bin", exact_destination, len(exact_bytes))
+        self.assertEqual(exact_destination.read_bytes(), exact_bytes)
+
+        empty_destination = self.root / "empty-download.bin"
+        transport.download("empty.bin", empty_destination, 0)
+        self.assertEqual(empty_destination.read_bytes(), b"")
 
     def test_stale_publish_and_unmerged_revision_make_no_writes(self):
         transport = FakeTransport(PACKAGE_A, self.config)

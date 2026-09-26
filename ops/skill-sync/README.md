@@ -6,6 +6,8 @@ The timer reads an editable Drive working folder into private verified snapshots
 
 The transport is qualified against rclone 1.74.4. Inventory requests expose native Google documents and shortcuts rather than hiding them, and reject both before download. Rclone represents a resolved shortcut using a composite ID; recheck that behavior when upgrading rclone. See the pinned [Drive implementation](https://github.com/rclone/rclone/blob/v1.74.4/backend/drive/drive.go) and [listing format](https://github.com/rclone/rclone/blob/v1.74.4/fs/operations/lsjson.go).
 
+Each download has a hard transfer cap of its expected size plus one detection byte, with preallocation and parallel streams disabled. Exact size and hashes are checked before accepting content. This also bounds publication verification downloads if a target grows after inventory; see rclone's [transfer-limit behavior](https://rclone.org/docs/#max-transfer-size).
+
 ## Configure and install
 
 Use distinct Drive folders for editable drafts and the published skill. Ground their IDs through metadata, inspect existing contents, and preserve sharing/file identities. For a new working folder, copy only the accepted package from a reviewed Git revision. Do not overwrite an existing draft. Keep any native Google Docs or shortcuts outside these raw-file folders.
