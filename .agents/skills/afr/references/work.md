@@ -14,7 +14,9 @@ For a non-Git target, use the host's available source/backup observations withou
 
 ## Implement the contract
 
-Normally use one implementer for a cohesive outcome. Delegate only independent bounded work with clear file ownership and a cheap integration path. Supply the authoritative contract, indispensable companions, candidate/base, allowed effects, and required evidence; do not replace required sources with an implementer summary. The host owns agent lifecycle.
+Normally use one implementer for a cohesive outcome. Apply the coordinator's [delegation policy and assignment brief](../SKILL.md#native-delegation) only to independent bounded work with clear ownership and a cheap integration path. Keep one writer per owned file or source area at a time. A test worker can author or run focused checks independently when its inputs and file ownership are settled; otherwise sequence it after the relevant implementation. Preserve prerequisite verification, review, and delivery boundaries before dependent work.
+
+Workers may share a filesystem. Separate worktrees isolate source checkouts, not services, ports, caches, external resources, or all test side effects. Identify shared effects before parallel execution and serialize conflicting actions. Integrate the returned changes, inspect the combined candidate, and check its actual consumer boundaries; independently passing worker checks do not establish combined acceptance. Hold the review candidate stable or explicitly refresh review evidence invalidated by further edits.
 
 Follow target conventions and make the smallest coherent implementation. Add or adjust focused regression checks when useful. Do not rewrite acceptance, relax compatibility, or introduce a dependency or protected effect merely to simplify implementation.
 

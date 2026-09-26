@@ -43,6 +43,24 @@ A multi-commit feature does not automatically need an umbrella. Research cannot 
 
 If a decision blocks only one part of planning, continue independent safe analysis where useful and keep the dependent portion visibly unresolved. Do not turn lack of a future execution phase into a reason to invent work, or repeatedly replan a contract that is already sufficient.
 
+## Native delegation
+
+Delegate when a bounded, independent assignment benefits from focused context, parallel work, or an independent check enough to repay coordination and integration. The coordinator retains authority, route choice, the authoritative contract, synthesis, and acceptance. Use the host's available capabilities and configured role defaults; AFR neither installs personas nor depends on particular role names or models. If a capability is unavailable, do the work locally where adequate or report a required coverage gap. Do not silently upgrade models or simulate independent review.
+
+Start with zero to three concurrent delegates as a practical guideline, not a quota or host limit. A small cohesive task may need none. Prefer local work for tiny tasks, tightly coupled changes, or a next step that would leave the coordinator merely waiting. Parallelize genuinely independent evidence gathering or implementation with clear ownership, and keep useful nonduplicative work with the coordinator. More workers need a concrete benefit, independent scope, and an affordable synthesis path; file count alone is not a reason.
+
+Give each assignment a concise brief with:
+
+- the bounded question or outcome and how its result will be used;
+- authoritative sources and indispensable companions, distinguishing settled decisions from open questions;
+- target/workspace and candidate/base, including relevant uncommitted inputs;
+- ownership, allowed effects, exclusions, and safe checks, including that other workers' changes must be preserved;
+- the evidence needed on return, relevant uncertainty, and conditions to stop or report a blocker.
+
+Reference accessible files for large context; do not repeatedly paste plans, logs, or repository history. Grant only the context and effects needed for the assignment. A persona's configured sandbox is not proof of the permissions effective in this session; tool availability is not authority, including for external writes. Delegates are nondelegating leaves by default, not additional workflow owners. No child goals, agent registry, fixed handoff schema, or persistent task state is required.
+
+Use native host tools for spawning, steering, waiting, interruption, and cleanup. Reuse an evidence-gathering delegate for related follow-ups when its context remains useful; use a separate reviewer from the author for independent critique. Await native completion instead of tight polling. Reconcile returned claims against authoritative sources, the actual candidate, and observed checks; multiple agreeing summaries are not proof. Resolve conflicting evidence, refresh only affected stale results, and integrate into the existing contract or candidate before acceptance. The phase references specify research/planning assignments, implementation ownership, and review coverage.
+
 ## Native goal integration
 
 Native goal mode is optional. When explicitly requested or when the host indicates an existing goal, inspect the available native controls and, when readable, the current goal. Unused goal mode adds no required probe, state, or tool call to ordinary AFR. Missing controls leave ordinary AFR available; report any requested native capability that cannot be supplied. Do not infer that an unreadable goal is absent or emulate controls with a helper, slash-command parser, App Server client, polling loop, or ChatGPT substitute.
@@ -83,7 +101,7 @@ Choose the next eligible outcome in explicit plan order, or listed order when no
 
 Do not batch dependent implementation ahead of its prerequisite's required verification, review, or delivery boundary. Check that boundary before starting the dependent work; passing combined checks afterward does not establish that the prerequisite was honored.
 
-Run the selected outcome through the same [direct sequence](#direct-sequence), entering at its missing obligation and retaining the parent constraints and required companions. Do not create another planner, child runtime, or scheduler. Plan review, implementation, review-fix pushes, and intermediate merges are nonterminal while the authorized scope has unfinished eligible work. After observing an outcome's endpoint, reconcile affected dependencies and select the next outcome without asking for routine permission already given. Before starting it, briefly report the completed endpoint's evidence and next eligible work or changed blocker; also report meaningful integration results.
+Run the selected outcome through the same [direct sequence](#direct-sequence), entering at its missing obligation and retaining the parent constraints and required companions. Do not create another workflow owner, child runtime, or scheduler. Plan review, implementation, review-fix pushes, and intermediate merges are nonterminal while the authorized scope has unfinished eligible work. After observing an outcome's endpoint, reconcile affected dependencies and select the next outcome without asking for routine permission already given. Before starting it, briefly report the completed endpoint's evidence and next eligible work or changed blocker; also report meaningful integration results.
 
 At the contract's meaningful integration boundaries, assess the actual combined candidate/base and configuration against shared invariants and parent acceptance. Reuse valid outcome evidence; refresh only work, dependencies, checks, and review affected by changed inputs. Individually passing checks or merged PRs cannot replace combined evidence. If combined acceptance fails, use the same work/review methods for a causal in-scope correction and refresh affected evidence; an invalid assumption or missing decision uses the planning method's replan rules. Do not weaken the parent contract, redo unaffected outcomes, or repeat an unchanged failure indefinitely.
 
@@ -91,7 +109,7 @@ Finish the umbrella only when every required outcome has reached its authorized 
 
 ## Stop and resumption
 
-Honor current user steering before consequential actions and after delegated results, using native host controls. A late result cannot restore authority after a stop. If an already-started external action has an uncertain result, observe its state before considering a retry; do not infer success from a timeout.
+Honor current user steering before consequential actions and after delegated results, using native host controls. Stop or redirect affected in-flight delegates and commands using available controls, and observe their disposition; if stopping cannot be confirmed, report the uncertainty and do not launch dependent effects. A late result cannot restore authority after a stop. If an already-started external action has an uncertain result, observe its state before considering a retry; do not infer success from a timeout.
 
 On an explicit resume, reconcile current intent, the existing authoritative plan, source and workspace changes, relevant PR/check observations if any, and available session context. Resolve existing artifacts, branches, and worktrees before creating replacements. Associate evidence with the actual candidate/base, requirements, and prerequisites; for uncommitted work include the relevant diff and untracked inputs, not HEAD alone. Refresh only decisions, work, checks, or review invalidated by changed inputs. A summary alone is not current evidence.
 

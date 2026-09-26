@@ -10,6 +10,8 @@ The host agent is the default runtime. AFR teaches the agent how to work; it doe
 
 The initial design is one public `afr` skill with a compact coordinator and four phase references. The [coordinator](.agents/skills/afr/SKILL.md), [planning reference](.agents/skills/afr/references/planning.md), [work reference](.agents/skills/afr/references/work.md), [review reference](.agents/skills/afr/references/review.md), and [delivery reference](.agents/skills/afr/references/delivery.md) provide the current R3–R5 path. The coordinator owns authority, sequencing, umbrella continuation, stop/resume, combined acceptance, and reporting, while references own phase methods. R5 adds no helper, runtime, or state store. The product is intended for standard ChatGPT and Codex environments, with support qualified separately per host. Narrow deterministic helpers remain candidates for later evidence-driven extraction.
 
+The coordinator's [native delegation policy](.agents/skills/afr/SKILL.md#native-delegation) supports selective repository exploration, external research, bounded planning analysis, implementation, testing, and independent review. Host-configured personas supply these capabilities; AFR does not install or require a named roster. Small tasks can stay with the coordinator. Delegation adds no public skill, scheduler, or second plan owner. The [bounded delegation trials](tests/delegation/README.md) distinguish behavioral results, observed native role discovery, configured defaults, and unqualified runtime surfaces.
+
 An optional Codex SDK runner may later launch or resume unattended sessions, but the runner must execute the same canonical AFR skill rather than implement another workflow.
 
 ## Use AFR
