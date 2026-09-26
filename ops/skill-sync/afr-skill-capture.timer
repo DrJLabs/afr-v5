@@ -1,0 +1,11 @@
+[Unit]
+Description=Check AFR Drive drafts every five minutes
+
+[Timer]
+OnActiveSec=15s
+OnUnitInactiveSec=5min
+AccuracySec=5s
+Unit=afr-skill-capture.service
+
+[Install]
+WantedBy=timers.target

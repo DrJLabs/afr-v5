@@ -1,0 +1,8 @@
+{
+  "remote": "YOUR_DRIVE_REMOTE:",
+  "folder_id": "YOUR_WORKING_FOLDER_ID",
+  "state_dir": "/absolute/private/state/afr-skill-sync/working",
+  "default_ref": "origin/main",
+  "max_files": 100,
+  "max_bytes": 10485760
+}
