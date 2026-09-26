@@ -15,6 +15,14 @@ When compressing or decomposing a source, check both directions:
 
 Use references instead of copying large sources when the recipient can access them. A delegated assignment must make required context discoverable; do not bury it among optional reading. Preserve source ownership when an artifact is derived or mirrored. Within permitted planning changes, amend the designated source or add a minimal linked supplement; do not create competing requirements or a duplicate AFR-specific plan by default.
 
+## Delegate evidence and bounded analysis
+
+Use the coordinator's [delegation policy and assignment brief](../SKILL.md#native-delegation) when a separate context or parallel inquiry will materially help. Choose capabilities for the question: a repository explorer traces local behavior and dependencies; a research analyst resolves decision-relevant external facts; a planning analyst compares a bounded set of alternatives or drafts acceptance and dependencies from established evidence. The coordinator still produces one authoritative contract and decides routing, assurance, and what remains unresolved. Do not commission parallel full plans or require this roster on every task.
+
+Ask research to prioritize current primary sources, identify version and applicability, and return source references with the claims they support, contradictions, and remaining gaps. Local facts need source locations; recommendations and inferences must be distinguishable from observations. Stop the inquiry once the bounded question has adequate evidence or its decisive gap is clear; additional sources without decision value are not progress.
+
+Give a planning analyst the grounded evidence and the specific unresolved design question. Request the smallest adequate approach, credible alternatives only where consequential, dependency boundaries, observable acceptance, and what still requires an owner decision. The analyst may recommend a plan but cannot settle unassigned policy, authorize implementation, or replace the coordinator. Incorporate accepted conclusions into the existing source rather than maintaining an agent's competing plan.
+
 ## Ground architecture changes
 
 Discover the target's architecture entrypoint, relevant component and ownership records, native rules, decisions, and configured checks alongside its root instructions. Classify the proposed work before choosing ceremony: ordinary changes within existing boundaries use the existing contract and proportional checks; changes to components, dependency direction, trust or state ownership, runtime services, or material shared abstractions are architectural changes.
@@ -86,6 +94,8 @@ Recommend the lowest adequate assurance from actual consequences, independently 
 These expectations select assurance for the work and review methods; they do not establish that review has occurred or that the host supplies independent reviewers. Do not create simulated specialist personas or stack reviewers to produce a plan.
 
 Self-review the proposed contract against the sources: missing obligations, unsupported commitments, contradictory constraints, unjustified assumptions, incompatible cross-outcome choices, verification gaps, unnecessary decomposition, and a simpler adequate approach. A small security-sensitive edit can still need protected assurance.
+
+For a consequential or materially uncertain plan, use an independent reviewer when required by the target or when a separate critique is likely to change the decision. Supply the actual plan revision and required sources, not just its author's summary. Ask for omissions, unsupported decisions, incompatible dependencies, weak acceptance, and simpler adequate alternatives; review proposed verification as a plan, not as executed evidence. Reuse the available review capability rather than inventing another persona or adding a mandatory approval stage. The coordinator resolves findings and preserves any required owner selection; a reviewer recommendation is not approval.
 
 Planning is sufficient when consequential behavior is defined, important constraints are known, verification is credible, and remaining implementation discretion fits authority. Do not require ritual template completion or another plan when the existing source meets that test. Ask only for a missing decision that materially prevents safe progress; leave dependent work unresolved without blocking unrelated safe analysis.
 
