@@ -8,6 +8,8 @@ The transport is qualified against rclone 1.74.4. Inventory requests expose nati
 
 Each download has a hard transfer cap of its expected size plus one detection byte, with preallocation and parallel streams disabled. Exact size and hashes are checked before accepting content. This also bounds publication verification downloads if a target grows after inventory; see rclone's [transfer-limit behavior](https://rclone.org/docs/#max-transfer-size).
 
+Rclone operation and low-level retries are explicitly disabled for each invocation. A failure returns control to the helper; a later scheduled capture starts with fresh observations, and publication recovery requires the attended checks below.
+
 ## Configure and install
 
 Use distinct Drive folders for editable drafts and the published skill. Ground their IDs through metadata, inspect existing contents, and preserve sharing/file identities. For a new working folder, copy only the accepted package from a reviewed Git revision. Do not overwrite an existing draft. Keep any native Google Docs or shortcuts outside these raw-file folders.

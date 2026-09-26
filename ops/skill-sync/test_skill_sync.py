@@ -373,8 +373,20 @@ class SkillSyncTests(unittest.TestCase):
         with mock.patch.object(sync.subprocess, "run", return_value=result) as run:
             transport.upload(self.root / "source.txt", "SKILL.md")
         command = run.call_args.args[0]
+        self.assertEqual(command[1:5], ["--retries", "1", "--low-level-retries", "1"])
         self.assertIn("--ignore-times", command)
         self.assertNotIn("--checksum", command)
+
+    def test_rclone_upload_failure_runs_one_subprocess_without_retries(self):
+        transport = sync.RcloneTransport(self.config)
+        failure = mock.Mock(returncode=7, stdout=b"", stderr=b"temporary failure details")
+        with mock.patch.object(sync.subprocess, "run", return_value=failure) as run:
+            with self.assertRaisesRegex(sync.SyncError, "rclone publication copy failed"):
+                transport.upload(self.root / "source.txt", "SKILL.md")
+
+        self.assertEqual(run.call_count, 1)
+        command = run.call_args.args[0]
+        self.assertEqual(command[1:5], ["--retries", "1", "--low-level-retries", "1"])
 
     @unittest.skipUnless(shutil.which("rclone"), "rclone is needed for the local transfer-cap regression")
     def test_rclone_download_caps_growth_and_accepts_exact_and_zero_sizes(self):

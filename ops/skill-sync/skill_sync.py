@@ -353,7 +353,8 @@ class RcloneTransport:
             remaining = None if self.deadline is None else self.deadline - time.monotonic()
             if remaining is not None and remaining <= 0:
                 raise SyncError(f"operation exceeded its {OPERATION_TIMEOUT_SECONDS}s time bound")
-            result = subprocess.run(args, check=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=remaining)
+            command = [args[0], "--retries", "1", "--low-level-retries", "1", *args[1:]]
+            result = subprocess.run(command, check=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=remaining)
         except subprocess.TimeoutExpired:
             raise SyncError(f"rclone {operation} exceeded the operation time bound") from None
         except SyncError:
