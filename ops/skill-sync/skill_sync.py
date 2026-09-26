@@ -703,7 +703,7 @@ def _git(repo: Path, args: list[str], operation: str, deadline: float | None = N
         raise SyncError("publication exceeded its time bound")
     try:
         result = subprocess.run(
-            ["git", "-C", str(repo), *args],
+            ["git", "--no-replace-objects", "-C", str(repo), *args],
             check=False,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
@@ -721,7 +721,10 @@ def _git(repo: Path, args: list[str], operation: str, deadline: float | None = N
 def git_package(repo_arg: str, revision: str, default_ref: str, config: dict, deadline: float | None = None) -> tuple[Path, dict[str, bytes]]:
     if not re.fullmatch(r"[0-9a-fA-F]{40}", revision):
         raise SyncError("revision must be a full 40-character Git commit SHA")
-    repo = Path(repo_arg).resolve(strict=True)
+    try:
+        repo = Path(repo_arg).resolve(strict=True)
+    except OSError:
+        raise SyncError("repo path does not exist or cannot be resolved") from None
     if not repo.is_dir():
         raise SyncError("repo must be a Git working tree")
     try:
@@ -741,7 +744,7 @@ def git_package(repo_arg: str, revision: str, default_ref: str, config: dict, de
         raise SyncError("publication exceeded its time bound")
     try:
         ancestry = subprocess.run(
-            ["git", "-C", str(repo), "merge-base", "--is-ancestor", commit, ref_commit],
+            ["git", "--no-replace-objects", "-C", str(repo), "merge-base", "--is-ancestor", commit, ref_commit],
             check=False,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,

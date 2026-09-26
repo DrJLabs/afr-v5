@@ -259,6 +259,60 @@ class SkillSyncTests(unittest.TestCase):
         self.assertEqual(result["changed_files"], 6)
         self.assertFalse(list(self.config["state_dir"].glob(".publish-*")))
 
+    def test_publish_ignores_git_replace_refs_for_reviewed_source(self):
+        transport = FakeTransport(PACKAGE_A, self.config)
+        expected = sync.capture(self.config, transport)
+        repo, reviewed_revision = self._git_repo(PACKAGE_B, name="replace-ref-repo")
+
+        package_root = repo / ".agents" / "skills" / "afr"
+        replacement_package = {path: data.replace(b"B", b"C") for path, data in PACKAGE_B.items()}
+        for path, data in replacement_package.items():
+            output = package_root / path
+            output.parent.mkdir(parents=True, exist_ok=True)
+            output.write_bytes(data)
+        subprocess.run(["git", "-C", str(repo), "add", ".agents/skills/afr"], check=True)
+        subprocess.run(
+            ["git", "-C", str(repo), "commit", "-m", "replacement source"],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        replacement_revision = subprocess.run(
+            ["git", "-C", str(repo), "rev-parse", "HEAD"],
+            check=True,
+            stdout=subprocess.PIPE,
+            text=True,
+        ).stdout.strip()
+        self.assertNotEqual(reviewed_revision, replacement_revision)
+        subprocess.run(
+            ["git", "-C", str(repo), "replace", reviewed_revision, replacement_revision],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+
+        result = sync.publish(self.config, str(repo), reviewed_revision, expected["snapshot_path"], True, transport)
+
+        self.assertEqual(result["revision"], reviewed_revision)
+        self.assertEqual(transport.blobs, PACKAGE_B)
+        self.assertNotEqual(transport.blobs, replacement_package)
+        self.assertEqual(result["changed_files"], 6)
+
+    def test_missing_repository_path_is_a_sync_error_before_remote_writes(self):
+        transport = FakeTransport(PACKAGE_A, self.config)
+        expected = sync.capture(self.config, transport)
+        list_count = transport.list_count
+        upload_count = transport.upload_count
+        missing_repo = self.root / "missing-repository"
+
+        with self.assertRaisesRegex(sync.SyncError, "repo path does not exist or cannot be resolved"):
+            sync.publish(self.config, str(missing_repo), "1" * 40, expected["snapshot_path"], True, transport)
+
+        self.assertEqual(transport.list_count, list_count)
+        self.assertEqual(transport.upload_count, upload_count)
+        self.assertEqual(transport.blobs, PACKAGE_A)
+        self.assertFalse(list(self.config["state_dir"].glob(".publish-*")))
+
     def test_default_publish_transport_gets_bounded_operation_deadline(self):
         initial = FakeTransport(PACKAGE_A, self.config)
         expected = sync.capture(self.config, initial)
