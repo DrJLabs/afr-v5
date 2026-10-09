@@ -1,8 +1,8 @@
 # AFR v5 skill-first architecture roadmap
 
-**Status:** R3 local work/review, R4 PR delivery, and R5 authorized umbrella continuation implemented; R6 assessment complete with no helper extraction; M8 controlled architecture-change and AFR-adoption source implemented and delivered; consumer gate/bootstrap delivered and provider-qualified; exercised candidate architecture behaviors bounded-qualified, with one bounded combined acceptance observed for the completed umbrella
-**Date:** 2026-09-15
-**Repository stage:** coordinator, planning, work, review, and delivery references implemented; R5 umbrella continuation is implemented in the coordinator; M8 source spans the existing owners, and its bounded qualification plus umbrella combined acceptance are recorded for the exercised scope
+**Status:** R3–R5 source implemented; R6 selects zero required helpers; M8 has bounded architecture/umbrella evidence; M10 roadmap defaults delivered with bounded explicit-path trials. Workflow-coherence refinements stay in the existing owners; M9 native-goal qualification and broader adoption remain separate.
+**Date:** 2026-10-09
+**Repository stage:** one public coordinator and four phase references; current source, dated behavioral evidence, installed loading and representative qualification are distinct claims.
 
 The [architecture v3 specification](architecture-v3.md) owns the current design and implementation boundary; the [skill package](../.agents/skills/afr/SKILL.md) owns the implemented coordinator and phase methods. The [donor matrix](donor-matrix.md) owns R1 evidence, extraction decisions, and evaluation scenarios. This roadmap owns milestones, sequencing, and complexity budgets. The 2026-09-15 reconciliation preserves the v1/v2 design and original R1 facts, carries the v3 planning/conformance improvements into R3, and records the explicit R2/R3/R4/R5, local/remote, and direct/umbrella boundaries without changing the package or complexity budgets. M8 is now an implemented and delivered source refinement of those owners. Its target-specific protocol and bounded qualification remain separately observed; the concise M8 boundary and evidence link are maintained in architecture-v3 and the [R5 trial record](../tests/r5/README.md).
 
@@ -73,7 +73,7 @@ A plan review, implementation commit, green CI run, open PR, review-fix push, or
 A user should be able to invoke AFR with a goal or existing plan and obtain one of four honest routes:
 
 - `direct`: one cohesive, reviewable outcome;
-- `umbrella`: multiple independently deliverable outcomes with meaningful dependencies;
+- `umbrella`: see the [coordinator's canonical route criteria](../.agents/skills/afr/SKILL.md#planning-and-route-choice);
 - `spike`: bounded research needed before implementation can be planned honestly; or
 - `stop`: work is unsafe, rejected, intentionally deferred, or lacks required authority.
 
@@ -370,6 +370,8 @@ Exceeding a budget requires evidence of a recurring problem, a measured expected
 
 At each roadmap exit, record actual counts and explain growth or reduction.
 
+Include source words/UTF-8 bytes alongside lines, and actual loaded context/turn observations when the host exposes them. Source size is not measured runtime context, latency or benefit. Use representative evidence before splitting the package or adding another owner; the [local-work record](../tests/r3/README.md#workflow-coherence-cases--2026-10-09) carries the current bounded source-size observation.
+
 ## 11. Evaluation metrics
 
 Measure complete accepted outcomes, not activity volume:
@@ -427,9 +429,11 @@ Every adopted behavior or port must record its exact donor commit/path and wheth
 
 ## 14. Immediate next increment
 
-The current local source increment is [M10 roadmap delivery](#m10--first-class-roadmap-delivery-defaults), with bounded evidence in its trial record. [M9](#m9--native-goal-integration-and-qualification) retains its remaining native qualification, real goal-on evidence, and adoption decision separately from M10 and the completed M8 scope below.
+M10 roadmap defaults were delivered in `9b7def12d900ae787e2b155e0dec53eef7b59146`; the [roadmap record](../tests/roadmap/README.md) scopes its explicit-path trials to their package hashes. The [coherence implementation plan](workflow-coherence-implementation-plan.md) owns the authorized follow-up and delivery boundary; [R3](../tests/r3/README.md#workflow-coherence-cases--2026-10-09) owns its focused local observations, while [R4](../tests/r4/README.md) owns delivery-method observations. No additional workflow phase or helper is selected.
 
-The R3 coordinator, planning reference, work reference, and review reference implement the direct local work/review boundary, R4 adds the delivery reference for one authorized PR, and R5 adds coordinator-owned umbrella continuation while reusing those four references. Keep discovery, host-support, and behavioral claims within the recorded trial evidence; [R2 results](../tests/r2/README.md) are historical for their recorded hashes, [R3 evidence](../tests/r3/README.md) covers local work/review, [R4 evidence](../tests/r4/README.md) covers bounded delivery trials, and [R5 evidence](../tests/r5/README.md) owns bounded continuation observations and limits. The [R6 assessment](r6-helper-assessment.md) selects no helper. The current increment is complete for the bounded M8 scope: exercised candidate architecture behaviors and one bounded combined acceptance are recorded in the R5 trial record. The completed umbrella is counted once for governing AFR revision `aa87adb`, separately from candidate skill qualification. Native interruption/crash recovery, broader release, installation/global activation, and ChatGPT parity remain unqualified. R7 remains conditional on its representative-run threshold; this assessment does not authorize an SDK experiment.
+The historical M8 increment is complete for its bounded scope: [R5](../tests/r5/README.md) records exercised candidate architecture behavior and one completed umbrella under governing revision `aa87adb`, counted once rather than reassigned to the current package. [R2](../tests/r2/README.md) and earlier R3/R4/R5 observations likewise retain their original identities. The [R6 assessment](r6-helper-assessment.md) remains a zero-helper decision.
+
+The next qualification decision is a bounded representative ordinary-work run on the intended installed/loading surface, with its actual package and host observed. Installed-file parity or a fresh loading probe alone does not qualify broad reliability, ChatGPT parity or native interruption/crash recovery. [M9](#m9--native-goal-integration-and-qualification) retains deferred native qualification, real goal-on evidence and an adoption decision separately. R7/R8 thresholds remain unchanged; none of these records authorizes an SDK experiment or resumes deferred goal tests.
 
 Use the donor matrix's scenarios for bounded behavioral trials as each capability becomes available; proceed unless observed defects require correction. After the core is assembled, review its coherence and broaden integrated qualification across repositories, interruptions, and risks. R1 does not establish a need for custom helpers or a runtime layer. Split internal skills only after evaluation shows that progressive disclosure or responsibility isolation materially improves the result.
 
