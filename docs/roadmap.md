@@ -334,6 +334,20 @@ Retain the option only when representative evidence shows fewer unnecessary cont
 
 A qualifying completed real task counts once under the existing representative-run criteria; child outcomes, resumes, authoring changes, and synthetic trials do not multiply it. R7 still requires at least ten representative real runs **and** understood interactive execution; R8 still requires at least twenty runs and its stated coverage. Neither threshold nor M9 completion authorizes an SDK runner, installation, or remote delivery.
 
+### M10 — first-class roadmap delivery defaults
+
+**Outcome:** substantial project delivery defaults to lightweight roadmap reuse or minimal creation, with bounded work selection and reconciliation through the existing direct and umbrella routes. Small self-contained work retains the direct path.
+
+**Scope:** the coordinator owns selection, authority, continuation and closure; the planning reference owns document discovery and minimal creation. Target-native milestones/issues can already satisfy the roadmap role. Preserve completed contracts, current owner-selected priority, deferred work, requirements/progress ownership, and separate qualification/release boundaries. Roadmap status cannot authorize effects or turn an open backlog into a bounded objective.
+
+**Source:** local implementation on October 9, 2026; behavioral validation and review are recorded in the [roadmap trial record](../tests/roadmap/README.md). Publication, installation, installed discovery, representative adoption and cross-host qualification remain separate.
+
+**Provenance:** the roadmap/contract/runbook separation and reprioritization examples were inspected in `RxReserve` at `fa1bd2ec63e4348669df871a7d428a0c6e4d3f32`, `docs/development-and-release.md`, `docs/README.md`, `docs/roadmap.md` and `docs/plans/scheduling-adoption.md`. Their reusable behavior is distilled in the existing AFR owners; the donor is not a runtime dependency or proof that AFR executed those examples.
+
+**Acceptance:** focused native-session trials cover existing tracking and historical “Next” entries, completed/deferred contracts and endpoint limits, minimal creation for substantial work, planning-only/no-write behavior, and the small direct path. One consolidated source review checks authority, ownership, route reuse and completion boundaries. Document hygiene is separate from behavioral evidence.
+
+**Complexity:** one public skill, four phase references, zero required helpers/services/runtimes and no fixed roadmap schema. Measure correct bounded selection, unnecessary documents/interventions, repeated work after resume and source ownership errors before claiming adoption benefit. M10 does not require goal mode or change M9's remaining qualification.
+
 ## 10. Complexity budget
 
 The following are design budgets, not targets to fill:
@@ -413,7 +427,7 @@ Every adopted behavior or port must record its exact donor commit/path and wheth
 
 ## 14. Immediate next increment
 
-The current source increment is [M9](#m9--native-goal-integration-and-qualification). Its remaining native qualification, real goal-on evidence, and adoption decision are recorded separately from the completed M8 scope below.
+The current local source increment is [M10 roadmap delivery](#m10--first-class-roadmap-delivery-defaults), with bounded evidence in its trial record. [M9](#m9--native-goal-integration-and-qualification) retains its remaining native qualification, real goal-on evidence, and adoption decision separately from M10 and the completed M8 scope below.
 
 The R3 coordinator, planning reference, work reference, and review reference implement the direct local work/review boundary, R4 adds the delivery reference for one authorized PR, and R5 adds coordinator-owned umbrella continuation while reusing those four references. Keep discovery, host-support, and behavioral claims within the recorded trial evidence; [R2 results](../tests/r2/README.md) are historical for their recorded hashes, [R3 evidence](../tests/r3/README.md) covers local work/review, [R4 evidence](../tests/r4/README.md) covers bounded delivery trials, and [R5 evidence](../tests/r5/README.md) owns bounded continuation observations and limits. The [R6 assessment](r6-helper-assessment.md) selects no helper. The current increment is complete for the bounded M8 scope: exercised candidate architecture behaviors and one bounded combined acceptance are recorded in the R5 trial record. The completed umbrella is counted once for governing AFR revision `aa87adb`, separately from candidate skill qualification. Native interruption/crash recovery, broader release, installation/global activation, and ChatGPT parity remain unqualified. R7 remains conditional on its representative-run threshold; this assessment does not authorize an SDK experiment.
 
