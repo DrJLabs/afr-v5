@@ -73,7 +73,7 @@ A plan review, implementation commit, green CI run, open PR, review-fix push, or
 A user should be able to invoke AFR with a goal or existing plan and obtain one of four honest routes:
 
 - `direct`: one cohesive, reviewable outcome;
-- `umbrella`: multiple independently deliverable outcomes under a meaningful bounded parent objective, recording dependencies where they exist;
+- `umbrella`: see the [coordinator's canonical route criteria](../.agents/skills/afr/SKILL.md#planning-and-route-choice);
 - `spike`: bounded research needed before implementation can be planned honestly; or
 - `stop`: work is unsafe, rejected, intentionally deferred, or lacks required authority.
 
