@@ -85,7 +85,7 @@ Aim for roughly 1,000–2,000 characters when useful and stay within the actual 
 
 For substantial work needing resumable written context, use the existing target-owned plan rather than a separate goal plan. Keep one compact checkpoint with verified obligations and evidence locations, remaining obligations, candidate/base and relevant untracked inputs, the next eligible action and unmet acceptance it advances, blockers, and in-flight effects. Record material discoveries or changed decisions where they already belong. Update at meaningful acceptance boundaries, material discoveries, or handoff; a small task needs no mandatory plan or per-tool journal. A checkpoint cannot change authority or weaken acceptance.
 
-On continuation or compaction recovery, re-read the relevant contract/checkpoint, confirm required sources still resolve, and apply the coordinator's [stop and resumption](../SKILL.md#stop-and-resumption) rules. Refresh affected evidence and resume at the missing obligation; ordinary progress keeps the same objective. A Markdown plan can guide execution independently of host Plan mode; qualify the actual mode and loading path rather than treating a plan file as proof of native activation or continuation.
+On continuation or compaction recovery, re-read the relevant contract/checkpoint and confirm required sources still resolve. The coordinator's [stop and resumption](../SKILL.md#stop-and-resumption) rules govern reconciliation, evidence refresh, and the next action. A Markdown plan can guide execution independently of host Plan mode; qualify the actual mode and loading path rather than treating a plan file as proof of native activation or continuation.
 
 For a future explicitly selected run, a compact natural-language request could be:
 
