@@ -56,6 +56,8 @@ Apply a minimal architecture-contract test: could two competent implementers fol
 
 Map each material requirement to credible evidence. Depending on behavior, that may be a unit, integration, contract, compatibility, property, migration, security, performance, operational, or manual check. Name what it must demonstrate; an existing green test is not automatically evidence for a new acceptance criterion. Record proposed checks as proposed, not executed. No traceability IDs, machine schema, or separate evidence database is required.
 
+For an optimization outcome, define comparable baseline and final measurement conditions, the decisive metric, and known limitations before claiming improvement; qualitative outcomes need no invented numerical target.
+
 ## Size outcomes and dependencies
 
 Recommend `direct` for one cohesive outcome even if it spans files or commits. Recommend `umbrella` only for independently deliverable outcomes, not implementation microsteps. Each required outcome needs observable acceptance and a delivery boundary consistent with the user's endpoint.
@@ -80,6 +82,25 @@ Project only the essentials:
 - **Stops:** current user stop, missing authority, consequential unresolved decisions, stale selected requirements, inaccessible indispensable evidence, unsafe effects, or repeated failure without progress; host limits remain binding.
 
 Aim for roughly 1,000–2,000 characters when useful and stay within the actual host's objective limit; shorter sufficient objectives are valid. Keep detailed requirements and progress in their existing authoritative sources, accessible from the target/session on resume. Check that the projection preserves the contract's outcome and boundary without adding commitments. Return it to the coordinator, retaining a compatible existing objective instead of rewriting it merely to match this format.
+
+For substantial work needing resumable written context, use the existing target-owned plan rather than a separate goal plan. Keep one compact checkpoint with verified obligations and evidence locations, remaining obligations, candidate/base and relevant untracked inputs, the next eligible action and unmet acceptance it advances, blockers, and in-flight effects. Record material discoveries or changed decisions where they already belong. Update at meaningful acceptance boundaries, material discoveries, or handoff; a small task needs no mandatory plan or per-tool journal. A checkpoint cannot change authority or weaken acceptance.
+
+On continuation or compaction recovery, re-read the relevant contract/checkpoint, confirm required sources still resolve, and apply the coordinator's [stop and resumption](../SKILL.md#stop-and-resumption) rules. Refresh affected evidence and resume at the missing obligation; ordinary progress keeps the same objective. A Markdown plan can guide execution independently of host Plan mode; qualify the actual mode and loading path rather than treating a plan file as proof of native activation or continuation.
+
+For a future explicitly selected run, a compact natural-language request could be:
+
+```text
+Use AFR with one native goal to implement the accepted contract in
+docs/parser-migration-plan.md through a verified local candidate.
+Read its required companions. Preserve its binding behavior, constraints,
+dependencies, and unrelated work. Complete only when its decisive checks,
+required review, and applicable combined acceptance hold for the candidate.
+Continue unfinished eligible work and causal corrections within that authority.
+Keep the existing plan's checkpoint current at meaningful boundaries.
+Honor user stops, host limits, and unresolved authority or evidence gaps.
+```
+
+This is an illustrative request, not qualified combined slash syntax. Replace the example path and acceptance wording with the real accessible contract and its decisive observations. It grants no publication or merge authority; supply a token budget only when explicitly requested. The coordinator owns activation and lifecycle, including conflicts or materially changed objectives.
 
 ## Planning assurance and self-review
 
