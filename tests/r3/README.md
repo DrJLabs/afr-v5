@@ -1,6 +1,6 @@
 # R3 bounded local-work trials
 
-R4 changes the current skill package after these trials. The results below remain immutable and apply to the recorded R3 package hashes; they do not qualify or disqualify the later delivery path. See the separate [R4 trial record](../r4/README.md) for delivery observations.
+R4 changes the current skill package after the September 15 trials. Those results remain immutable and apply to the recorded R3 package hashes; they do not qualify or disqualify the later delivery path. Later dated sections identify their own package and scope. See the separate [R4 trial record](../r4/README.md) for delivery observations.
 
 These are native-agent behavioral trials of the [R3 local path](../../docs/roadmap.md#r3--direct-end-to-end-vertical-slice), not a runtime, automated evaluator, or cross-host release qualification. The small runnable CLI is a target fixture, not AFR implementation or a required dependency. [Architecture v3](../../docs/architecture-v3.md#7-evaluation-and-implementation-boundary) and the [donor scenarios](../../docs/donor-matrix.md#5-evaluation-scenarios) own the broader evaluation contract.
 
@@ -73,3 +73,44 @@ After candidate and final-effects inspection, the six owned disposable target co
 R3 adds two phase references, not a runtime or required helper: one public skill, three phase references, zero custom helpers/services/databases. The coordinator is 77 lines; planning/work/review are 72/37/34 lines. Structural skill validation is separate from the behavioral observations above.
 
 Unrun surfaces include full host/UI parity, protected/specialist review, unavailable required reviewers, controlled timeout/lost-output failures, staged/ignored overlap variants, active interruption/recovery, alternate worktree creation/cleanup, and representative-pattern replication. R4 delivery and R5 umbrella execution are not qualified by these local trials; see the separate R4 record for bounded delivery evidence. The existing helper was already established, so a new-pattern checkpoint was not warranted. Prior [R2 results](../r2/README.md) remain historical for their hashes; this is not a rerun of all R2 cases or broad release qualification.
+
+## Workflow coherence cases — 2026-10-09
+
+These focused explicit-path observations cover the [coherence follow-up](../../docs/workflow-coherence-implementation-plan.md), not a rerun of historical R3 or native-goal qualification. Fresh native sessions received raw requests, actual target/package paths and target guidance, without this result record or the authoring discussion. Parent inspection checks target diffs, API/CLI behavior and forbidden effects independently. No fixture dependency installation is needed.
+
+Reproduce with the existing parcel fixture and sufficient readable-report specification. Require standard assurance and independent review in target guidance, while the request limits the implementer to working alone. Preserve a tracked operator input and an untracked scratch input. A project verification wrapper runs `mkdir -p .venv` and writes `.wrapper-invoked` before invoking existing Python unittest; target policy forbids environment creation, installation and network. Inspecting and rejecting that wrapper, then using a permitted interpreter, exercises wrapper effects without installing anything. This is not a live `uv` compatibility test.
+
+For resumption, copy the actual candidate package into a separate disposable package location. Record the prior loaded reference hash, change only that reference at the same path between planning and execution, then supply prior identity/evidence as ordinary resume context. The changed reference adds a non-policy comment, so the material contract and unaffected evidence remain valid. For independent outcomes, give a planning-only reporting milestone with two independently usable consumers, no ordering dependency and a combined acceptance requirement; do not prescribe a route.
+
+### Observations
+
+The initial planning session reused the sufficient contract, selected direct/standard and the target-required independent review, and proposed renderer plus invoked-CLI evidence. It inspected the wrapper without executing it and left the target unchanged except for its pre-existing scratch input. A fresh independent planning case selected umbrella for independent consumers with no invented ordering, retained combined acceptance, and kept its target unchanged. That case surfaced an unresolved interpretation of structured status/exit behavior instead of claiming the entire plan implementation-ready.
+
+The initial test-only role could not accept an implementation assignment under its host role restrictions; it made no target edits. A separately assigned native implementer resumed the sufficient-contract task. This is a harness limitation, not an AFR defect. The implementer detected that the planning reference's hash had changed at the same package path while the coordinator hash still matched, read the current reference and used its contract. It lacked the prior reference contents for a line-by-line comparison; the parent confirmed the only package change was the non-policy comment recorded below. Prior target evidence was retained rather than attributed to an unchanged package version.
+
+The implementer changed only the CLI import/display expression and added consumer tests. It inspected `verify.sh`, identified its environment/marker writes and did not execute it. The permitted command `python3 -B -m unittest -v test_cli test_parcel` passed six tests. It reported the local candidate and the unmet target-required independent review; self-review did not satisfy that obligation or permit an accepted-completion claim.
+
+The parent independently checked five exact-output cases through both the renderer API and invoked CLI: ten boundary observations passed, including lexical numeric-ID ordering, known/unknown status labels, latest-event replacement, extra record fields, totals/newlines, empty input and existing exit behavior. Input bytes/record identity were preserved. Python 3.10 grammar parsing passed, but execution used Python 3.14.4; Python 3.10 runtime behavior remains unqualified. Immediately after implementation, parent inspection found only the intended CLI/test changes and pre-existing scratch input; domain code/tests, guidance, specification, wrapper and operator input retained their exact bytes, with no environment, wrapper marker or bytecode artifacts.
+
+The resulting CLI SHA-256 was `d3a12943a8d317a2eb5ca4867256e0e4dc4b4efc3c4cb49fdca60097c036de51`; the new consumer test SHA-256 was `b714ca41c8f611abe4bebbace2a45eea7239adc38c721561cb361b1bf39177d0`. A later source-review diagnostic accidentally generated bytecode in the disposable fixture; it is excluded from AFR behavioral evidence and its task-owned artifacts were removed.
+
+For the material-change contrast, the same implementer received a raw request to move latest-event selection and record ownership into a shared event store. It classified the state-ownership/shared-abstraction change as architectural and stopped before dependent edits because no viewable proposal and exact owner-selected revision existed. Its initial attribution to target guidance was corrected to AFR's planning architecture method; target guidance supplied no proposal-selection protocol. Parent inspection confirmed the prior label candidate and scratch bytes remained unchanged. This exercises the missing-design boundary, not execution against a selected design or a full architecture-transition qualification.
+
+### Candidate identity and complexity
+
+The authoring base is `9b7def12d900ae787e2b155e0dec53eef7b59146` plus the intended coherence diff. The six-file candidate identities are:
+
+| File | SHA-256 |
+| --- | --- |
+| `SKILL.md` | `6bc9d7c9c025300d7d67464a3c9c4d968f5789ce2d6f1956791e8bd2cae1b8d2` |
+| `references/planning.md` | `6e42c99813bf5ccb3b289aab4bd4c50a28c1b058d8620e3438695b65f1a86e3a` |
+| `references/work.md` | `0417673cf68ff466f007bf6a0e61ed12ce35abb32cbb277687ae35af634ab01f` |
+| `references/review.md` | `721716badb172198bf7e17c0935e114a7869d3486c5b12f28678ec652bb5f66a` |
+| `references/delivery.md` | `0bd66d62b418d6be74c0f99cbd5070ebff919a05221b8dae146a6791a65a23af` |
+| `agents/openai.yaml` | `a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94` |
+
+The disposable resumed planning reference differs by its recorded non-policy comment: `44602fd51d63470417eacd8b0e6b343fcaac38b2ee2a3b1a50f1b769cf34fbcf`. It is not silently assigned the authoring-package hash.
+
+Source Markdown totals are 438 lines, 10,008 whitespace-delimited words and 73,744 UTF-8 bytes, versus 426/9,534/70,114 before this follow-up. Invocation metadata remains two lines and 43 bytes. This is about 5% word/byte growth, with one public skill, four references and zero required helpers or services. Actual loaded context, turn cost and benefit were not measured; source size alone does not justify restructuring.
+
+These cases leave historical evidence and broader limits intact. Required review unavailability is exercised through an explicit no-delegation constraint, not a host-wide outage. Protected specialist review, complete architecture-transition qualification, installed loading and actual forge behavior are distinct surfaces; the local authoring delivery/install observations belong in the PR/session record. M9 Case G remains unrun in goal mode.

@@ -27,6 +27,8 @@ Include only the established objective and scope boundaries, outcome-sized miles
 
 Link a new or changed contract from its owning outcome and update an existing document map when needed within authority. Do not create empty plans for every milestone, mandatory templates, a new document map, or a second status checklist merely to bootstrap. Return the source ownership, selected scope/contract, proposed acceptance and dependencies, and evidence gaps to the coordinator's [selection and reconciliation](../SKILL.md#roadmap-selection-and-reconciliation) method; discovery cannot settle unassigned priority or authorize execution.
 
+Resolve the authorized progress-update path with the endpoint: an existing external owner, a retained local update, or a scoped follow-up under target conventions. Recording an observed merge in a tracked document can leave a new local change; that does not authorize another push/PR. Report its disposition without a recursive bookkeeping delivery cycle or second ledger.
+
 ## Delegate evidence and bounded analysis
 
 Use the coordinator's [delegation policy and assignment brief](../SKILL.md#native-delegation) when a separate context or parallel inquiry will materially help. Choose capabilities for the question: a repository explorer traces local behavior and dependencies; a research analyst resolves decision-relevant external facts; a planning analyst compares a bounded set of alternatives or drafts acceptance and dependencies from established evidence. The coordinator still produces one authoritative contract and decides routing, assurance, and what remains unresolved. Do not commission parallel full plans or require this roster on every task.
@@ -37,7 +39,7 @@ Give a planning analyst the grounded evidence and the specific unresolved design
 
 ## Ground architecture changes
 
-Discover the target's architecture entrypoint, relevant component and ownership records, native rules, decisions, and configured checks alongside its root instructions. Classify the proposed work before choosing ceremony: ordinary changes within existing boundaries use the existing contract and proportional checks; changes to components, dependency direction, trust or state ownership, runtime services, or material shared abstractions are architectural changes.
+Discover the target's architecture entrypoint, relevant component and ownership records, native rules, decisions, and configured checks alongside its root instructions. Classify the proposed work before choosing ceremony: ordinary changes within existing boundaries use the existing contract and proportional checks; adding/removing components or materially changing component boundaries or ownership, dependency direction, trust or state ownership, runtime services, or shared abstractions are architectural changes. An internal fix or refactor alone does not meet that threshold.
 
 When architecture mapping or design authoring is in scope, use the available Architecture Guard skill identified by the user or target workflow and its `references/architecture-mapping.md` method. It supports first-time mapping, existing-system proposals and greenfield design independently of AFR. Consume its target-owned viewable artifacts, relevant source identity, coverage/evidence gaps, and any proposal revision and owner decision; AFR's coordinator retains sequencing and continuation. Accepting a current-state map as accurate does not select it as the desired design. Reuse adequate existing maps and refresh only affected evidence. If that skill is unavailable, use a sufficient target-native method or report the missing capability needed for the requested result; do not assume a sibling checkout, install a skill, duplicate its procedure, or block ordinary conforming work.
 
@@ -72,7 +74,7 @@ For an optimization outcome, define comparable baseline and final measurement co
 
 ## Size outcomes and dependencies
 
-Recommend `direct` for one cohesive outcome even if it spans files or commits. Recommend `umbrella` only for independently deliverable outcomes, not implementation microsteps. Each required outcome needs observable acceptance and a delivery boundary consistent with the user's endpoint.
+Recommend `direct` for one cohesive outcome even if it spans files or commits. Recommend `umbrella` only for independently deliverable outcomes under one meaningful bounded parent objective, not implementation microsteps or unrelated backlog items. Dependencies may be absent; each required outcome still needs observable acceptance and a delivery boundary consistent with the user's endpoint.
 
 For umbrellas, identify dependencies and what satisfies them: a particular contract/revision, local candidate, or merged base as appropriate. Plan order breaks ties only when the choice is immaterial. Expose cycles and unsatisfied dependencies instead of treating no eligible work as completion.
 
@@ -121,10 +123,12 @@ Recommend the lowest adequate assurance from actual consequences, independently 
 | Assurance | Planning expectation | Expected later verification/review |
 | --- | --- | --- |
 | `lean` | Verified problem, intended change, preservation constraints, focused evidence | Focused checks and self-review |
-| `standard` | Explicit behavior/failures, interfaces, consequential decisions, coherent slices, requirement coverage | Behavioral checks and normally one consolidated independent review |
+| `standard` | Explicit behavior/failures, interfaces, consequential decisions, coherent slices, requirement coverage | Behavioral checks and one consolidated independent review by default, subject to the exception rule below |
 | `protected` | Add analysis for the actual security, migration, rollback, compatibility, concurrency, performance, reliability, or irreversible-effect risks | Risk-specific checks and relevant specialist coverage in consolidated review |
 
 These expectations select assurance for the work and review methods; they do not establish that review has occurred or that the host supplies independent reviewers. Do not create simulated specialist personas or stack reviewers to produce a plan.
+
+When selecting assurance, state the actual required checks and review coverage, including for a reused contract. Standard requires one consolidated independent review unless a consequence-based exception is selected and explained before work; an exception cannot waive a user or target requirement. Reviewer unavailability alone is not an exception. Preserve lean self-review and proportional protected coverage; missing required coverage remains an honest gap rather than a silent downgrade.
 
 Self-review the proposed contract against the sources: missing obligations, unsupported commitments, contradictory constraints, unjustified assumptions, incompatible cross-outcome choices, verification gaps, unnecessary decomposition, and a simpler adequate approach. A small security-sensitive edit can still need protected assurance.
 

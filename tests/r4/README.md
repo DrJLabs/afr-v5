@@ -78,3 +78,13 @@ After final ref, ownership, worktree, symlink, and byte-preservation checks, the
 ### Historical scope
 
 This is the historical R4 delivery record. R5 umbrella continuation has a separate bounded [R5 trial record](../r5/README.md), which owns its observations and limits.
+
+## Coherence endpoint cases — 2026-10-09
+
+A fresh native session loaded the candidate coordinator and delivery reference by explicit path, without the authoring discussion or this record. It received a resource-backed reporting candidate with a known failed integration case and missing independent review, target permission for an explicitly requested incomplete draft, and draft-only authority. The parent supplied controlled, fully paginated lookup/create responses only after the agent requested concrete operations; no actual forge mutation occurred.
+
+The agent first requested exact source/base and matching-PR observations. On a complete empty lookup, it requested creation with `draft=true`, the observed candidate identity, the known integration and review gaps, and no merge/fix claim. After the controlled created-identity response, it reported observed draft publication separately from unresolved candidate readiness. A later merge request with the same failed required check and missing review produced a blocker and no merge attempt.
+
+In a separate closure case, supplied complete observations established an already-merged PR and synchronized local main. The required task-owned tracked progress update was permitted to remain local, without further publication authority. The agent reported the reached endpoint and retained bookkeeping artifact without requesting another PR or operation. This tests disposition of supplied observations, not a real synchronization race or tracked-file edit.
+
+These cases use the [six-file coherence candidate identity](../r3/README.md#candidate-identity-and-complexity). The create/merge/closure results are controlled responses, not live service evidence, real checks/review, or qualification of API parameters, pagination or exact-head race enforcement. The original accepted-candidate trials retain their historical hashes; no full rerun is claimed. Actual delivery of this authoring PR is a separate PR/session observation.

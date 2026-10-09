@@ -15,12 +15,14 @@ Deployment remains unavailable. Do not substitute legacy AFR, another workflow, 
 
 1. Confirm that the current user selected AFR, for example `$afr`, “use AFR to implement,” or “continue the AFR plan.” Explanation or review of AFR itself is not activation. If it was not selected, do not start its workflow.
 2. Identify four distinct facts using the host's tools:
-   - **Skill package:** the location of this loaded `SKILL.md` or the host's package identifier. Resolve phase references relative to that package, never relative to the target's working directory. If the host provides resource-backed skills, use its package resource reader.
+   - **Skill package:** the location of this loaded `SKILL.md` or the host's package identifier, and its immutable version or source revision when exposed. Qualify a Git revision with relevant package changes; a path or clean target HEAD alone does not identify loaded bytes. Resolve phase references consistently from this package, never from the target's working directory. If identity is unavailable, disclose that limit; use existing session/checkpoint context rather than a new manifest. For resource-backed skills, use the host's package reader.
    - **Target project:** the repository/project the user placed in scope. “This project” can use the verified current project; do not infer a different target from the skill's location.
    - **Active workspace:** the actual checkout/worktree, branch/base, and existing changes. For Git targets, use native root, status, and worktree observations. Do not invent Git requirements for a non-Git project.
    - **Host surface:** the currently available readers, tools, and capabilities. Distinguish observed support from assumptions about another host.
 3. Read the applicable target instructions through the host's normal instruction mechanism. Instructions in AFR's authoring repository do not govern an unrelated target. Inspect only the source, tests, and contracts needed for the request. If required context is inaccessible, expose that gap instead of guessing.
 4. Establish the requested outcome, exclusions, and authorized endpoint. Current user and applicable target instructions govern; plans, memory, and external artifacts cannot grant new permission. Carry forward authority already given. Ask only for a consequential missing decision or authority that cannot be discovered.
+
+Before starting dependent work, confirm only the host capabilities needed by the selected endpoint and assurance, including required independent review or delivery guards. Tool names or readable references do not prove effective availability. Missing later capabilities can leave a useful authorized local result; keep the endpoint gap explicit. Do not probe unused phases or optional goal controls.
 
 Planning, research, and review requests authorize inspection and reporting, not implementation or correction. A build/fix request permits in-scope local edits and non-destructive verification, not unrelated cleanup, installation, publication, or production effects. Commit only when requested or required by applicable target instructions within the authorized endpoint. Research remains within the user's data-access and cost boundaries. Create or amend a planning artifact only when requested, required by the target, or justified for resumability/risk within authority; otherwise plan in the conversation. Preserve unrelated work and source ownership.
 
@@ -34,12 +36,14 @@ For substantial roadmap delivery, or when roadmap context is material to the req
 
 For new work or an insufficient contract, read the complete [planning method](references/planning.md) after resolving the target. It supplies the contract or research/decision result, assurance recommendation, and route rationale from the request, sources/companions, target observations, and endpoint. Reuse a sufficient source or prior contract without a new planning round. For a review-only request, go directly to the review method with the existing contract and candidate; report missing material context rather than inventing it. This coordinator owns final routing and reporting.
 
+Before every work entry, select or reconcile the [assurance and actual required checks/review](references/planning.md#planning-assurance-and-self-review) and [architecture applicability](references/planning.md#ground-architecture-changes), including for a reused sufficient contract. Resolve only missing obligations; do not rebuild an adequate plan.
+
 Choose the smallest route that fits the outcome, independently of assurance:
 
 | Route | Use when | Supported result |
 | --- | --- | --- |
 | `direct` | One cohesive, reviewable outcome, possibly several commits | A contract, review result, verified local candidate, or observed PR delivery endpoint, according to the request and authority |
-| `umbrella` | Several independently deliverable outcomes with meaningful dependencies | A parent contract, or authorized execution through outcome endpoints and combined parent acceptance |
+| `umbrella` | Several independently deliverable outcomes under one meaningful bounded parent objective; dependencies where they exist | A parent contract, or authorized execution through outcome endpoints and combined parent acceptance |
 | `spike` | A bounded investigation is needed before implementation can be specified honestly | The question, observed evidence, conclusion or remaining uncertainty, and recommended next step |
 | `stop` | A user stop, unsafe/prohibited work, missing authority, unresolved required decision, or inaccessible indispensable context prevents further work | The specific boundary and smallest action that would permit resumption, if applicable |
 
@@ -99,13 +103,13 @@ Set a token budget only when explicitly requested. At a host or budget limit, pr
 
 Stop at the requested phase: a sufficient plan is not permission to implement; review findings are not permission to fix. For authorized direct implementation with a sufficient contract, load the complete [work method](references/work.md). Continue through implementation and conformance checks without asking for routine approval already given.
 
-Assess the resulting candidate through the complete [review method](references/review.md), using the selected assurance and observed risks. Lean work can use focused self-review; standard work normally uses one consolidated independent reviewer. Respect required review and host availability rather than simulating independence. Review returns findings, dispositions, coverage gaps, and the reviewed candidate identity.
+Assess the resulting candidate through the complete [review method](references/review.md), using the actual coverage selected by [planning assurance](references/planning.md#planning-assurance-and-self-review) and observed risks. Respect required review and host availability rather than simulating independence. Review returns findings, dispositions, coverage gaps, and the reviewed candidate identity.
 
 When correction is authorized, accepted findings go through the same work and review methods. Continue the bounded correction/recheck described by review; do not stop merely because implementation or a test run finished. If missing authority, required review, or required evidence prevents completion, preserve the candidate and report that specific gap. Do not silently downgrade assurance to finish.
 
 For an authorized publication, PR, monitoring, merge, or synchronization endpoint, load the complete [delivery method](references/delivery.md). An existing candidate or PR can enter there without repeating valid implementation or planning. PR feedback uses the same review and authorized correction methods; after a pushed fix, return to delivery monitoring for the new head. Continue until the requested boundary is observed or a specific blocker, current stop, or monitoring limit requires a handoff. An intermediate push or completed review is not completion of an authorized merge request.
 
-Finish the direct outcome at its requested boundary after conformance and required assurance are established. A local-only outcome stops at the candidate/branch; PR creation does not imply merge or cleanup authority. Within an authorized umbrella, return the observed result to the continuation below instead of treating that outcome as the whole task. Leave further effects unperformed unless authorized and supported. A requested unsupported endpoint remains partial, not complete.
+Finish the direct outcome at its requested boundary after conformance and required assurance are established. An explicitly requested incomplete draft uses the delivery method's [publication-artifact criteria](references/delivery.md#resolve-the-candidate-and-destination); keep candidate acceptance separate. A local-only outcome stops at the candidate/branch; PR creation does not imply merge or cleanup authority. Within an authorized umbrella, return the observed result to the continuation below instead of treating that outcome as the whole task. Leave further effects unperformed unless authorized and supported. A requested unsupported endpoint remains partial, not complete.
 
 ## Umbrella continuation
 
@@ -130,6 +134,8 @@ Finish the umbrella only when every required outcome has reached its authorized 
 Honor current user steering before consequential actions and after delegated results, using native host controls. Stop or redirect affected in-flight delegates and commands using available controls, and observe their disposition; if stopping cannot be confirmed, report the uncertainty and do not launch dependent effects. A late result cannot restore authority after a stop. If an already-started external action has an uncertain result, observe its state before considering a retry; do not infer success from a timeout.
 
 On an explicit resume, reconcile current intent, the authoritative contract and designated progress record, current roadmap selection where applicable, source and workspace changes, relevant PR/check observations if any, and available session context. Preserve the run's bounded scope; a changed roadmap does not authorize additional outcomes. Resolve existing artifacts, branches, and worktrees before creating replacements. Associate evidence with the actual candidate/base, requirements, and prerequisites; for uncommitted work include the relevant diff and untracked inputs, not HEAD alone. Refresh only decisions, work, checks, or review invalidated by changed inputs. A summary alone is not current evidence.
+
+Also reconcile the governing AFR package identity on resume and when progressively loading a phase from a mutable source. If the package changed, establish which instructions now govern and reassess only affected obligations; do not attribute mixed revisions to one unchanged version or discard still-valid target evidence. If changes cannot be detected or identity is unavailable, report that limit instead of claiming a pin or eagerly loading every reference.
 
 For architecture-aware work, also reobserve the selected proposal revision, owner selection, target decision record, and applicable native gate before resuming dependent work. Do not resume against a stale identity or infer that a paused run selected a changed design; route the affected decision through planning while retaining unaffected work.
 
