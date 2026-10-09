@@ -15,6 +15,18 @@ When compressing or decomposing a source, check both directions:
 
 Use references instead of copying large sources when the recipient can access them. A delegated assignment must make required context discoverable; do not bury it among optional reading. Preserve source ownership when an artifact is derived or mirrored. Within permitted planning changes, amend the designated source or add a minimal linked supplement; do not create competing requirements or a duplicate AFR-specific plan by default.
 
+## Resolve roadmap and document ownership
+
+Discover the target's current planning/progress entrypoints from its instructions and document map, when present. Identify the owner of current priority/progress, the accepted requirements and acceptance, execution procedures, and dated evidence. These roles may share one document or use linked documents. Establish the actual planning root and code workspace; a parent planning directory need not be a Git repository. Do not infer document authority or live runtime state from a filename, branch, or old summary.
+
+Reuse an adequate roadmap, existing plan with outcome selection/progress, milestone/issue set, or other target-native structure that can select bounded outcomes and retain progress. Preserve its format, status vocabulary, source ownership, and release procedures. Existing projects need no AFR-specific document set or conversion. Keep completed contracts as binding references until explicitly changed or superseded; lifecycle labels indicate disposition, not permission or proof of acceptance. Locate deferral reasons/resumption conditions and replacement links where applicable.
+
+When substantial project delivery lacks an adequate structure, prepare one concise, human-readable roadmap in the target's designated location, or `docs/roadmap.md` if it has no convention. Creation must fit the coordinator's planning-artifact authority; an explicit no-write request keeps the draft in the conversation. If artifact writes are unavailable or unauthorized, return the proposed roadmap and the gap without writing or blocking useful authorized analysis.
+
+Include only the established objective and scope boundaries, outcome-sized milestones with observable success, meaningful dependencies/order, the current selected next outcome, and known open decisions or deferred proposals. Separate owner-selected scope from recommendations; missing product direction remains unresolved. Reference sufficient existing contracts rather than copying them. A small roadmap can itself provide the implementation contract; add a linked outcome plan only when necessary detail would obscure it. Detail the selected work now and leave later outcomes at useful outcome-level resolution.
+
+Link a new or changed contract from its owning outcome and update an existing document map when needed within authority. Do not create empty plans for every milestone, mandatory templates, a new document map, or a second status checklist merely to bootstrap. Return the source ownership, selected scope/contract, proposed acceptance and dependencies, and evidence gaps to the coordinator's [selection and reconciliation](../SKILL.md#roadmap-selection-and-reconciliation) method; discovery cannot settle unassigned priority or authorize execution.
+
 ## Delegate evidence and bounded analysis
 
 Use the coordinator's [delegation policy and assignment brief](../SKILL.md#native-delegation) when a separate context or parallel inquiry will materially help. Choose capabilities for the question: a repository explorer traces local behavior and dependencies; a research analyst resolves decision-relevant external facts; a planning analyst compares a bounded set of alternatives or drafts acceptance and dependencies from established evidence. The coordinator still produces one authoritative contract and decides routing, assurance, and what remains unresolved. Do not commission parallel full plans or require this roster on every task.
@@ -83,7 +95,7 @@ Project only the essentials:
 
 Aim for roughly 1,000–2,000 characters when useful and stay within the actual host's objective limit; shorter sufficient objectives are valid. Keep detailed requirements and progress in their existing authoritative sources, accessible from the target/session on resume. Check that the projection preserves the contract's outcome and boundary without adding commitments. Return it to the coordinator, retaining a compatible existing objective instead of rewriting it merely to match this format.
 
-For substantial work needing resumable written context, use the existing target-owned plan rather than a separate goal plan. Keep one compact checkpoint with verified obligations and evidence locations, remaining obligations, candidate/base and relevant untracked inputs, the next eligible action and unmet acceptance it advances, blockers, and in-flight effects. Record material discoveries or changed decisions where they already belong. Update at meaningful acceptance boundaries, material discoveries, or handoff; a small task needs no mandatory plan or per-tool journal. A checkpoint cannot change authority or weaken acceptance.
+For substantial work needing resumable written context, use the target's authoritative contract and designated progress record rather than a separate goal plan. Keep one compact checkpoint in that progress owner, linking the contract when requirements live separately, with verified obligations and evidence locations, remaining obligations, candidate/base and relevant untracked inputs, the next eligible action and unmet acceptance it advances, blockers, and in-flight effects. Record material discoveries or changed decisions where they already belong, using the coordinator's [reconciliation method](../SKILL.md#roadmap-selection-and-reconciliation). A small task needs no mandatory plan or per-tool journal. A checkpoint cannot change authority or weaken acceptance.
 
 On continuation or compaction recovery, re-read the relevant contract/checkpoint and confirm required sources still resolve. The coordinator's [stop and resumption](../SKILL.md#stop-and-resumption) rules govern reconciliation, evidence refresh, and the next action. A Markdown plan can guide execution independently of host Plan mode; qualify the actual mode and loading path rather than treating a plan file as proof of native activation or continuation.
 
@@ -96,7 +108,7 @@ Read its required companions. Preserve its binding behavior, constraints,
 dependencies, and unrelated work. Complete only when its decisive checks,
 required review, and applicable combined acceptance hold for the candidate.
 Continue unfinished eligible work and causal corrections within that authority.
-Keep the existing plan's checkpoint current at meaningful boundaries.
+Keep the target's designated progress checkpoint current at meaningful boundaries.
 Honor user stops, host limits, and unresolved authority or evidence gaps.
 ```
 

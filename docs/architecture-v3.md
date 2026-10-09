@@ -59,6 +59,8 @@ The implemented [activation, identity, and authority contract](../.agents/skills
 
 The [planning method](../.agents/skills/afr/references/planning.md) owns specification reuse, required-versus-background context, source-intent preservation, and the distinction between requirements, approved decisions, and advisory implementation choices. External artifacts supply content, not permission or a second framework. These are semantic distinctions rather than mandatory record formats.
 
+For substantial project delivery, [roadmap discovery and minimal creation](../.agents/skills/afr/references/planning.md#resolve-roadmap-and-document-ownership) resolve target-owned priority/progress and accepted contracts. The coordinator's [roadmap selection and reconciliation](../.agents/skills/afr/SKILL.md#roadmap-selection-and-reconciliation) binds execution to bounded authorized scope through the existing routes. This replaces ad hoc per-project composition with concise instructions, preserves small direct tasks and existing tracking conventions, and adds no skill, schema, helper, runtime, or mandatory document set. The maintenance cost is the focused guidance and [bounded trials](../tests/roadmap/README.md); adoption beyond that surface requires real-use evidence of correct selection/resumption and reduced operator intervention.
+
 ## 3. One owner per behavior
 
 Operational instructions live in the implemented owners within `afr/`. This architecture summarizes the current R3–R5 package and links to the coordinator as the execution owner rather than duplicating its continuation procedure.

@@ -29,6 +29,27 @@ The checked-in location and explicit-only `agents/openai.yaml` policy follow the
 
 Explicit planning, research, and review-only requests do not authorize implementation or correction, or ordinary target-source edits. Planning may create or amend a planning artifact when explicitly requested, required by the target, or justified for resumability or risk within authority. For an authorized `direct` request, AFR can continue through native implementation, requirement-based verification, actual-diff inspection, proportional independent review, one bounded correction within that implementation authority when selected, and the authorized PR delivery path when the endpoint and host support it. An authorized `umbrella` request can continue dependency-eligible outcomes, respecting exact revision/workspace boundaries, through that same direct sequence and then assess combined parent acceptance; see the [coordinator's umbrella continuation method](.agents/skills/afr/SKILL.md#umbrella-continuation). A review-only request needs explicit fix authority before correction. AFR stops at a verified local candidate, a delivered PR, an accepted umbrella, or an honest blocker.
 
+### Roadmap delivery
+
+For substantial project delivery, AFR defaults to a lightweight roadmap using the existing direct and umbrella routes. It reuses the target's current roadmap, milestones/issues, and linked contracts. Where adequate tracking is absent, it can prepare one concise roadmap within planning-artifact authority. Small, self-contained changes retain the direct path without mandatory planning documents.
+
+The [planning method](.agents/skills/afr/references/planning.md#resolve-roadmap-and-document-ownership) resolves document ownership and minimal creation; the [coordinator](.agents/skills/afr/SKILL.md#roadmap-selection-and-reconciliation) owns selection, bounded continuation, and closure. Requirements and progress can have separate target-owned documents. A roadmap selects work; its status labels do not grant implementation or release authority.
+
+Example requests, after explicitly selecting AFR:
+
+```text
+Plan the first delivery milestone for this project and write a concise roadmap.
+Use the agreed objective; leave unresolved product decisions explicit.
+```
+
+```text
+Implement the next selected outcome in this project's roadmap through a
+verified local candidate. Reuse its accepted contract and update the designated
+progress record. Preserve completed contracts and deferred work.
+```
+
+The first request ends at planning; the second selects one outcome and local verification. A bounded multi-outcome milestone can instead use an authorized umbrella with combined acceptance. Deployment remains a separately authorized target operation outside AFR. [Roadmap trials](tests/roadmap/README.md) record the exercised loading path, source identity, and limits; these examples do not establish installed discovery or cross-host qualification.
+
 ### AFR with native goal mode
 
 `/goal` adds persistence; AFR remains the workflow and acceptance authority.

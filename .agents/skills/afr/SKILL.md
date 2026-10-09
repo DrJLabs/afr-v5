@@ -1,9 +1,9 @@
 ---
 name: afr
-description: Plan, implement, review, or deliver software changes when the user explicitly selects AFR. Reuse a sufficient contract for direct work or continue a multi-outcome umbrella through its authorized endpoints and combined acceptance. Ordinary coding requests or discussion of AFR do not activate it.
+description: Plan, implement, review, or deliver software changes when the user explicitly selects AFR. Use lightweight roadmap delivery for substantial project work, reuse sufficient contracts, and continue bounded direct or umbrella work through authorized endpoints. Ordinary coding requests or discussion of AFR do not activate it.
 ---
 
-# AFR — direct work and umbrella continuation
+# AFR — roadmap delivery, direct work, and umbrella continuation
 
 ## Available capability
 
@@ -28,6 +28,10 @@ Do not create services, databases, run-state files, receipts, schedulers, or hel
 
 ## Planning and route choice
 
+For substantial project delivery—several product outcomes, meaningful staged delivery, or work needing cross-session continuity—default to lightweight roadmap delivery. A small, self-contained change can use the direct path without creating planning documents. A roadmap is a source for the existing routes, not another route, runtime, or requirement to install AFR in the target.
+
+For substantial roadmap delivery, or when roadmap context is material to the requested work, resolve document ownership through the [planning method](references/planning.md#resolve-roadmap-and-document-ownership), including when an implementation contract already suffices. Reuse adequate project-native tracking; prepare a minimal roadmap only when useful and within planning-artifact authority. A small direct or review-only request with sufficient context needs no roadmap discovery or bootstrap round.
+
 For new work or an insufficient contract, read the complete [planning method](references/planning.md) after resolving the target. It supplies the contract or research/decision result, assurance recommendation, and route rationale from the request, sources/companions, target observations, and endpoint. Reuse a sufficient source or prior contract without a new planning round. For a review-only request, go directly to the review method with the existing contract and candidate; report missing material context rather than inventing it. This coordinator owns final routing and reporting.
 
 Choose the smallest route that fits the outcome, independently of assurance:
@@ -42,6 +46,18 @@ Choose the smallest route that fits the outcome, independently of assurance:
 A multi-commit feature does not automatically need an umbrella. Research cannot decide an unassigned product/security policy or authorize its proposed implementation. A useful completed spike is a valid result even when no implementation-ready contract follows.
 
 If a decision blocks only one part of planning, continue independent safe analysis where useful and keep the dependent portion visibly unresolved. Do not turn lack of a future execution phase into a reason to invent work, or repeatedly replan a contract that is already sufficient.
+
+## Roadmap selection and reconciliation
+
+Bind the run to a named outcome, bounded milestone, or explicitly authorized set of outcomes and its endpoint. A request for the next roadmap item selects one cohesive outcome using current owner-selected priority and satisfied prerequisites; stable IDs and dated historical “Next” entries do not establish current order. Exclude deferred, superseded, and unselected proposals. Supporting work must advance an in-scope acceptance criterion or resolve its actual blocker and remain bounded to that need.
+
+Roadmap priority and contract readiness are not execution authority. A planning-only request stops at its requested artifact or analysis. Authority for one outcome does not cover its siblings; authority for a bounded umbrella permits continuation within that scope. An open-ended backlog is not a finish line. Resolve a consequential ambiguity in scope or order before dependent execution; do not invent product direction or expand the run when new backlog items appear.
+
+Use the selected outcome's sufficient contract and required companions, then enter the direct or umbrella sequence at the missing obligation. Reconcile current progress with candidate/base, relevant checks/review, and observed delivery boundaries. Preserve completed contractual behavior; distinguish implementation, qualification, merge, deployment, and effective operation. Deployment remains outside AFR, and a prerequisite requiring hosted evidence remains unmet until that separately authorized evidence exists.
+
+At meaningful acceptance boundaries, material scope/priority changes, and handoff, update the target's designated progress record through its authorized path and link the relevant evidence. Keep requirements in their owning contract. Where the target uses contract lifecycle metadata, reconcile the selected contract's disposition with its observed accepted endpoint (for example, Ready to Completed with requirements retained); keep detailed progress and evidence in the progress owner. Update affected deferral/supersession links using target conventions without a second ledger. Close a contract only when its accepted scope and endpoint are satisfied. Separate future readiness work can remain open; an unmet in-scope requirement cannot be reclassified as future work to claim completion.
+
+After the selected scope reaches its endpoint, report the best next eligible action or blocker grounded in the current roadmap. Continue only work already covered by the run's authority; recommendations do not authorize a new outcome.
 
 ## Native delegation
 
@@ -93,13 +109,13 @@ Finish the direct outcome at its requested boundary after conformance and requir
 
 ## Umbrella continuation
 
-For authorized umbrella execution, reuse the sufficient parent contract and its required sources from the [planning method](references/planning.md#size-outcomes-and-dependencies). A planning-only request still stops at planning; permission to implement one selected outcome does not authorize its siblings. Keep one authoritative plan/progress surface when one exists, not a second AFR journal or per-outcome workflow.
+For authorized umbrella execution, reuse the sufficient parent contract and its required sources from the [planning method](references/planning.md#size-outcomes-and-dependencies). Apply [roadmap selection and reconciliation](#roadmap-selection-and-reconciliation) where relevant. Keep one authoritative owner per concern, including the target's separate requirements and progress documents when present, not a second AFR journal or per-outcome workflow.
 
 Reconcile completed and unfinished obligations with actual source/workspace, check/review, and delivery evidence. A checked plan item or implementer summary alone does not prove its endpoint. For each unfinished outcome, establish whether its required dependency revision or delivery boundary is observed and available in the workspace where the dependent work will occur. An unmerged candidate does not satisfy a merged-base dependency; a remote merge does not prove the local workspace contains it.
 
 When an outcome depends on an architecture revision, reconcile the actual viewable proposal, owner selection, target decision identity, and native-check evidence before selecting dependent work. A changed, stale, or unresolved revision invalidates only affected work and evidence; preserve unaffected outcomes and return the decision through the existing planning route.
 
-Choose the next eligible outcome in explicit plan order, or listed order when no separate order is given, to break otherwise immaterial ties. Eligibility requires a sufficient contract, authority for its next action, and satisfied prerequisites. A consequential unresolved ordering or shared decision is a blocker for affected work, not an arbitrary tie. Continue independent eligible work when safe; if required work remains but none is eligible, report the specific dependency, cycle, scope, authority, or safety blocker rather than completion.
+Choose the next eligible outcome within the authorized scope in current owner-selected order; otherwise use explicit plan order, or listed order when no separate order is given, to break immaterial ties. Eligibility requires a sufficient contract, authority for its next action, and satisfied prerequisites. A consequential unresolved ordering or shared decision is a blocker for affected work, not an arbitrary tie. Continue independent eligible work when safe; if required work remains but none is eligible, report the specific dependency, cycle, scope, authority, or safety blocker rather than completion.
 
 Do not batch dependent implementation ahead of its prerequisite's required verification, review, or delivery boundary. Check that boundary before starting the dependent work; passing combined checks afterward does not establish that the prerequisite was honored.
 
@@ -113,7 +129,7 @@ Finish the umbrella only when every required outcome has reached its authorized 
 
 Honor current user steering before consequential actions and after delegated results, using native host controls. Stop or redirect affected in-flight delegates and commands using available controls, and observe their disposition; if stopping cannot be confirmed, report the uncertainty and do not launch dependent effects. A late result cannot restore authority after a stop. If an already-started external action has an uncertain result, observe its state before considering a retry; do not infer success from a timeout.
 
-On an explicit resume, reconcile current intent, the existing authoritative plan, source and workspace changes, relevant PR/check observations if any, and available session context. Resolve existing artifacts, branches, and worktrees before creating replacements. Associate evidence with the actual candidate/base, requirements, and prerequisites; for uncommitted work include the relevant diff and untracked inputs, not HEAD alone. Refresh only decisions, work, checks, or review invalidated by changed inputs. A summary alone is not current evidence.
+On an explicit resume, reconcile current intent, the authoritative contract and designated progress record, current roadmap selection where applicable, source and workspace changes, relevant PR/check observations if any, and available session context. Preserve the run's bounded scope; a changed roadmap does not authorize additional outcomes. Resolve existing artifacts, branches, and worktrees before creating replacements. Associate evidence with the actual candidate/base, requirements, and prerequisites; for uncommitted work include the relevant diff and untracked inputs, not HEAD alone. Refresh only decisions, work, checks, or review invalidated by changed inputs. A summary alone is not current evidence.
 
 For architecture-aware work, also reobserve the selected proposal revision, owner selection, target decision record, and applicable native gate before resuming dependent work. Do not resume against a stale identity or infer that a paused run selected a changed design; route the affected decision through planning while retaining unaffected work.
 
